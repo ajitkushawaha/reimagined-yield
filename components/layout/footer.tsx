@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
+import Image from "next/image"
 import { AnimatedText } from "@/components/eternity/animated-text"
 
 export function Footer() {
@@ -24,17 +25,17 @@ export function Footer() {
         { name: "Our Team", href: "/about#team" },
         { name: "Portfolio", href: "/portfolio" },
         { name: "Contact", href: "/contact" },
-        { name: "Privacy Policy", href: "/privacy" },
-        { name: "Terms of Service", href: "/terms" },
       ],
     },
     {
       title: "Contact Info",
       links: [
-        { name: "info@reimaginedyield.com", href: "mailto:info@reimaginedyield.com" },
-        { name: "+1 (555) 123-4567", href: "tel:+15551234567" },
-        { name: "123 Innovation Street", href: "#" },
-        { name: "Tech City, TC 12345", href: "#" },
+        { name: "merajsaurabh0000@gmail.com", href: "mailto:merajsaurabh0000@gmail.com" },
+        { name: "+91 9915174967", href: "tel:+919915174967" },
+        { name: "Bulandshahr, Uttar Pradesh", href: "#" },
+        { name: "India", href: "#" },
+        { name: "Mon-Fri 9AM-6PM IST", href: "#" },
+        { name: "We reply within 24 hours", href: "#" },
       ],
     },
   ]
@@ -48,28 +49,31 @@ export function Footer() {
             <div>
               <Link href="/" className="flex items-center space-x-3 mb-6">
                 <motion.div
-                  className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm"
+                  className="w-16 h-16 bg-white rounded-xl flex items-center justify-center shadow-sm overflow-hidden"
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <span className="text-black font-bold text-lg" aria-label="Reimagined Yield logo">
-                    RY
-                  </span>
+                  <Image 
+                    src="/logo.svg" 
+                    alt="Codyn Logo" 
+                    width={48} 
+                    height={48} 
+                    className="w-full h-full object-contain"
+                  />
                 </motion.div>
                 <div className="text-white">
-                  <div className="text-sm font-semibold">REIMAGINED YIELD</div>
-                  <div className="text-xs text-gray-400">TECHNOLOGY</div>
+                  <div className="text-lg font-bold">CODY</div>
+                  <div className="text-xs text-gray-400">DIGITAL AGENCY</div>
                 </div>
               </Link>
               <p className="text-gray-400 leading-relaxed mb-6">
-                Transforming businesses through innovative digital solutions and creative excellence.
+                We're a passionate team of digital innovators dedicated to transforming businesses through creative technology solutions and strategic thinking.
               </p>
-              <div className="flex space-x-4">
+              <div className="flex space-x-4"> 
                 {[
-                  { name: "LinkedIn", href: "https://linkedin.com/company/reimaginedyield" },
-                  { name: "Twitter", href: "https://twitter.com/reimaginedyield" },
-                  { name: "Instagram", href: "https://instagram.com/reimaginedyield" },
-                  { name: "Facebook", href: "https://facebook.com/reimaginedyield" },
+                  { name: "LinkedIn", href: " https://www.linkedin.com/in/saurabh-rajput-9a1071245" },
+                  { name: "Email", href: "mailto:merajsaurabh0000@gmail.com" },
+                  { name: "Phone", href: "tel:+919915174967" },
                 ].map((social) => (
                   <motion.a
                     key={social.name}
@@ -117,14 +121,8 @@ export function Footer() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <p>&copy; 2024 Reimagined Yield Technology. All rights reserved.</p>
+          <p>&copy; 2024 Codyn. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link href="/privacy" className="hover:text-white transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="hover:text-white transition-colors">
-              Terms of Service
-            </Link>
             <Link href="/sitemap.xml" className="hover:text-white transition-colors">
               Sitemap
             </Link>

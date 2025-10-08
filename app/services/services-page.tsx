@@ -1,5 +1,6 @@
 "use client"
-import { ArrowRight, Globe, Smartphone, Search, Palette, Code, BarChart, CheckCircle } from "lucide-react"
+import { ArrowRight, Globe, Smartphone, Search, Palette, Code, BarChart, CheckCircle, ShoppingCart } from "lucide-react"
+import Link from "next/link"
 import { AnimatedText } from "@/components/eternity/animated-text"
 import { AnimatedCard } from "@/components/eternity/animated-card"
 import { MagneticButton } from "@/components/eternity/magnetic-button"
@@ -8,34 +9,6 @@ import { motion } from "framer-motion"
 
 export default function ServicesPage() {
   const services = [
-    {
-      icon: <Globe className="w-12 h-12" />,
-      title: "Web Development",
-      description: "Custom websites built with modern technologies for optimal performance and user experience.",
-      features: ["Responsive Design", "SEO Optimized", "Fast Loading", "CMS Integration", "E-commerce Solutions"],
-      price: "Starting at $2,999",
-    },
-    {
-      icon: <Smartphone className="w-12 h-12" />,
-      title: "Mobile App Development",
-      description: "Native and cross-platform mobile applications that engage users and drive business growth.",
-      features: ["iOS & Android", "Cross-Platform", "UI/UX Design", "App Store Optimization", "Maintenance & Support"],
-      price: "Starting at $4,999",
-    },
-    {
-      icon: <Search className="w-12 h-12" />,
-      title: "SEO Optimization",
-      description: "Strategic SEO services to improve your search rankings and increase organic traffic.",
-      features: ["Keyword Research", "On-Page SEO", "Technical SEO", "Content Strategy", "Performance Tracking"],
-      price: "Starting at $999/month",
-    },
-    {
-      icon: <Palette className="w-12 h-12" />,
-      title: "UI/UX Design",
-      description: "Beautiful, intuitive designs that create memorable user experiences and drive conversions.",
-      features: ["User Research", "Wireframing", "Prototyping", "Visual Design", "Usability Testing"],
-      price: "Starting at $1,999",
-    },
     {
       icon: <Code className="w-12 h-12" />,
       title: "Custom Development",
@@ -47,8 +20,38 @@ export default function ServicesPage() {
         "Security Implementation",
         "Scalable Architecture",
       ],
-      price: "Custom Quote",
+      price: "GET A Quote",
     },
+    {
+      icon: <Globe className="w-12 h-12" />,
+      title: "Web Development",
+      description: "Custom websites built with modern technologies for optimal performance and user experience.",
+      features: ["Responsive Design", "SEO Optimized", "Fast Loading", "CMS Integration", "E-commerce Solutions"],
+      price: "GET A Quote",
+    },
+    {
+      icon: <Smartphone className="w-12 h-12" />,
+      title: "Mobile App Development",
+      description: "Native and cross-platform mobile applications that engage users and drive business growth.",
+      features: ["iOS & Android", "Cross-Platform", "UI/UX Design", "App Store Optimization", "Maintenance & Support"],
+      price: "GET A Quote",
+    },
+    {
+      icon: <Search className="w-12 h-12" />,
+      title: "SEO Optimization",
+      description: "Strategic SEO services to improve your search rankings and increase organic traffic.",
+      features: ["Keyword Research", "On-Page SEO", "Technical SEO", "Content Strategy", "Performance Tracking"],
+      price: "GET A Quote",
+    },
+   
+    {
+      icon: <ShoppingCart className="w-12 h-12" />,
+      title: "Ecommerce Development",
+      description: "Complete ecommerce solutions that drive sales and provide exceptional shopping experiences.",
+      features: ["Online Store Setup", "Payment Integration", "Inventory Management"],
+      price: "GET A Quote",
+    },
+   
     {
       icon: <BarChart className="w-12 h-12" />,
       title: "Digital Marketing",
@@ -60,7 +63,7 @@ export default function ServicesPage() {
         "Content Marketing",
         "Analytics & Reporting",
       ],
-      price: "Starting at $1,499/month",
+      price: "GET A Quote",
     },
   ]
 
@@ -222,11 +225,9 @@ export default function ServicesPage() {
 
                   <div className="mt-auto">
                     <div className="text-2xl font-bold text-white mb-4">{service.price}</div>
-                    <MagneticButton className="w-full justify-center backdrop-blur-xl bg-white/20 border border-white/30 rounded-2xl text-white font-semibold shadow-2xl">
-                      <span className="flex items-center">
+                      <Link href="/contact" className="w-full justify-center backdrop-blur-xl bg-white/20 border border-white/30 rounded-2xl text-white font-semibold shadow-2xl px-6 py-3 flex items-center hover:bg-white/30 transition-all duration-300">
                         Get Started <ArrowRight className="ml-2 w-4 h-4" />
-                      </span>
-                    </MagneticButton>
+                      </Link>
                   </div>
                   
                   {/* Glass shine effect */}

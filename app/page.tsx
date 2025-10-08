@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
+import Image from "next/image"
 import {
   ArrowRight,
   Award,
@@ -23,8 +24,8 @@ import {
   TrendingUp,
   CheckCircle,
   ArrowUpRight,
+  ShoppingCart,
 } from "lucide-react"
-import Image from "next/image"
 import Link from "next/link"
 import { AnimatedCard } from "@/components/eternity/animated-card"
 import { FloatingElements } from "@/components/eternity/floating-elements"
@@ -74,7 +75,7 @@ function HomePageContent() {
     serviceType: "Digital Agency Services",
     provider: {
       "@type": "Organization",
-      name: "Reimagined Yield Technology",
+      name: "Codyn",
     },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
@@ -386,7 +387,7 @@ function HomePageContent() {
               <h2 className="text-5xl md:text-6xl font-bold text-white mb-8">
                 Why Choose{" "}
                 <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
-                  Reimagined Yield
+                  Codyn
                 </span>?
               </h2>
               <p className="text-white/70 text-xl max-w-4xl mx-auto leading-relaxed">
@@ -682,13 +683,13 @@ function HomePageContent() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
                 {
-                  icon: <Globe className="w-8 h-8" />,
-                  title: "Web Development",
-                  description: "Custom websites built with modern technologies for optimal performance and user experience",
-                  features: ["Responsive Design", "SEO Optimized", "Fast Loading"],
-                  color: "from-blue-400/20 to-cyan-400/20",
-                  borderColor: "border-blue-400/30",
-                  href: "/services#web-development",
+                  icon: <Code className="w-8 h-8" />,
+                  title: "Custom Development",
+                  description: "Tailored software solutions built to meet your specific business requirements and goals",
+                  features: ["Custom Solutions", "API Integration", "Scalable Architecture"],
+                  color: "from-indigo-400/20 to-purple-400/20",
+                  borderColor: "border-indigo-400/30",
+                  href: "/services#custom-development",
                 },
                 {
                   icon: <Smartphone className="w-8 h-8" />,
@@ -700,6 +701,16 @@ function HomePageContent() {
                   href: "/services#app-development",
                 },
                 {
+                  icon: <Globe className="w-8 h-8" />,
+                  title: "Web Development",
+                  description: "Custom websites built with modern technologies for optimal performance and user experience",
+                  features: ["Responsive Design", "SEO Optimized", "Fast Loading"],
+                  color: "from-blue-400/20 to-cyan-400/20",
+                  borderColor: "border-blue-400/30",
+                  href: "/services#web-development",
+                },
+                
+                {
                   icon: <Search className="w-8 h-8" />,
                   title: "SEO Optimization",
                   description: "Strategic SEO services to improve your search rankings and increase organic traffic",
@@ -709,23 +720,15 @@ function HomePageContent() {
                   href: "/services#seo-optimization",
                 },
                 {
-                  icon: <Palette className="w-8 h-8" />,
-                  title: "UI/UX Design",
-                  description: "Beautiful, intuitive designs that create memorable user experiences and drive conversions",
-                  features: ["User Research", "Wireframing", "Prototyping"],
+                  icon: <ShoppingCart className="w-8 h-8" />,
+                  title: "Ecommerce Development",
+                  description: "Complete ecommerce solutions that drive sales and provide exceptional shopping experiences",
+                  features: ["Online Store Setup", "Payment Integration", "Inventory Management"],
                   color: "from-orange-400/20 to-red-400/20",
                   borderColor: "border-orange-400/30",
-                  href: "/services#ui-ux-design",
+                  href: "/services#ecommerce-development",
                 },
-                {
-                  icon: <Code className="w-8 h-8" />,
-                  title: "Custom Development",
-                  description: "Tailored software solutions built to meet your specific business requirements and goals",
-                  features: ["Custom Solutions", "API Integration", "Scalable Architecture"],
-                  color: "from-indigo-400/20 to-purple-400/20",
-                  borderColor: "border-indigo-400/30",
-                  href: "/services#custom-development",
-                },
+                
                 {
                   icon: <BarChart className="w-8 h-8" />,
                   title: "Digital Marketing",
@@ -821,6 +824,261 @@ function HomePageContent() {
                   />
                 </motion.button>
                 </Link>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* COLLABORATION SECTION */}
+        <section id="collaboration" className="py-32 px-6 lg:px-12 bg-gradient-to-b from-slate-800 to-slate-900" aria-labelledby="collaboration-heading">
+          <div className="max-w-7xl mx-auto">
+            <header className="text-center mb-20">
+              <AnimatedText>
+                <h2 id="collaboration-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
+                  Built Through <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Collaboration</span>
+                </h2>
+              </AnimatedText>
+              <AnimatedText delay={0.2}>
+                <p className="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">
+                  We believe the best results come from working closely with our clients as partners, not just service providers.
+                </p>
+              </AnimatedText>
+            </header>
+
+            {/* Collaboration Stats */}
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-20">
+              {[
+                { icon: <Users className="w-8 h-8" />, value: "200+", label: "Happy Clients", color: "from-blue-400 to-cyan-400" },
+                { icon: <Globe className="w-8 h-8" />, value: "10+", label: "Countries", color: "from-green-400 to-emerald-400" },
+                { icon: <Star className="w-8 h-8" />, value: "5", label: "Client Rating", color: "from-orange-400 to-red-400" },
+              ].map((stat, index) => (
+                <motion.div
+                  key={index}
+                  className="text-center p-6 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.6 }}
+                  viewport={{ once: true }}
+                >
+                  <div className={`w-16 h-16 bg-gradient-to-r ${stat.color} rounded-2xl flex items-center justify-center mx-auto mb-4`}>
+                    <div className="text-white">{stat.icon}</div>
+                  </div>
+                  <div className="text-3xl font-bold text-white mb-2">
+                    <AnimatedCounter end={parseInt(stat.value.replace(/[^\d]/g, ''))} />
+                    {stat.value.includes('.') ? '.' : stat.value.includes('+') ? '+' : ''}
+                  </div>
+                  <div className="text-gray-400 text-sm">{stat.label}</div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Client Testimonials */}
+            <div className="mb-20">
+              <h3 className="text-2xl font-bold text-white text-center mb-12">What Our Partners Say</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {[
+                  {
+                    name: "Sarah Johnson",
+                    role: "CEO, TechStart Inc.",
+                    content: "Working with Codyn was a game-changer. Their collaborative approach and technical expertise helped us scale from startup to enterprise in just 18 months.",
+                    avatar: "/placeholder-user.jpg",
+                    rating: 5
+                  },
+                  {
+                    name: "Michael Chen",
+                    role: "CTO, Digital Solutions",
+                    content: "The team's ability to understand our vision and translate it into reality is unmatched. They're not just developers, they're true partners in our success.",
+                    avatar: "/placeholder-user.jpg",
+                    rating: 5
+                  },
+                  {
+                    name: "Emily Rodriguez",
+                    role: "Founder, Creative Agency",
+                    content: "From concept to launch, every step was handled with professionalism and creativity. Our collaboration resulted in a product that exceeded all expectations.",
+                    avatar: "/placeholder-user.jpg",
+                    rating: 5
+                  }
+                ].map((testimonial, index) => (
+                  <motion.div
+                    key={index}
+                    className="p-8 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl hover:bg-white/10 transition-all duration-500"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1, duration: 0.6 }}
+                    viewport={{ once: true }}
+                    whileHover={{ scale: 1.02, y: -5 }}
+                  >
+                    <div className="flex items-center mb-4">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                      ))}
+                    </div>
+                    <p className="text-gray-300 leading-relaxed mb-6 italic">"{testimonial.content}"</p>
+                    <div className="flex items-center">
+                      <Image
+                        src={testimonial.avatar}
+                        alt={testimonial.name}
+                        width={48}
+                        height={48}
+                        className="rounded-full mr-4"
+                      />
+                      <div>
+                        <div className="text-white font-semibold">{testimonial.name}</div>
+                        <div className="text-gray-400 text-sm">{testimonial.role}</div>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Collaboration Process */}
+            <div className="mb-20">
+              <h3 className="text-2xl font-bold text-white text-center mb-12">Our Collaboration Process</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {[
+                  {
+                    step: "01",
+                    title: "Discovery",
+                    description: "We dive deep into your business goals, target audience, and technical requirements",
+                    icon: <Search className="w-8 h-8" />
+                  },
+                  {
+                    step: "02",
+                    title: "Strategy",
+                    description: "Together, we create a comprehensive roadmap that aligns with your vision and timeline",
+                    icon: <Target className="w-8 h-8" />
+                  },
+                  {
+                    step: "03",
+                    title: "Development",
+                    description: "Regular check-ins and transparent communication throughout the entire development process",
+                    icon: <Code className="w-8 h-8" />
+                  },
+                  {
+                    step: "04",
+                    title: "Launch & Support",
+                    description: "We ensure smooth deployment and provide ongoing support to help you succeed",
+                    icon: <Rocket className="w-8 h-8" />
+                  }
+                ].map((process, index) => (
+                  <motion.div
+                    key={index}
+                    className="text-center p-6 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1, duration: 0.6 }}
+                    viewport={{ once: true }}
+                    whileHover={{ scale: 1.05, y: -5 }}
+                  >
+                    <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                      <div className="text-white">{process.icon}</div>
+                    </div>
+                    <div className="text-2xl font-bold text-blue-400 mb-2">{process.step}</div>
+                    <h4 className="text-xl font-semibold text-white mb-3">{process.title}</h4>
+                    <p className="text-gray-400 text-sm leading-relaxed">{process.description}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Partner Logos */}
+            <div className="mb-20">
+              <h3 className="text-2xl font-bold text-white text-center mb-12">Trusted by Industry Leaders</h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
+                {[
+                  { 
+                    name: "Growing Wing", 
+                    url: "https://www.growingwing.com/",
+                    logo: "https://www.growingwing.com/public/images/logo.png"
+                  },
+                  { 
+                    name: "Heighten Infotech", 
+                    url: "https://www.heighteninfotech.com/",
+                    logo: "https://www.heighteninfotech.com/img/logo.png"
+                  },
+                  { 
+                    name: "Patiyal Infotech", 
+                    url: "https://patiyalinfotech.com/",
+                    logo: "https://patiyalinfotech.com/wp-content/uploads/2024/08/logo.png"
+                  },
+                  { 
+                    name: "Klance", 
+                    url: "https://klance.net/",
+                    logo: "https://klance.net/wp-content/uploads/2025/06/WhatsApp-Image-2025-08-06-at-00.57.10_9d1529bc.jpg"
+                  },
+                  { 
+                    name: "WebTech99", 
+                    url: "https://webtech99.com/",
+                    logo: "https://webtech99.com/wp-content/uploads/2023/10/webtech99-logo-final.png"
+                  },
+                  { 
+                    name: "HDH Technologies", 
+                    url: "https://hdhtechnologies.com/",
+                    logo: "https://hdhtechnologies.com/wp-content/uploads/2024/01/logo-hdh.png"
+                  }
+                ].map((company, index) => (
+                  <motion.a
+                    key={index}
+                    href={company.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-center p-6 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl hover:bg-white/20 hover:border-white/30 transition-all duration-300 flex flex-col items-center justify-center min-h-[120px]"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: index * 0.1, duration: 0.5 }}
+                    viewport={{ once: true }}
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <div className="w-32 h-32 flex items-center justify-center">
+                      <img 
+                        src={company.logo} 
+                        alt={`${company.name} logo`}
+                        className="max-w-full max-h-full object-contain transition-opacity duration-300"
+                        onError={(e) => {
+                          // Fallback to text if logo fails to load
+                          e.currentTarget.style.display = 'none';
+                          const nextElement = e.currentTarget.nextElementSibling as HTMLElement;
+                          if (nextElement) {
+                            nextElement.style.display = 'block';
+                          }
+                        }}
+                      />
+                      <div className="text-white/70 font-semibold text-sm text-center leading-tight hidden">
+                        {company.name}
+                      </div>
+                    </div>
+                  </motion.a>
+                ))}
+              </div>
+            </div>
+
+            {/* CTA Section */}
+            <motion.div
+              className="text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <motion.a
+                href="https://meetings-na2.hubspot.com/merajsaurabh0000"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative inline-block px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold text-lg rounded-2xl shadow-2xl overflow-hidden"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <span className="relative z-10 flex items-center">
+                  Schedule a Meeting
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </span>
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600"
+                  initial={{ x: "-100%" }}
+                  whileHover={{ x: "100%" }}
+                  transition={{ duration: 0.6 }}
+                />
+              </motion.a>
             </motion.div>
           </div>
         </section>
@@ -930,7 +1188,7 @@ function HomePageContent() {
                   name: "Alex Thompson",
                   company: "TechStart Inc.",
                   review:
-                    "Reimagined Yield transformed our digital presence completely. Their team's expertise and dedication are unmatched.",
+                    "Codyn transformed our digital presence completely. Their team's expertise and dedication are unmatched.",
                   rating: 5,
                 },
                 {

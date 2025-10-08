@@ -4,6 +4,7 @@ import type React from "react"
 import { motion } from "framer-motion"
 import { useState } from "react"
 import { ArrowRight, Mail, Phone, MapPin, Clock, Send } from "lucide-react"
+import Link from "next/link"
 import { AnimatedText } from "@/components/eternity/animated-text"
 import { AnimatedCard } from "@/components/eternity/animated-card"
 import { MagneticButton } from "@/components/eternity/magnetic-button"
@@ -16,11 +17,41 @@ export default function ContactPage() {
     service: "",
     message: "",
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission here
-    console.log("Form submitted:", formData)
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        setSubmitStatus('success')
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          service: "",
+          message: "",
+        })
+      } else {
+        setSubmitStatus('error')
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -34,22 +65,22 @@ export default function ContactPage() {
     {
       icon: <Phone className="w-6 h-6" />,
       title: "Phone",
-      details: ["+1 (555) 123-4567", "Mon-Fri 9AM-6PM EST"],
+      details: ["+91 9915174967", "Mon-Fri 9AM-6PM IST"],
     },
     {
       icon: <Mail className="w-6 h-6" />,
       title: "Email",
-      details: ["info@reimaginedyield.com", "We reply within 24 hours"],
+      details: ["merajsaurabh0000@gmail.com", "We reply within 24 hours"],
     },
     {
       icon: <MapPin className="w-6 h-6" />,
       title: "Office",
-      details: ["123 Innovation Street", "Tech City, TC 12345"],
+      details: ["Bulandshahr, Uttar Pradesh, India"],
     },
     {
       icon: <Clock className="w-6 h-6" />,
       title: "Business Hours",
-      details: ["Monday - Friday: 9AM - 6PM", "Saturday: 10AM - 4PM"],
+      details: ["We provide 24/7 Support"],
     },
   ]
 
@@ -206,7 +237,7 @@ export default function ContactPage() {
                       <option value="" className="bg-slate-800">Select a service</option>
                       <option value="web-development" className="bg-slate-800">Web Development</option>
                       <option value="mobile-apps" className="bg-slate-800">Mobile App Development</option>
-                      <option value="ui-ux-design" className="bg-slate-800">UI/UX Design</option>
+                      <option value="ecommerce-development" className="bg-slate-800">Ecommerce Development</option>
                       <option value="seo" className="bg-slate-800">SEO Optimization</option>
                       <option value="digital-marketing" className="bg-slate-800">Digital Marketing</option>
                       <option value="custom-development" className="bg-slate-800">Custom Development</option>
@@ -230,11 +261,49 @@ export default function ContactPage() {
                   />
                 </div>
 
-                <MagneticButton className="w-full justify-center backdrop-blur-xl bg-white/20 border border-white/30 rounded-2xl text-white font-semibold shadow-2xl">
+                {/* Status Messages */}
+                {submitStatus === 'success' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="p-4 bg-green-500/20 border border-green-500/30 rounded-2xl text-green-300 text-center backdrop-blur-xl"
+                  >
+                    ✅ Thank you! Your message has been sent successfully. We'll get back to you within 24 hours.
+                  </motion.div>
+                )}
+
+                {submitStatus === 'error' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="p-4 bg-red-500/20 border border-red-500/30 rounded-2xl text-red-300 text-center backdrop-blur-xl"
+                  >
+                    ❌ Sorry, there was an error sending your message. Please try again or contact us directly.
+                  </motion.div>
+                )}
+
+                <button 
+                  type="submit"
+                  disabled={isSubmitting}
+                  className={`w-full justify-center backdrop-blur-xl border border-white/30 rounded-2xl text-white font-semibold shadow-2xl transition-all duration-300 flex items-center ${
+                    isSubmitting 
+                      ? 'bg-white/10 cursor-not-allowed' 
+                      : 'bg-white/20 hover:bg-white/30'
+                  }`}
+                >
                   <span className="flex items-center">
-                    Send Message <Send className="ml-2 w-4 h-4" />
+                    {isSubmitting ? (
+                      <>
+                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        Send Message <Send className="ml-2 w-4 h-4" />
+                      </>
+                    )}
                   </span>
-                </MagneticButton>
+                </button>
               </form>
             </motion.div>
 
@@ -396,11 +465,13 @@ export default function ContactPage() {
             </p>
           </AnimatedText>
           <AnimatedText delay={0.4}>
+            <Link href="https://meetings-na2.hubspot.com/merajsaurabh0000">
             <MagneticButton>
               <span className="flex items-center">
                 Schedule Free Consultation <ArrowRight className="ml-2 w-4 h-4" />
               </span>
             </MagneticButton>
+            </Link>
           </AnimatedText>
         </div>
       </section>

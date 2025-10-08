@@ -4,6 +4,7 @@ import { useState } from "react"
 import { motion } from "framer-motion"
 import { ArrowRight, Menu, X } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { MagneticButton } from "@/components/eternity/magnetic-button"
 
@@ -26,7 +27,7 @@ export function Header() {
 
   return (
     <motion.header
-      className="fixed top-0 w-full z-50 bg-slate-900/80 backdrop-blur-2xl border-b border-white/10"
+      className="fixed top-0 w-full z-50 bg-gradient-to-r from-blue-900/95 via-purple-900/95 to-indigo-900/95 backdrop-blur-2xl border-b border-white/20 shadow-2xl"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
@@ -37,20 +38,28 @@ export function Header() {
         role="navigation"
         aria-label="Main navigation"
       >
-        <Link href="/" className="flex items-center space-x-3">
+        <Link href="/" className="flex items-center space-x-4">
           <motion.div
-            className="w-12 h-12 bg-gradient-to-r from-blue-400/20 to-purple-400/20 backdrop-blur-xl border border-white/20 rounded-2xl flex items-center justify-center shadow-2xl"
+            className="w-52 h-16 bg-white/10 backdrop-blur-xl border border-white/30 rounded-2xl flex items-center justify-center shadow-2xl overflow-hidden"
             whileHover={{ scale: 1.05, rotate: 5 }}
             transition={{ duration: 0.2 }}
           >
-            <span className="text-white font-bold text-lg" aria-label="Reimagined Yield logo">
-              RY
-            </span>
+            <Image 
+              src="/logo.svg" 
+              alt="Codyn Logo" 
+              width={200} 
+              height={60} 
+              className="w-full h-full object-contain"
+            />
           </motion.div>
-          <div className="text-white">
-            <div className="text-sm font-semibold tracking-wide">REIMAGINED YIELD</div>
-            <div className="text-xs text-white/70 font-medium">TECHNOLOGY</div>
-          </div>
+          <motion.div
+            className="hidden lg:block"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+          >
+          
+          </motion.div>
         </Link>
 
         {/* Apple Glass Desktop Menu */}

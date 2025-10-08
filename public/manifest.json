@@ -1,6 +1,6 @@
 {
-  "name": "Reimagined Yield Technology - Digital Agency",
-  "short_name": "RY Technology",
+  "name": "Codyn - Digital Agency",
+  "short_name": "Codyn",
   "description": "Transform your digital presence with expert web development, mobile apps, UI/UX design, SEO optimization, and digital marketing services.",
   "start_url": "/",
   "display": "standalone",
@@ -8,14 +8,14 @@
   "theme_color": "#000000",
   "icons": [
     {
-      "src": "/icon-192x192.png",
-      "sizes": "192x192",
+      "src": "/logo.png",
+      "sizes": "any",
       "type": "image/png"
     },
     {
-      "src": "/icon-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png"
+      "src": "/favicon.ico",
+      "sizes": "16x16 32x32 48x48",
+      "type": "image/x-icon"
     }
   ]
 }

@@ -1,5 +1,6 @@
 "use client"
 import { ArrowRight, Award, Users, Target, Heart, Lightbulb, Shield, Mail, Linkedin, Twitter } from "lucide-react"
+import Image from "next/image"
 import { AnimatedText } from "@/components/eternity/animated-text"
 import { AnimatedCard } from "@/components/eternity/animated-card"
 import { MagneticButton } from "@/components/eternity/magnetic-button"
@@ -9,71 +10,29 @@ import { motion } from "framer-motion"
 export default function AboutPage() {
   const teamMembers = [
     {
-      name: "Sarah Johnson",
-      role: "CEO & Founder",
-      bio: "Visionary leader with 10+ years in digital transformation and business strategy. Sarah founded Reimagined Yield with a mission to help businesses thrive in the digital age.",
+      name: "Saurabh Rajput",
+      role: "Founder & CEO",
+      bio: "Visionary leader with 7+ years in digital transformation and business strategy. Sarah founded Codyn with a mission to help businesses thrive in the digital age.",
       skills: ["Strategic Planning", "Business Development", "Team Leadership"],
       social: {
-        email: "sarah@reimaginedyield.com",
-        linkedin: "https://linkedin.com/in/sarahjohnson",
-        twitter: "https://twitter.com/sarahjohnson",
+        email: "merajsaurabh0000@gmail.com",
+        linkedin: "https://linkedin.com/in/saurabhrajput",
+   
       },
+      profile: "/saurabh.jpeg",
     },
     {
-      name: "Michael Chen",
-      role: "Chief Technology Officer",
+      name: "Ajit Kushwaha",
+      role: "Co-Founder & CTO",
       bio: "Full-stack architect specializing in scalable solutions and modern web technologies. Michael leads our technical vision and ensures we deliver cutting-edge solutions.",
       skills: ["Full-Stack Development", "Cloud Architecture", "DevOps"],
       social: {
-        email: "michael@reimaginedyield.com",
-        linkedin: "https://linkedin.com/in/michaelchen",
-        twitter: "https://twitter.com/michaelchen",
+        email: "ajit.kushwaha.work@gmail.com",
+        linkedin: "https://linkedin.com/in/ajitreact",
       },
+      profile: "https://media.licdn.com/dms/image/v2/D4D03AQFIz0m9uBFIog/profile-displayphoto-shrink_100_100/B4DZeUU8CmGsAU-/0/1750540207046?e=1762992000&v=beta&t=B8pJHsm3zKCI_ZRKQIPmc6XaWaOr2IPlXhX104G6UEo",
     },
-    {
-      name: "Emily Rodriguez",
-      role: "Creative Director",
-      bio: "Award-winning designer with expertise in user experience and brand identity. Emily ensures every project we deliver is both beautiful and functional.",
-      skills: ["UI/UX Design", "Brand Identity", "Creative Strategy"],
-      social: {
-        email: "emily@reimaginedyield.com",
-        linkedin: "https://linkedin.com/in/emilyrodriguez",
-        twitter: "https://twitter.com/emilyrodriguez",
-      },
-    },
-    {
-      name: "David Kim",
-      role: "Marketing Director",
-      bio: "Growth strategist with proven track record in digital marketing and SEO. David helps our clients achieve measurable results and sustainable growth.",
-      skills: ["Digital Marketing", "SEO Strategy", "Analytics"],
-      social: {
-        email: "david@reimaginedyield.com",
-        linkedin: "https://linkedin.com/in/davidkim",
-        twitter: "https://twitter.com/davidkim",
-      },
-    },
-    {
-      name: "Jessica Park",
-      role: "Lead Developer",
-      bio: "Senior developer with expertise in React, Node.js, and mobile development. Jessica leads our development team and ensures code quality and best practices.",
-      skills: ["React/Next.js", "Node.js", "Mobile Development"],
-      social: {
-        email: "jessica@reimaginedyield.com",
-        linkedin: "https://linkedin.com/in/jessicapark",
-        twitter: "https://twitter.com/jessicapark",
-      },
-    },
-    {
-      name: "Alex Thompson",
-      role: "Project Manager",
-      bio: "Experienced project manager who ensures smooth delivery and client satisfaction. Alex coordinates between teams and keeps projects on track and within budget.",
-      skills: ["Project Management", "Client Relations", "Agile Methodology"],
-      social: {
-        email: "alex@reimaginedyield.com",
-        linkedin: "https://linkedin.com/in/alexthompson",
-        twitter: "https://twitter.com/alexthompson",
-      },
-    },
+ 
   ]
 
   const values = [
@@ -150,12 +109,20 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
+            className="mb-8"
           >
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8">
+           
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 flex items-center justify-center gap-4">
               About{" "}
-              <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
-                Reimagined Yield
-              </span>
+               <div className="w-44 h-24 rounded-xl flex items-center justify-center ">
+                 <Image 
+                   src="/logo.svg" 
+                   alt="Codyn Logo" 
+                   width={80} 
+                   height={32} 
+                   className="w-full h-full object-contain brightness-0 invert"
+                 />
+               </div>
             </h1>
           </motion.div>
           <motion.p
@@ -209,7 +176,7 @@ export default function AboutPage() {
                   transition={{ delay: 0.2, duration: 0.6 }}
                   viewport={{ once: true }}
                 >
-                  Founded in 2019, Reimagined Yield Technology emerged from a simple belief: every business deserves a
+                  Founded in 2021, Codyn emerged from a simple belief: every business deserves a
                   digital presence that truly represents their vision and drives real results.
                 </motion.p>
                 <motion.p 
@@ -230,7 +197,7 @@ export default function AboutPage() {
                   transition={{ delay: 0.6, duration: 0.6 }}
                   viewport={{ once: true }}
                 >
-                  Today, we're proud to have completed over 150 projects, working with startups, small businesses, and
+                  Today, we're proud to have completed over 50+ projects, working with startups, small businesses, and
                   enterprise clients across various industries. Our commitment to excellence and innovation continues
                   to drive everything we do.
                 </motion.p>
@@ -419,17 +386,18 @@ export default function AboutPage() {
             </AnimatedText>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
             {teamMembers.map((member, index) => (
               <AnimatedCard key={index} delay={index * 0.1} className="p-8 group">
                 <div className="text-center mb-6">
-                  <div className="w-24 h-24 bg-gradient-to-br from-white to-gray-200 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                    <span className="text-2xl font-bold text-black">
-                      {member.name
-                        .split(" ")
-                        .map((n) => n[0])
-                        .join("")}
-                    </span>
+                  <div className="w-24 h-24 bg-gradient-to-br from-white to-gray-200 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg overflow-hidden relative">
+                   <Image 
+                     src={member.profile} 
+                     alt={member.name} 
+                     width={96} 
+                     height={96} 
+                     className="rounded-full object-cover w-full h-full" 
+                   />
                   </div>
                   <h3 className="text-xl font-semibold text-white mb-2">{member.name}</h3>
                   <p className="text-sm text-gray-300 font-medium mb-4">{member.role}</p>
@@ -472,17 +440,7 @@ export default function AboutPage() {
                   >
                     <Linkedin className="w-4 h-4" />
                   </motion.a>
-                  <motion.a
-                    href={member.social.twitter}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    aria-label={`${member.name} on Twitter`}
-                  >
-                    <Twitter className="w-4 h-4" />
-                  </motion.a>
+               
                 </div>
               </AnimatedCard>
             ))}
