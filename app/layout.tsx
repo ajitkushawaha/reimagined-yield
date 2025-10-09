@@ -309,6 +309,7 @@ export default function RootLayout({
           },
           sameAs: ["https://www.linkedin.com/in/ajitreact"]
         }) }} />
+        <meta name="google-site-verification" content="google9e9629c4458a3060.html" />
       </head>
       <body className={`${inter.className} antialiased`}>{children}</body>
     </html>
