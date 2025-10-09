@@ -1,7 +1,7 @@
 "use client"
 
-import { useState } from "react"
-import { motion } from "framer-motion"
+import { useState, useEffect } from "react"
+import { motion, useScroll, useTransform } from "framer-motion"
 import { ArrowRight, Menu, X } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
@@ -10,7 +10,17 @@ import { MagneticButton } from "@/components/eternity/magnetic-button"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
   const pathname = usePathname()
+  const { scrollY } = useScroll()
+  
+  // Detect scroll - hide logo/CTA when scrolled, show only menu
+  useEffect(() => {
+    const unsubscribe = scrollY.onChange((latest) => {
+      setIsScrolled(latest > 200)
+    })
+    return unsubscribe
+  }, [scrollY])
 
   const navItems = [
     { name: "Home", href: "/" },
@@ -27,21 +37,62 @@ export function Header() {
 
   return (
     <motion.header
-      className="fixed top-0 w-full z-50 bg-gradient-to-r from-blue-900/95 via-purple-900/95 to-indigo-900/95 backdrop-blur-2xl border-b border-white/20 shadow-2xl"
+      className="fixed top-0 w-full z-50"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       role="banner"
     >
-      <nav
-        className="flex items-center justify-between px-6 py-4 lg:px-12"
-        role="navigation"
-        aria-label="Main navigation"
+      {/* Manu-style Navigation - Only visible when scrolled */}
+      <motion.div
+        className={`hidden lg:flex max-w-fit fixed top-4 inset-x-0 mx-auto rounded-full bg-black pr-2 pl-8 py-2 items-center justify-center space-x-4 ${
+          isScrolled ? "z-[5000]" : "z-[-1] pointer-events-none"
+        }`}
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: isScrolled ? 1 : 0, scale: isScrolled ? 1 : 0.9 }}
+        transition={{ delay: 0.3, duration: 0.4 }}
+        role="menubar"
       >
-        <Link href="/" className="flex items-center space-x-4">
+        {navItems.map((item, index) => (
+          <Link
+            key={item.name}
+            href={item.href}
+            className="relative text-neutral-50 text-sm hover:text-neutral-300 transition-colors duration-200"
+          >
+            {item.name}
+          </Link>
+        ))}
+        
+        {/* CTA Button - Manu style */}
+        <Link href="/contact">
+          <button className="bg-slate-900 no-underline group cursor-pointer relative shadow-2xl shadow-zinc-900 rounded-full p-px text-xs font-semibold leading-6 text-white">
+            <span className="absolute inset-0 overflow-hidden rounded-full">
+              <span className="absolute inset-0 rounded-full bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(56,189,248,0.6)_0%,rgba(56,189,248,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
+            </span>
+            <div className="relative flex space-x-2 items-center z-10 rounded-full bg-zinc-950 ring-1 ring-white/10 px-4 py-1">
+              <span>Let's Talk</span>
+              <ArrowRight className="w-4 h-4" />
+            </div>
+            <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-emerald-400/90 to-emerald-400/0 transition-opacity duration-500 group-hover:opacity-40"></span>
+          </button>
+        </Link>
+      </motion.div>
+
+      {/* Regular Header - Visible when at top with background */}
+      <motion.nav 
+        className={`flex items-center justify-between px-6 py-4 backdrop-blur-2xl bg-gradient-to-r from-blue-900/95 via-purple-900/95 to-indigo-900/95 border-b border-white/20 shadow-2xl relative z-50 ${
+          isScrolled ? "lg:hidden" : ""
+        }`}
+        style={{ 
+          opacity: isScrolled ? 0 : 1,
+          pointerEvents: isScrolled ? "none" : "auto"
+        }}
+        transition={{ duration: 0.3 }}
+      >
+        <Link href="/" className="flex items-center">
           <motion.div
-            className="w-52 h-16 bg-white/10 backdrop-blur-xl border border-white/30 rounded-2xl flex items-center justify-center shadow-2xl overflow-hidden"
-            whileHover={{ scale: 1.05, rotate: 5 }}
+            className="p-3 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl shadow-lg"
+            whileHover={{ scale: 1.05, rotate: 2 }}
             transition={{ duration: 0.2 }}
           >
             <Image 
@@ -49,46 +100,43 @@ export function Header() {
               alt="Codyn Logo" 
               width={200} 
               height={60} 
-              className="w-full h-full object-contain"
+              className="h-12 w-auto"
             />
-          </motion.div>
-          <motion.div
-            className="hidden lg:block"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-          >
-          
           </motion.div>
         </Link>
 
-        {/* Apple Glass Desktop Menu */}
-        <motion.div
-          className="hidden md:flex items-center space-x-2 bg-white/5 backdrop-blur-xl rounded-3xl px-6 py-3 border border-white/10 shadow-2xl"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.3, duration: 0.4 }}
-          role="menubar"
-        >
+        {/* Desktop Menu - Always visible at top */}
+        <div className="hidden lg:flex items-center space-x-2 bg-white/5 backdrop-blur-xl rounded-3xl px-6 py-3 border border-white/10 shadow-2xl">
           {navItems.map((item, index) => (
-            <motion.div key={item.name} role="menuitem">
-              <Link
-                href={item.href}
-                className={`relative font-medium transition-all duration-300 px-4 py-2 rounded-2xl focus:outline-none focus:ring-2 focus:ring-white/50 ${
-                  isActive(item.href)
-                    ? "text-white bg-white/20 backdrop-blur-xl"
-                    : "text-white/80 hover:text-white hover:bg-white/10"
-                }`}
-              >
-                {item.name}
-              </Link>
-            </motion.div>
+            <Link
+              key={item.name}
+              href={item.href}
+              className={`relative font-medium transition-all duration-300 px-4 py-2 rounded-2xl focus:outline-none focus:ring-2 focus:ring-white/50 ${
+                isActive(item.href)
+                  ? "text-white bg-white/20 backdrop-blur-xl"
+                  : "text-white/80 hover:text-white hover:bg-white/10"
+              }`}
+            >
+              {item.name}
+            </Link>
           ))}
-        </motion.div>
+        </div>
 
-        {/* Apple Glass Mobile Menu Button */}
+        {/* Desktop CTA - Only visible at top */}
+        <div className="hidden lg:block">
+          <Link href="/contact">
+            <MagneticButton className="text-sm font-medium backdrop-blur-xl bg-white/20 border border-white/30 rounded-2xl text-white shadow-2xl focus:outline-none focus:ring-2 focus:ring-white/50">
+              <span className="flex items-center">
+                Let's Talk 
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </span>
+            </MagneticButton>
+          </Link>
+        </div>
+
+        {/* Mobile Menu Button */}
         <motion.button
-          className="md:hidden text-white p-3 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
+          className="lg:hidden text-white p-3 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           whileTap={{ scale: 0.95 }}
           whileHover={{ scale: 1.05 }}
@@ -97,23 +145,7 @@ export function Header() {
         >
           {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </motion.button>
-
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.5, duration: 0.4 }}
-          className="hidden md:block"
-        >
-          <Link href="/contact">
-            <MagneticButton className="text-sm font-medium backdrop-blur-xl bg-white/20 border border-white/30 rounded-2xl text-white shadow-2xl focus:outline-none focus:ring-2 focus:ring-white/50">
-              <span className="flex items-center">
-                Let's Talk 
-                <ArrowRight className="ml-2 w-4 h-4" aria-hidden="true" />
-              </span>
-            </MagneticButton>
-          </Link>
-        </motion.div>
-      </nav>
+      </motion.nav>
 
       {/* Apple Glass Mobile Menu */}
       {isMenuOpen && (
