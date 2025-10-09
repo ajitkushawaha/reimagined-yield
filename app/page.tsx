@@ -25,6 +25,7 @@ import {
   CheckCircle,
   ArrowUpRight,
   ShoppingCart,
+  Linkedin,
 } from "lucide-react"
 import Link from "next/link"
 import { AnimatedCard } from "@/components/eternity/animated-card"
@@ -142,7 +143,7 @@ function HomePageContent() {
         {/* APPLE FLUID GLASS HERO SECTION */}
         <section
           id="home"
-          className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"
+          className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 pt-20"
           aria-labelledby="hero-heading"
         >
           {/* Dynamic Glass Background */}
@@ -190,7 +191,7 @@ function HomePageContent() {
           </motion.div>
 
           {/* Main Content Container */}
-          <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
+          <div className="relative z-10 max-w-6xl mx-auto px-6 text-center pt-16">
             {/* Glass Badge */}
             <motion.div
               className="inline-flex items-center backdrop-blur-xl bg-white/10 border border-white/20 rounded-full px-6 py-3 mb-12 shadow-2xl"
@@ -222,6 +223,9 @@ function HomePageContent() {
                 </span>{" "}
                 Future
               </h1>
+              <div className="sr-only">
+                Founded by <strong>Saurabh Rajput</strong> (CEO) and <strong>Ajit Kushwaha</strong> (CTO)
+              </div>
             </motion.div>
 
             {/* Subtitle */}
@@ -828,6 +832,84 @@ function HomePageContent() {
           </div>
         </section>
 
+        {/* FOUNDERS SECTION */}
+        <section id="founders" className="py-32 px-6 lg:px-12 bg-gradient-to-b from-slate-900 to-slate-800" aria-labelledby="founders-heading">
+          <div className="max-w-7xl mx-auto">
+            <header className="text-center mb-20">
+              <AnimatedText>
+                <h2 id="founders-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
+                  Meet Our <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Founders</span>
+                </h2>
+              </AnimatedText>
+              <AnimatedText delay={0.2}>
+                <p className="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">
+                  The visionary leaders behind Codyn's success, driving innovation and excellence in digital solutions.
+                </p>
+              </AnimatedText>
+            </header>
+
+            <div className="grid md:grid-cols-2 gap-12">
+              <motion.div
+                className="text-center p-8 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.02, y: -5 }}
+              >
+                <div className="w-24 h-24 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span className="text-white font-bold text-2xl">SR</span>
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-2">Saurabh Rajput</h3>
+                <p className="text-blue-400 font-semibold mb-4">Founder & CEO</p>
+                <p className="text-gray-300 leading-relaxed mb-6">
+                  Visionary leader with 7+ years in digital transformation and business strategy. 
+                  <strong className="text-white"> Saurabh founded Codyn</strong> with a mission to help businesses thrive in the digital age.
+                </p>
+                <div className="flex justify-center space-x-4">
+                  <a
+                    href="https://www.linkedin.com/in/saurabh-rajput-9a1071245"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors"
+                  >
+                    <Linkedin className="w-5 h-5" />
+                  </a>
+                </div>
+              </motion.div>
+
+              <motion.div
+                className="text-center p-8 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.02, y: -5 }}
+              >
+                <div className="w-24 h-24 bg-gradient-to-r from-green-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span className="text-white font-bold text-2xl">AK</span>
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-2">Ajit Kushwaha</h3>
+                <p className="text-green-400 font-semibold mb-4">Co-Founder & CTO</p>
+                <p className="text-gray-300 leading-relaxed mb-6">
+                  Full-stack architect specializing in scalable solutions and modern web technologies. 
+                  <strong className="text-white"> Ajit leads our technical vision</strong> and ensures we deliver cutting-edge solutions.
+                </p>
+                <div className="flex justify-center space-x-4">
+                  <a
+                    href="https://www.linkedin.com/in/ajitreact"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors"
+                  >
+                    <Linkedin className="w-5 h-5" />
+                  </a>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
         {/* COLLABORATION SECTION */}
         <section id="collaboration" className="py-32 px-6 lg:px-12 bg-gradient-to-b from-slate-800 to-slate-900" aria-labelledby="collaboration-heading">
           <div className="max-w-7xl mx-auto">
@@ -877,14 +959,14 @@ function HomePageContent() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {[
                   {
-                    name: "Sarah Johnson",
+                    name: "Alexandra Johnson",
                     role: "CEO, TechStart Inc.",
                     content: "Working with Codyn was a game-changer. Their collaborative approach and technical expertise helped us scale from startup to enterprise in just 18 months.",
                     avatar: "/placeholder-user.jpg",
                     rating: 5
                   },
                   {
-                    name: "Michael Chen",
+                    name: "David Chen",
                     role: "CTO, Digital Solutions",
                     content: "The team's ability to understand our vision and translate it into reality is unmatched. They're not just developers, they're true partners in our success.",
                     avatar: "/placeholder-user.jpg",

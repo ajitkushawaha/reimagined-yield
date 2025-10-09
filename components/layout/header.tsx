@@ -80,7 +80,7 @@ export function Header() {
 
       {/* Mobile Manu-style Navigation - Show when scrolled */}
       <motion.div
-        className={`lg:hidden max-w-fit fixed top-4 inset-x-0 mx-auto rounded-full bg-black z-[5001] pr-2 pl-8 py-2 items-center justify-center space-x-2 ${
+        className={`lg:hidden max-w-fit fixed top-4 inset-x-0 mx-auto rounded-full bg-black z-[5001] pr-2 pl-8 py-3 items-center justify-center space-x-2 ${
           isScrolled ? "flex" : "hidden"
         }`}
         initial={{ opacity: 0, scale: 0.9 }}
@@ -92,7 +92,7 @@ export function Header() {
           <Link
             key={item.name}
             href={item.href}
-            className="relative text-neutral-50 text-xs hover:text-neutral-300 transition-colors duration-200 px-2 py-1"
+            className="relative text-neutral-50 text-sm hover:text-neutral-300 transition-colors duration-200 px-2 py-1"
           >
             {item.name}
           </Link>
@@ -115,7 +115,7 @@ export function Header() {
 
       {/* Regular Header - Visible when at top with background */}
       <motion.nav 
-        className={`flex items-center justify-between px-6 py-4 backdrop-blur-2xl bg-gradient-to-r from-blue-900/95 via-purple-900/95 to-indigo-900/95 border-b border-white/20 shadow-2xl relative z-50 ${
+        className={`flex items-center justify-between px-6 py-2 backdrop-blur-2xl bg-gradient-to-r from-blue-900/95 via-purple-900/95 to-indigo-900/95 border-b border-white/20 shadow-2xl relative z-50 ${
           isScrolled ? "lg:hidden" : ""
         }`}
         style={{ 
@@ -189,23 +189,34 @@ export function Header() {
       {/* Mobile Menu - Only show when at top (not scrolled) */}
       {isMenuOpen && !isScrolled && (
         <motion.div
-          className="lg:hidden fixed top-4 left-4 right-4 z-[5002] bg-black/95 backdrop-blur-2xl rounded-2xl border border-white/20 shadow-2xl"
+          className="lg:hidden fixed top-4 left-4 right-4 z-[5002] bg-gradient-to-br from-slate-800/95 via-purple-900/95 to-slate-800/95 backdrop-blur-2xl rounded-2xl border border-white/20 shadow-2xl"
           initial={{ opacity: 0, scale: 0.9, y: -20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: -20 }}
           transition={{ duration: 0.3 }}
         >
-          <div className="px-6 py-4">
-            {/* Navigation Items - Horizontal layout like desktop */}
-            <div className="flex flex-wrap items-center justify-center gap-2 mb-4">
+          <div className="px-6 py-6">
+            {/* Close Button */}
+            <div className="flex justify-end mb-4">
+              <button
+                onClick={() => setIsMenuOpen(false)}
+                className="p-2 rounded-full hover:bg-white/20 transition-colors bg-white/10"
+                aria-label="Close menu"
+              >
+                <X className="w-6 h-6 text-white" />
+              </button>
+            </div>
+            
+            {/* Navigation Items - Vertical layout for mobile */}
+            <div className="space-y-3 mb-6">
               {navItems.map((item, index) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`relative font-medium transition-all duration-300 px-4 py-2 rounded-2xl text-sm ${
+                  className={`block w-full text-center font-medium transition-all duration-300 px-6 py-3 rounded-2xl text-base ${
                     isActive(item.href)
-                      ? "text-white bg-white/20 backdrop-blur-xl"
-                      : "text-white/80 hover:text-white hover:bg-white/10"
+                      ? "text-white bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-xl border border-white/20"
+                      : "text-white/90 hover:text-white hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 hover:border hover:border-white/10"
                   }`}
                   onClick={() => setIsMenuOpen(false)}
                 >

@@ -1,3 +1,6 @@
+"use client"
+
+import React from "react"
 import type { ReactNode } from "react"
 import { Header } from "./header"
 import { Footer } from "./footer"
@@ -7,6 +10,7 @@ interface PageLayoutProps {
 }
 
 export function PageLayout({ children }: PageLayoutProps) {
+
   return (
     <div className="min-h-screen bg-gray-950 overflow-x-hidden font-inter">
       {/* Skip to main content for accessibility */}
@@ -19,7 +23,7 @@ export function PageLayout({ children }: PageLayoutProps) {
 
       <Header />
 
-      <main id="main-content" className="pt-20">
+      <main id="main-content" className="bg-gray-950">
         {children}
       </main>
 

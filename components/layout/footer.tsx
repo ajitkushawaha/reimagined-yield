@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import Link from "next/link"
 import Image from "next/image"
 import { AnimatedText } from "@/components/eternity/animated-text"
+import { Linkedin, Mail, Phone } from "lucide-react"
 
 export function Footer() {
   const footerSections = [
@@ -62,7 +63,7 @@ export function Footer() {
                   />
                 </motion.div>
                 <div className="text-white">
-                  <div className="text-lg font-bold">CODY</div>
+                  <div className="text-lg font-bold">CODYN</div>
                   <div className="text-xs text-gray-400">DIGITAL AGENCY</div>
                 </div>
               </Link>
@@ -71,9 +72,9 @@ export function Footer() {
               </p>
               <div className="flex space-x-4"> 
                 {[
-                  { name: "LinkedIn", href: " https://www.linkedin.com/in/saurabh-rajput-9a1071245" },
-                  { name: "Email", href: "mailto:merajsaurabh0000@gmail.com" },
-                  { name: "Phone", href: "tel:+919915174967" },
+                  { name: "LinkedIn", href: "https://www.linkedin.com/in/saurabh-rajput-9a1071245", icon: <Linkedin className="w-5 h-5" /> },
+                  { name: "Email", href: "mailto:merajsaurabh0000@gmail.com", icon: <Mail className="w-5 h-5" /> },
+                  { name: "Phone", href: "tel:+919915174967", icon: <Phone className="w-5 h-5" /> },
                 ].map((social) => (
                   <motion.a
                     key={social.name}
@@ -85,7 +86,7 @@ export function Footer() {
                     whileTap={{ scale: 0.95 }}
                     aria-label={`Follow us on ${social.name}`}
                   >
-                    <span className="text-sm font-semibold">{social.name.charAt(0)}</span>
+                    {social.icon}
                   </motion.a>
                 ))}
               </div>

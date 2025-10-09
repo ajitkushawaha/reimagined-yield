@@ -30,6 +30,23 @@ export const metadata: Metadata = {
     "responsive web design",
     "React development",
     "Next.js development",
+    "Codyn",
+    "digital transformation",
+    "business growth",
+    "web design agency",
+    "app development company",
+    "digital solutions",
+    "technology consulting",
+    "startup development",
+    "enterprise solutions",
+    "full-stack development",
+    "frontend development",
+    "backend development",
+    "cloud solutions",
+    "DevOps",
+    "API development",
+    "database design",
+    "performance optimization",
   ],
   authors: [{ name: "Codyn" }],
   creator: "Codyn",
@@ -39,7 +56,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://codyn.com"),
+  metadataBase: new URL("https://codyn.in"),
   alternates: {
     canonical: "/",
   },
@@ -47,7 +64,7 @@ export const metadata: Metadata = {
     title: "Codyn - Transform Your Digital Presence",
     description:
       "Expert web development, mobile apps, UI/UX design, SEO optimization, and digital marketing services. Get a free consultation today!",
-    url: "https://codyn.com",
+    url: "https://codyn.in",
     siteName: "Codyn",
     images: [
       {
@@ -91,13 +108,15 @@ const jsonLd = {
   "@type": "Organization",
   name: "Codyn",
   alternateName: "Codyn Digital Agency",
-  url: "https://codyn.com",
-  logo: "https://codyn.com/logo.png",
+  url: "https://codyn.in",
+  logo: "https://codyn.in/logo.png",
+  image: "https://codyn.in/og-image.jpg",
   contactPoint: {
     "@type": "ContactPoint",
     telephone: "+91-9915174967",
     contactType: "customer service",
     availableLanguage: "en",
+    email: "merajsaurabh0000@gmail.com",
   },
   address: {
     "@type": "PostalAddress",
@@ -111,21 +130,125 @@ const jsonLd = {
     "https://www.linkedin.com/in/saurabh-rajput-9a1071245",
     "https://www.linkedin.com/in/ajitreact",
   ],
-  foundingDate: "2019",
+  foundingDate: "2021",
   founders: [
     {
       "@type": "Person",
       name: "Saurabh Rajput",
+      givenName: "Saurabh",
+      familyName: "Rajput",
+      jobTitle: "Founder & CEO",
+      url: "https://www.linkedin.com/in/saurabh-rajput-9a1071245",
+      description: "Visionary leader with 7+ years in digital transformation and business strategy. Saurabh founded Codyn with a mission to help businesses thrive in the digital age.",
+      worksFor: {
+        "@type": "Organization",
+        name: "Codyn",
+        url: "https://codyn.in"
+      },
+      knowsAbout: ["Strategic Planning", "Business Development", "Team Leadership", "Digital Transformation"],
+      alumniOf: "Digital Marketing & Business Strategy",
+      hasOccupation: {
+        "@type": "Occupation",
+        name: "CEO",
+        description: "Chief Executive Officer of Codyn Digital Agency"
+      }
     },
     {
       "@type": "Person", 
       name: "Ajit Kushwaha",
+      givenName: "Ajit",
+      familyName: "Kushwaha",
+      jobTitle: "Co-Founder & CTO",
+      url: "https://www.linkedin.com/in/ajitreact",
+      description: "Full-stack architect specializing in scalable solutions and modern web technologies. Ajit leads our technical vision and ensures we deliver cutting-edge solutions.",
+      worksFor: {
+        "@type": "Organization",
+        name: "Codyn",
+        url: "https://codyn.in"
+      },
+      knowsAbout: ["Full-Stack Development", "Cloud Architecture", "DevOps", "React", "Next.js", "Node.js"],
+      alumniOf: "Computer Science & Software Engineering",
+      hasOccupation: {
+        "@type": "Occupation",
+        name: "CTO",
+        description: "Chief Technology Officer of Codyn Digital Agency"
+      }
     },
   ],
   numberOfEmployees: "10-50",
   slogan: "Transform Your Digital Presence",
-  description:
-    "Codyn is a premier digital agency specializing in web development, mobile app development, UI/UX design, SEO optimization, and digital marketing services.",
+  description: "Codyn is a premier digital agency specializing in web development, mobile app development, UI/UX design, SEO optimization, and digital marketing services.",
+  serviceArea: {
+    "@type": "GeoCircle",
+    geoMidpoint: {
+      "@type": "GeoCoordinates",
+      latitude: 28.4039,
+      longitude: 77.8481,
+    },
+    geoRadius: "1000000",
+  },
+  areaServed: "Worldwide",
+  knowsAbout: [
+    "Web Development",
+    "Mobile App Development", 
+    "UI/UX Design",
+    "Digital Marketing",
+    "SEO Optimization",
+    "Custom Software Development",
+    "E-commerce Development",
+    "Brand Identity Design",
+    "React Development",
+    "Next.js Development",
+    "Full-Stack Development",
+    "Cloud Solutions",
+    "DevOps",
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Digital Services",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Web Development",
+          description: "Custom websites built with modern technologies for optimal performance and user experience",
+        },
+      },
+      {
+        "@type": "Offer", 
+        itemOffered: {
+          "@type": "Service",
+          name: "Mobile App Development",
+          description: "Native and cross-platform mobile applications that engage users and drive business growth",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service", 
+          name: "UI/UX Design",
+          description: "User-centered design solutions that create intuitive and engaging digital experiences",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Digital Marketing", 
+          description: "Data-driven marketing strategies to reach your target audience and maximize ROI",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "SEO Optimization",
+          description: "Strategic SEO services to improve your search rankings and increase organic traffic",
+        },
+      },
+    ],
+  },
 }
 
 export default function RootLayout({
@@ -142,6 +265,50 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#000000" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: "Saurabh Rajput",
+          givenName: "Saurabh",
+          familyName: "Rajput",
+          jobTitle: "Founder & CEO",
+          url: "https://www.linkedin.com/in/saurabh-rajput-9a1071245",
+          description: "Visionary leader with 7+ years in digital transformation and business strategy. Saurabh founded Codyn with a mission to help businesses thrive in the digital age.",
+          worksFor: {
+            "@type": "Organization",
+            name: "Codyn",
+            url: "https://codyn.in"
+          },
+          knowsAbout: ["Strategic Planning", "Business Development", "Team Leadership", "Digital Transformation"],
+          hasOccupation: {
+            "@type": "Occupation",
+            name: "CEO",
+            description: "Chief Executive Officer of Codyn Digital Agency"
+          },
+          sameAs: ["https://www.linkedin.com/in/saurabh-rajput-9a1071245"]
+        }) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: "Ajit Kushwaha",
+          givenName: "Ajit",
+          familyName: "Kushwaha",
+          jobTitle: "Co-Founder & CTO",
+          url: "https://www.linkedin.com/in/ajitreact",
+          description: "Full-stack architect specializing in scalable solutions and modern web technologies. Ajit leads our technical vision and ensures we deliver cutting-edge solutions.",
+          worksFor: {
+            "@type": "Organization",
+            name: "Codyn",
+            url: "https://codyn.in"
+          },
+          knowsAbout: ["Full-Stack Development", "Cloud Architecture", "DevOps", "React", "Next.js", "Node.js"],
+          hasOccupation: {
+            "@type": "Occupation",
+            name: "CTO",
+            description: "Chief Technology Officer of Codyn Digital Agency"
+          },
+          sameAs: ["https://www.linkedin.com/in/ajitreact"]
+        }) }} />
       </head>
       <body className={`${inter.className} antialiased`}>{children}</body>
     </html>

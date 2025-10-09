@@ -12,11 +12,11 @@ export default function AboutPage() {
     {
       name: "Saurabh Rajput",
       role: "Founder & CEO",
-      bio: "Visionary leader with 7+ years in digital transformation and business strategy. Sarah founded Codyn with a mission to help businesses thrive in the digital age.",
+      bio: "Visionary leader with 7+ years in digital transformation and business strategy. Saurabh founded Codyn with a mission to help businesses thrive in the digital age.",
       skills: ["Strategic Planning", "Business Development", "Team Leadership"],
       social: {
         email: "merajsaurabh0000@gmail.com",
-        linkedin: "https://linkedin.com/in/saurabhrajput",
+        linkedin: "https://www.linkedin.com/in/saurabh-rajput-9a1071245",
    
       },
       profile: "/saurabh.jpeg",
@@ -24,7 +24,7 @@ export default function AboutPage() {
     {
       name: "Ajit Kushwaha",
       role: "Co-Founder & CTO",
-      bio: "Full-stack architect specializing in scalable solutions and modern web technologies. Michael leads our technical vision and ensures we deliver cutting-edge solutions.",
+      bio: "Full-stack architect specializing in scalable solutions and modern web technologies. Ajit leads our technical vision and ensures we deliver cutting-edge solutions.",
       skills: ["Full-Stack Development", "Cloud Architecture", "DevOps"],
       social: {
         email: "ajit.kushwaha.work@gmail.com",
@@ -104,7 +104,7 @@ export default function AboutPage() {
           />
         </motion.div>
 
-        <div className="max-w-6xl mx-auto text-center relative z-10">
+        <div className="max-w-6xl mx-auto text-center relative z-10 pt-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
