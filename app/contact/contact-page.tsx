@@ -88,7 +88,7 @@ export default function ContactPage() {
   return (
     <div className="bg-black">
       {/* New Spotlight Hero Section */}
-      <section className="min-h-[60vh] sm:h-[40rem] w-full rounded-md flex md:items-center md:justify-center bg-black/[0.96] antialiased bg-grid-white/[0.02] relative overflow-hidden pt-20 pb-16">
+      <section className="min-h-[60vh] lg:h-[40rem] w-full rounded-md flex md:items-center md:justify-center bg-black/[0.96] antialiased bg-grid-white/[0.02] relative overflow-hidden ">
         <Spotlight 
           gradientFirst="radial-gradient(68.54% 68.72% at 55.02% 31.46%, hsla(195, 100%, 85%, .15) 0, hsla(195, 100%, 55%, .08) 50%, hsla(195, 100%, 45%, 0) 80%)"
           gradientSecond="radial-gradient(50% 50% at 50% 50%, hsla(195, 100%, 85%, .12) 0, hsla(195, 100%, 55%, .06) 80%, transparent 100%)"
@@ -98,7 +98,7 @@ export default function ContactPage() {
           smallWidth={320}
           xOffset={150}
         />
-        <div className="p-4 max-w-7xl mx-auto relative z-10 w-full pt-0">
+        <div className=" max-w-7xl mx-auto relative z-10 w-full pt-0 flex items-center justify-center flex-col">
           <motion.h1
             className="text-4xl md:text-7xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50"
             initial={{ opacity: 0, y: 20 }}
@@ -467,7 +467,7 @@ export default function ContactPage() {
           </AnimatedText>
           <AnimatedText delay={0.4}>
             <Link href="https://meetings-na2.hubspot.com/merajsaurabh0000">
-            <MagneticButton className="backdrop-blur-xl bg-black/40 border border-white/30 rounded-2xl text-white font-semibold px-8 py-4 shadow-2xl hover:bg-black/50 hover:border-white/40 transition-all duration-300">
+            <MagneticButton className="!bg-cyan-500/20 !text-white backdrop-blur-xl border border-cyan-400/30 rounded-2xl font-semibold px-8 py-4 shadow-2xl hover:!bg-cyan-500/30 hover:border-cyan-400/50 transition-all duration-300">
               <span className="flex items-center">
                 Schedule Free Consultation <ArrowRight className="ml-2 w-4 h-4" />
               </span>

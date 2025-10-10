@@ -80,6 +80,7 @@ function HomePageContent() {
     "/placeholder-logo.svg",
     "/placeholder-user.jpg",
     "/saurabh.jpeg",
+    "https://media.licdn.com/dms/image/v2/D4D03AQFIz0m9uBFIog/profile-displayphoto-shrink_100_100/B4DZeUU8CmGsAU-/0/1750540207046?e=1762992000&v=beta&t=B8pJHsm3zKCI_ZRKQIPmc6XaWaOr2IPlXhX104G6UEo",
     "/images/team-meeting.jpg",
     "https://images.unsplash.com/photo-1551434678-e076c223a692?w=500&h=300&fit=crop",
     "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=500&h=300&fit=crop",
@@ -109,7 +110,7 @@ function HomePageContent() {
         {/* HERO SECTION WITH 3D MARQUEE */}
         <section
           id="home"
-          className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black pt-20 pb-16"
+          className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black pt-20 "
           aria-labelledby="hero-heading"
         >
           {/* 3D Marquee Background */}

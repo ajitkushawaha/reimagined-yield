@@ -73,8 +73,8 @@ export default function AboutPage() {
   return (
     <div className="bg-black">
       {/* Lamp Hero Section */}
-      <LampContainer className="min-h-[60vh] sm:min-h-screen pt-40 pb-16">
-        <div className="relative z-[100] flex flex-col items-center px-4 pt-60 ">
+      <LampContainer className="min-h-[60vh] sm:min-h-screen  ">
+        <div className="relative z-[100] flex-col items-center  justify-center ">
           <motion.div
             initial={{ opacity: 0.5, y: 100 }}
             whileInView={{ opacity: 1, y: 0 }}

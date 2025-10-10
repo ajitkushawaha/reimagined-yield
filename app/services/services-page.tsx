@@ -95,7 +95,7 @@ export default function ServicesPage() {
   return (
     <div className="bg-black">
       {/* Spotlight Hero Section */}
-      <section className="relative flex min-h-[60vh] sm:h-[40rem] w-full overflow-hidden bg-black/[0.96] antialiased md:items-center md:justify-center pt-32 pb-16">
+      <section className="relative flex min-h-[60vh] sm:h-[40rem] w-full overflow-hidden bg-black/[0.96] antialiased md:items-center md:justify-center  ">
         {/* Grid Background */}
         <div
           className="pointer-events-none absolute inset-0 [background-size:40px_40px] select-none [background-image:linear-gradient(to_right,#171717_1px,transparent_1px),linear-gradient(to_bottom,#171717_1px,transparent_1px)]"
@@ -108,7 +108,7 @@ export default function ServicesPage() {
         />
 
         {/* Content */}
-        <div className="relative z-10 mx-auto w-full max-w-7xl p-4 pt-0">
+        <div className="relative z-10 mx-auto w-full max-w-7xl p-4 pt-0 flex items-center justify-center flex-col">
           <motion.h1
             className="bg-opacity-50 bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text text-center text-4xl font-bold text-transparent md:text-7xl"
             initial={{ opacity: 0, y: 20 }}
@@ -265,7 +265,7 @@ export default function ServicesPage() {
             </p>
           </AnimatedText>
           <AnimatedText delay={0.4}>
-            <MagneticButton className="backdrop-blur-xl bg-cyan-500/20 border border-cyan-400/30 rounded-2xl text-white font-semibold px-8 py-4 shadow-2xl hover:bg-cyan-500/30 transition-colors">
+            <MagneticButton className="!bg-cyan-500/20 !text-white backdrop-blur-xl border border-cyan-400/30 rounded-2xl font-semibold px-8 py-4 shadow-2xl hover:!bg-cyan-500/30 transition-colors">
               <span className="flex items-center">
                 Start Your Project <ArrowRight className="ml-2 w-4 h-4" />
               </span>

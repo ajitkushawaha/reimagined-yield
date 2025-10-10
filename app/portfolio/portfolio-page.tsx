@@ -198,7 +198,7 @@ export default function PortfolioPage() {
             </p>
           </AnimatedText>
           <AnimatedText delay={0.4}>
-            <MagneticButton className="backdrop-blur-xl bg-black/40 border border-white/30 rounded-2xl text-white font-semibold px-8 py-4 shadow-2xl hover:bg-black/50 hover:border-white/40 transition-all duration-300">
+            <MagneticButton className="!bg-cyan-500/20 !text-white backdrop-blur-xl border border-cyan-400/30 rounded-2xl font-semibold px-8 py-4 shadow-2xl hover:!bg-cyan-500/30 hover:border-cyan-400/50 transition-all duration-300">
               <span className="flex items-center">
                 Start Your Project <ArrowRight className="ml-2 w-4 h-4" />
               </span>
