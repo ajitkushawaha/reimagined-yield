@@ -8,6 +8,7 @@ import Link from "next/link"
 import { AnimatedText } from "@/components/eternity/animated-text"
 import { AnimatedCard } from "@/components/eternity/animated-card"
 import { MagneticButton } from "@/components/eternity/magnetic-button"
+import { Spotlight } from "@/components/ui/spotlight-new"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -85,55 +86,32 @@ export default function ContactPage() {
   ]
 
   return (
-    <div className="bg-slate-900">
-      {/* Apple Glass Hero Section */}
-      <section className="py-32 px-6 lg:px-12 relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-        {/* Glass Background Elements */}
-        <motion.div className="absolute inset-0" aria-hidden="true">
-          <motion.div 
-            className="absolute top-20 left-20 w-96 h-96 bg-white/5 backdrop-blur-3xl rounded-full border border-white/10"
-            animate={{ 
-              x: [0, 100, 0],
-              y: [0, -50, 0],
-              scale: [1, 1.1, 1]
-            }}
-            transition={{ 
-              duration: 20,
-              repeat: Number.POSITIVE_INFINITY,
-              ease: "easeInOut"
-            }}
-          />
-          <motion.div 
-            className="absolute bottom-20 right-20 w-80 h-80 bg-purple-500/10 backdrop-blur-3xl rounded-full border border-purple-500/20"
-            animate={{ 
-              x: [0, -80, 0],
-              y: [0, 60, 0],
-              scale: [1, 0.9, 1]
-            }}
-            transition={{ 
-              duration: 25,
-              repeat: Number.POSITIVE_INFINITY,
-              ease: "easeInOut",
-              delay: 5
-            }}
-          />
-        </motion.div>
-
-        <div className="max-w-6xl mx-auto text-center relative z-10 pt-16">
-          <motion.div
+    <div className="bg-black">
+      {/* New Spotlight Hero Section */}
+      <section className="min-h-[60vh] sm:h-[40rem] w-full rounded-md flex md:items-center md:justify-center bg-black/[0.96] antialiased bg-grid-white/[0.02] relative overflow-hidden pt-20 pb-16">
+        <Spotlight 
+          gradientFirst="radial-gradient(68.54% 68.72% at 55.02% 31.46%, hsla(195, 100%, 85%, .15) 0, hsla(195, 100%, 55%, .08) 50%, hsla(195, 100%, 45%, 0) 80%)"
+          gradientSecond="radial-gradient(50% 50% at 50% 50%, hsla(195, 100%, 85%, .12) 0, hsla(195, 100%, 55%, .06) 80%, transparent 100%)"
+          gradientThird="radial-gradient(50% 50% at 50% 50%, hsla(195, 100%, 85%, .08) 0, hsla(195, 100%, 45%, .04) 80%, transparent 100%)"
+          width={800}
+          height={1800}
+          smallWidth={320}
+          xOffset={150}
+        />
+        <div className="p-4 max-w-7xl mx-auto relative z-10 w-full pt-0">
+          <motion.h1
+            className="text-4xl md:text-7xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8">
-              Get In{" "}
-              <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
-                Touch
-              </span>
-            </h1>
-          </motion.div>
+            Get In{" "}
+            <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent">
+              Touch
+            </span>
+          </motion.h1>
           <motion.p
-            className="text-white/80 text-xl md:text-2xl leading-relaxed max-w-4xl mx-auto"
+            className="mt-4 font-normal text-base text-neutral-300 max-w-lg text-center mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
@@ -144,12 +122,12 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Apple Glass Contact Form & Info */}
-      <section className="py-32 px-6 lg:px-12 relative bg-gradient-to-b from-slate-800 to-slate-900">
-        {/* Glass Background Elements */}
+      {/* Cyan Theme Contact Form & Info */}
+      <section className="py-16 px-6 lg:px-12 relative bg-gradient-to-b from-slate-900 to-black flex items-center">
+        {/* Cyan Background Elements */}
         <motion.div className="absolute inset-0" aria-hidden="true">
           <motion.div 
-            className="absolute top-1/4 right-1/4 w-64 h-64 bg-white/5 backdrop-blur-3xl rounded-full border border-white/10"
+            className="absolute top-1/4 right-1/4 w-64 h-64 bg-cyan-500/10 backdrop-blur-3xl rounded-full border border-cyan-500/20"
             animate={{ 
               x: [0, 50, 0],
               y: [0, -30, 0],
@@ -163,18 +141,20 @@ export default function ContactPage() {
           />
         </motion.div>
 
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="max-w-7xl mx-auto relative z-10 w-full">
           <div className="grid lg:grid-cols-2 gap-16">
-            {/* Glass Contact Form */}
+            {/* Cyan Contact Form */}
             <motion.div 
-              className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 shadow-2xl"
+              className="backdrop-blur-xl bg-cyan-500/5 border border-cyan-400/20 rounded-3xl p-8 shadow-2xl hover:bg-cyan-500/10 transition-colors"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-2xl font-bold text-white mb-8">Send us a message</h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <h2 className="text-2xl font-bold text-white mb-8">
+                Send us a <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent">message</span>
+              </h2>
+              <form onSubmit={handleSubmit} className="space-y-6 py-8">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-white/80 mb-2">
@@ -187,7 +167,7 @@ export default function ContactPage() {
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent backdrop-blur-xl"
+                      className="w-full px-4 py-3 bg-cyan-500/5 border border-cyan-400/20 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 focus:border-cyan-400/30 backdrop-blur-xl hover:bg-cyan-500/10 transition-colors"
                       placeholder="Your full name"
                     />
                   </div>
@@ -202,7 +182,7 @@ export default function ContactPage() {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent backdrop-blur-xl"
+                      className="w-full px-4 py-3 bg-cyan-500/5 border border-cyan-400/20 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 focus:border-cyan-400/30 backdrop-blur-xl hover:bg-cyan-500/10 transition-colors"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -219,7 +199,7 @@ export default function ContactPage() {
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent backdrop-blur-xl"
+                      className="w-full px-4 py-3 bg-cyan-500/5 border border-cyan-400/20 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 focus:border-cyan-400/30 backdrop-blur-xl hover:bg-cyan-500/10 transition-colors"
                       placeholder="Your company name"
                     />
                   </div>
@@ -232,15 +212,15 @@ export default function ContactPage() {
                       name="service"
                       value={formData.service}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-2xl text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent backdrop-blur-xl"
+                      className="w-full px-4 py-3 bg-cyan-500/5 border border-cyan-400/20 rounded-2xl text-white focus:outline-none focus:ring-2 focus:ring-cyan-400/50 focus:border-cyan-400/30 backdrop-blur-xl hover:bg-cyan-500/10 transition-colors"
                     >
-                      <option value="" className="bg-slate-800">Select a service</option>
-                      <option value="web-development" className="bg-slate-800">Web Development</option>
-                      <option value="mobile-apps" className="bg-slate-800">Mobile App Development</option>
-                      <option value="ecommerce-development" className="bg-slate-800">Ecommerce Development</option>
-                      <option value="seo" className="bg-slate-800">SEO Optimization</option>
-                      <option value="digital-marketing" className="bg-slate-800">Digital Marketing</option>
-                      <option value="custom-development" className="bg-slate-800">Custom Development</option>
+                      <option value="" className="bg-black">Select a service</option>
+                      <option value="web-development" className="bg-black">Web Development</option>
+                      <option value="mobile-apps" className="bg-black">Mobile App Development</option>
+                      <option value="ecommerce-development" className="bg-black">Ecommerce Development</option>
+                      <option value="seo" className="bg-black">SEO Optimization</option>
+                      <option value="digital-marketing" className="bg-black">Digital Marketing</option>
+                      <option value="custom-development" className="bg-black">Custom Development</option>
                     </select>
                   </div>
                 </div>
@@ -256,7 +236,7 @@ export default function ContactPage() {
                     rows={6}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent resize-none backdrop-blur-xl"
+                    className="w-full px-4 py-3 bg-cyan-500/5 border border-cyan-400/20 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 focus:border-cyan-400/30 backdrop-blur-xl hover:bg-cyan-500/10 transition-colors resize-none"
                     placeholder="Tell us about your project, goals, and timeline..."
                   />
                 </div>
@@ -285,10 +265,10 @@ export default function ContactPage() {
                 <button 
                   type="submit"
                   disabled={isSubmitting}
-                  className={`w-full justify-center backdrop-blur-xl border border-white/30 rounded-2xl text-white font-semibold shadow-2xl transition-all duration-300 flex items-center ${
+                  className={`w-full py-4 mt-8 justify-center backdrop-blur-xl border border-cyan-400/30 rounded-2xl text-white font-semibold shadow-2xl transition-all duration-300 flex items-center ${
                     isSubmitting 
-                      ? 'bg-white/10 cursor-not-allowed' 
-                      : 'bg-white/20 hover:bg-white/30'
+                      ? 'bg-cyan-500/10 cursor-not-allowed' 
+                      : 'bg-cyan-500/20 hover:bg-cyan-500/30'
                   }`}
                 >
                   <span className="flex items-center">
@@ -316,14 +296,14 @@ export default function ContactPage() {
                 transition={{ delay: 0.2, duration: 0.6 }}
                 viewport={{ once: true }}
               >
-                Contact Information
+                Contact <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent">Information</span>
               </motion.h2>
 
               <div className="space-y-6">
                 {contactInfo.map((info, index) => (
                   <motion.div
                     key={index}
-                    className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-6 shadow-2xl"
+                    className="backdrop-blur-xl bg-cyan-500/5 border border-cyan-400/20 rounded-3xl p-6 shadow-2xl hover:bg-cyan-500/10 transition-colors"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 * (index + 3), duration: 0.6 }}
@@ -331,7 +311,7 @@ export default function ContactPage() {
                     whileHover={{ scale: 1.02, y: -5 }}
                   >
                     <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-blue-400/20 to-purple-400/20 backdrop-blur-xl border border-white/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+                      <div className="w-12 h-12 bg-gradient-to-r from-cyan-400/20 to-cyan-500/20 backdrop-blur-xl border border-cyan-400/30 rounded-2xl flex items-center justify-center flex-shrink-0">
                         <div className="text-white">{info.icon}</div>
                       </div>
                       <div>
@@ -348,29 +328,31 @@ export default function ContactPage() {
               </div>
 
               <motion.div 
-                className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-6 shadow-2xl"
+                className="backdrop-blur-xl bg-cyan-500/5 border border-cyan-400/20 rounded-3xl p-6 shadow-2xl hover:bg-cyan-500/10 transition-colors"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7, duration: 0.6 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.02, y: -5 }}
               >
-                <h3 className="text-lg font-semibold text-white mb-4">Why Choose Us?</h3>
+                <h3 className="text-lg font-semibold text-white mb-4">
+                  Why Choose <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent">Us?</span>
+                </h3>
                 <ul className="space-y-3 text-white/70">
                   <li className="flex items-center">
-                    <div className="w-2 h-2 bg-white rounded-full mr-3"></div>
+                    <div className="w-2 h-2 bg-cyan-400 rounded-full mr-3"></div>
                     Free initial consultation
                   </li>
                   <li className="flex items-center">
-                    <div className="w-2 h-2 bg-white rounded-full mr-3"></div>
+                    <div className="w-2 h-2 bg-cyan-400 rounded-full mr-3"></div>
                     24/7 project support
                   </li>
                   <li className="flex items-center">
-                    <div className="w-2 h-2 bg-white rounded-full mr-3"></div>
+                    <div className="w-2 h-2 bg-cyan-400 rounded-full mr-3"></div>
                     100% satisfaction guarantee
                   </li>
                   <li className="flex items-center">
-                    <div className="w-2 h-2 bg-white rounded-full mr-3"></div>
+                    <div className="w-2 h-2 bg-cyan-400 rounded-full mr-3"></div>
                     Transparent pricing
                   </li>
                 </ul>
@@ -380,12 +362,12 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Apple Glass FAQ Section */}
-      <section className="py-32 px-6 lg:px-12 relative bg-gradient-to-b from-slate-900 to-slate-800">
-        {/* Glass Background Elements */}
+      {/* Cyan Theme FAQ Section */}
+      <section className="py-32 px-6 lg:px-12 relative bg-gradient-to-b from-black to-slate-900">
+        {/* Cyan Background Elements */}
         <motion.div className="absolute inset-0" aria-hidden="true">
           <motion.div 
-            className="absolute top-1/4 left-1/4 w-72 h-72 bg-white/5 backdrop-blur-3xl rounded-full border border-white/10"
+            className="absolute top-1/4 left-1/4 w-72 h-72 bg-cyan-500/10 backdrop-blur-3xl rounded-full border border-cyan-500/20"
             animate={{ 
               x: [0, 60, 0],
               y: [0, -40, 0],
@@ -408,7 +390,7 @@ export default function ContactPage() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              Frequently Asked <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">Questions</span>
+              Frequently Asked <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent">Questions</span>
             </motion.h2>
           </div>
 
@@ -437,7 +419,7 @@ export default function ContactPage() {
             ].map((faq, index) => (
               <motion.div
                 key={index}
-                className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-6 shadow-2xl"
+                className="backdrop-blur-xl bg-cyan-500/5 border border-cyan-400/20 rounded-3xl p-6 shadow-2xl hover:bg-cyan-500/10 transition-colors"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
@@ -452,11 +434,30 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-32 px-6 lg:px-12 bg-gradient-to-b from-gray-900 to-gray-950">
-        <div className="max-w-4xl mx-auto text-center">
+      {/* Cyan Theme CTA Section */}
+      <section className="py-32 px-6 lg:px-12 relative bg-gradient-to-b from-slate-900 to-black">
+        {/* Cyan Background Elements */}
+        <motion.div className="absolute inset-0" aria-hidden="true">
+          <motion.div 
+            className="absolute top-1/3 right-1/3 w-80 h-80 bg-cyan-500/10 backdrop-blur-3xl rounded-full border border-cyan-500/20"
+            animate={{ 
+              x: [0, -40, 0],
+              y: [0, 30, 0],
+              scale: [1, 0.9, 1]
+            }}
+            transition={{ 
+              duration: 18,
+              repeat: Number.POSITIVE_INFINITY,
+              ease: "easeInOut"
+            }}
+          />
+        </motion.div>
+        
+        <div className="max-w-4xl mx-auto text-center relative z-10">
           <AnimatedText>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">Ready to Start Your Project?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
+              Ready to Start Your <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent">Project?</span>
+            </h2>
           </AnimatedText>
           <AnimatedText delay={0.2}>
             <p className="text-gray-400 text-lg mb-12 leading-relaxed">
@@ -466,7 +467,7 @@ export default function ContactPage() {
           </AnimatedText>
           <AnimatedText delay={0.4}>
             <Link href="https://meetings-na2.hubspot.com/merajsaurabh0000">
-            <MagneticButton>
+            <MagneticButton className="backdrop-blur-xl bg-black/40 border border-white/30 rounded-2xl text-white font-semibold px-8 py-4 shadow-2xl hover:bg-black/50 hover:border-white/40 transition-all duration-300">
               <span className="flex items-center">
                 Schedule Free Consultation <ArrowRight className="ml-2 w-4 h-4" />
               </span>

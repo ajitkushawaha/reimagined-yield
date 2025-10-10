@@ -5,6 +5,8 @@ import { AnimatedText } from "@/components/eternity/animated-text"
 import { AnimatedCard } from "@/components/eternity/animated-card"
 import { MagneticButton } from "@/components/eternity/magnetic-button"
 import { GlowingCard } from "@/components/eternity/glowing-card"
+import { ServiceCard3D } from "@/components/ui/3d-card"
+import { Spotlight } from "@/components/ui/spotlight"
 import { motion } from "framer-motion"
 
 export default function ServicesPage() {
@@ -91,55 +93,35 @@ export default function ServicesPage() {
   ]
 
   return (
-    <div className="bg-slate-900">
-      {/* Apple Glass Hero Section */}
-      <section className="py-32 px-6 lg:px-12 relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-        {/* Glass Background Elements */}
-        <motion.div className="absolute inset-0" aria-hidden="true">
-          <motion.div 
-            className="absolute top-20 left-20 w-96 h-96 bg-white/5 backdrop-blur-3xl rounded-full border border-white/10"
-            animate={{ 
-              x: [0, 100, 0],
-              y: [0, -50, 0],
-              scale: [1, 1.1, 1]
-            }}
-            transition={{ 
-              duration: 20,
-              repeat: Number.POSITIVE_INFINITY,
-              ease: "easeInOut"
-            }}
-          />
-          <motion.div 
-            className="absolute bottom-20 right-20 w-80 h-80 bg-purple-500/10 backdrop-blur-3xl rounded-full border border-purple-500/20"
-            animate={{ 
-              x: [0, -80, 0],
-              y: [0, 60, 0],
-              scale: [1, 0.9, 1]
-            }}
-            transition={{ 
-              duration: 25,
-              repeat: Number.POSITIVE_INFINITY,
-              ease: "easeInOut",
-              delay: 5
-            }}
-          />
-        </motion.div>
+    <div className="bg-black">
+      {/* Spotlight Hero Section */}
+      <section className="relative flex min-h-[60vh] sm:h-[40rem] w-full overflow-hidden bg-black/[0.96] antialiased md:items-center md:justify-center pt-32 pb-16">
+        {/* Grid Background */}
+        <div
+          className="pointer-events-none absolute inset-0 [background-size:40px_40px] select-none [background-image:linear-gradient(to_right,#171717_1px,transparent_1px),linear-gradient(to_bottom,#171717_1px,transparent_1px)]"
+        />
 
-        <div className="max-w-6xl mx-auto text-center relative z-10 pt-16">
-          <motion.div
+        {/* Spotlight Effect */}
+        <Spotlight
+          className="-top-40 left-0 md:-top-20 md:left-60"
+          fill="white"
+        />
+
+        {/* Content */}
+        <div className="relative z-10 mx-auto w-full max-w-7xl p-4 pt-0">
+          <motion.h1
+            className="bg-opacity-50 bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text text-center text-4xl font-bold text-transparent md:text-7xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8">
-              Our{" "}
-              <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
-                Services
-              </span>
-            </h1>
-          </motion.div>
+            Our{" "}
+            <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent">
+              Services
+            </span>
+          </motion.h1>
           <motion.p
-            className="text-white/80 text-xl md:text-2xl leading-relaxed max-w-4xl mx-auto"
+            className="mx-auto mt-4 max-w-lg text-center text-base font-normal text-neutral-300"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
@@ -149,12 +131,12 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Apple Glass Services Grid */}
-      <section className="py-32 px-6 lg:px-12 relative bg-gradient-to-b from-slate-800 to-slate-900">
-        {/* Glass Background Elements */}
+      {/* Cyan Theme Services Grid */}
+      <section className="py-32 px-6 lg:px-12 relative bg-gradient-to-b from-slate-900 to-black">
+        {/* Cyan Background Elements */}
         <motion.div className="absolute inset-0" aria-hidden="true">
           <motion.div 
-            className="absolute top-20 right-20 w-80 h-80 bg-white/5 backdrop-blur-3xl rounded-full border border-white/10"
+            className="absolute top-20 right-20 w-80 h-80 bg-cyan-500/10 backdrop-blur-3xl rounded-full border border-cyan-500/20"
             animate={{ 
               x: [0, 80, 0],
               y: [0, -50, 0],
@@ -187,69 +169,50 @@ export default function ServicesPage() {
             {services.map((service, index) => (
               <motion.div
                 key={index}
-                className="group h-full"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
                 viewport={{ once: true }}
               >
-                <motion.div
-                  className="h-full backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 shadow-2xl group-hover:bg-white/10 transition-all duration-500 flex flex-col"
-                  whileHover={{ 
-                    scale: 1.02, 
-                    y: -8,
-                    rotateY: 3
-                  }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <motion.div 
-                    className="w-20 h-20 bg-gradient-to-r from-blue-400/20 to-purple-400/20 backdrop-blur-xl border border-white/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
-                    whileHover={{ rotate: 5 }}
-                  >
-                    <div className="text-white">{service.icon}</div>
-                  </motion.div>
-                  <h3 className="text-2xl font-semibold text-white mb-4 group-hover:text-white/90 transition-colors">{service.title}</h3>
-                  <p className="text-white/70 leading-relaxed mb-6 flex-grow group-hover:text-white/80 transition-colors">{service.description}</p>
-
-                  <div className="mb-6">
-                    <h4 className="text-white font-semibold mb-3">What's Included:</h4>
-                    <ul className="space-y-3">
-                      {service.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-center text-white/80 text-sm">
-                          <CheckCircle className="w-4 h-4 text-green-400 mr-3 flex-shrink-0" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="mt-auto">
-                    <div className="text-2xl font-bold text-white mb-4">{service.price}</div>
-                      <Link href="/contact" className="w-full justify-center backdrop-blur-xl bg-white/20 border border-white/30 rounded-2xl text-white font-semibold shadow-2xl px-6 py-3 flex items-center hover:bg-white/30 transition-all duration-300">
-                        Get Started <ArrowRight className="ml-2 w-4 h-4" />
-                      </Link>
-                  </div>
-                  
-                  {/* Glass shine effect */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    initial={{ x: "-100%" }}
-                    whileHover={{ x: "100%" }}
-                    transition={{ duration: 0.8 }}
-                  />
-                </motion.div>
+                <ServiceCard3D
+                  icon={service.icon}
+                  title={service.title}
+                  description={service.description}
+                  features={service.features}
+                  color={index % 2 === 0 ? "from-cyan-400 to-cyan-600" : "from-cyan-500 to-cyan-700"}
+                  className="h-full"
+                />
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Process Section */}
-      <section className="py-32 px-6 lg:px-12 bg-gray-950">
-        <div className="max-w-7xl mx-auto">
+      {/* Cyan Theme Process Section */}
+      <section className="py-32 px-6 lg:px-12 relative bg-gradient-to-b from-black to-slate-900">
+        {/* Cyan Background Elements */}
+        <motion.div className="absolute inset-0" aria-hidden="true">
+          <motion.div 
+            className="absolute top-1/3 left-1/4 w-72 h-72 bg-cyan-500/10 backdrop-blur-3xl rounded-full border border-cyan-500/20"
+            animate={{ 
+              x: [0, 60, 0],
+              y: [0, -40, 0],
+              scale: [1, 1.1, 1]
+            }}
+            transition={{ 
+              duration: 20,
+              repeat: Number.POSITIVE_INFINITY,
+              ease: "easeInOut"
+            }}
+          />
+        </motion.div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-20">
             <AnimatedText>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Our Process</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                Our <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent">Process</span>
+              </h2>
             </AnimatedText>
             <AnimatedText delay={0.2}>
               <p className="text-gray-400 text-lg max-w-3xl mx-auto">
@@ -261,8 +224,8 @@ export default function ServicesPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {process.map((step, index) => (
-              <AnimatedCard key={index} delay={index * 0.1} className="p-8 text-center">
-                <div className="text-4xl font-bold text-gray-600 mb-4">{step.step}</div>
+              <AnimatedCard key={index} delay={index * 0.1} className="p-8 text-center backdrop-blur-xl bg-cyan-500/5 border border-cyan-400/20 rounded-3xl shadow-2xl hover:bg-cyan-500/10 transition-colors">
+                <div className="text-4xl font-bold text-cyan-400 mb-4">{step.step}</div>
                 <h3 className="text-xl font-semibold text-white mb-4">{step.title}</h3>
                 <p className="text-gray-400 leading-relaxed">{step.description}</p>
               </AnimatedCard>
@@ -271,11 +234,30 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-32 px-6 lg:px-12 bg-gradient-to-b from-gray-900 to-gray-950">
-        <div className="max-w-4xl mx-auto text-center">
+      {/* Cyan Theme CTA Section */}
+      <section className="py-32 px-6 lg:px-12 relative bg-gradient-to-b from-slate-900 to-black">
+        {/* Cyan Background Elements */}
+        <motion.div className="absolute inset-0" aria-hidden="true">
+          <motion.div 
+            className="absolute top-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 backdrop-blur-3xl rounded-full border border-cyan-500/20"
+            animate={{ 
+              x: [0, 50, 0],
+              y: [0, -30, 0],
+              scale: [1, 1.1, 1]
+            }}
+            transition={{ 
+              duration: 15,
+              repeat: Number.POSITIVE_INFINITY,
+              ease: "easeInOut"
+            }}
+          />
+        </motion.div>
+
+        <div className="max-w-4xl mx-auto text-center relative z-10">
           <AnimatedText>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">Ready to Get Started?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
+              Ready to <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent">Get Started</span>?
+            </h2>
           </AnimatedText>
           <AnimatedText delay={0.2}>
             <p className="text-gray-400 text-lg mb-12 leading-relaxed">
@@ -283,7 +265,7 @@ export default function ServicesPage() {
             </p>
           </AnimatedText>
           <AnimatedText delay={0.4}>
-            <MagneticButton>
+            <MagneticButton className="backdrop-blur-xl bg-cyan-500/20 border border-cyan-400/30 rounded-2xl text-white font-semibold px-8 py-4 shadow-2xl hover:bg-cyan-500/30 transition-colors">
               <span className="flex items-center">
                 Start Your Project <ArrowRight className="ml-2 w-4 h-4" />
               </span>

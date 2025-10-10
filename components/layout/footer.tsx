@@ -3,7 +3,6 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import Image from "next/image"
-import { AnimatedText } from "@/components/eternity/animated-text"
 import { Linkedin, Mail, Phone } from "lucide-react"
 
 export function Footer() {
@@ -42,91 +41,105 @@ export function Footer() {
   ]
 
   return (
-    <footer className="bg-gray-900 py-20 px-6 lg:px-12 border-t border-gray-800" role="contentinfo">
+    <footer className="bg-black border-t border-white/5 py-20 px-6 lg:px-12" role="contentinfo">
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
-          <AnimatedText>
-            <div>
-              <Link href="/" className="flex items-center space-x-3 mb-6">
-                <motion.div
-                  className="w-16 h-16 bg-white rounded-xl flex items-center justify-center shadow-sm overflow-hidden"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.2 }}
-                >
+          <div className="lg:col-span-1">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <div className="flex items-center mb-6">
+                <div className="w-48 sm:w-64 md:w-80 lg:w-96 h-16 sm:h-20 md:h-24 relative bg-white backdrop-blur-xl border border-cyan-400/20 rounded-2xl p-2 sm:p-3 md:p-4">
                   <Image 
-                    src="/logo.svg" 
+                    src="/logo.png" 
                     alt="Codyn Logo" 
-                    width={48} 
-                    height={48} 
+                    width={96} 
+                    height={64} 
                     className="w-full h-full object-contain"
                   />
-                </motion.div>
-                <div className="text-white">
-                  <div className="text-lg font-bold">CODYN</div>
-                  <div className="text-xs text-gray-400">DIGITAL AGENCY</div>
                 </div>
-              </Link>
-              <p className="text-gray-400 leading-relaxed mb-6">
-                We're a passionate team of digital innovators dedicated to transforming businesses through creative technology solutions and strategic thinking.
+              </div>
+              <p className="text-gray-400 leading-relaxed mb-6 max-w-md">
+                Crafting digital excellence through innovative web development, mobile apps, and digital marketing solutions that drive real business results.
               </p>
-              <div className="flex space-x-4"> 
-                {[
-                  { name: "LinkedIn", href: "https://www.linkedin.com/in/saurabh-rajput-9a1071245", icon: <Linkedin className="w-5 h-5" /> },
-                  { name: "Email", href: "mailto:merajsaurabh0000@gmail.com", icon: <Mail className="w-5 h-5" /> },
-                  { name: "Phone", href: "tel:+919915174967", icon: <Phone className="w-5 h-5" /> },
-                ].map((social) => (
-                  <motion.a
-                    key={social.name}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    aria-label={`Follow us on ${social.name}`}
-                  >
-                    {social.icon}
-                  </motion.a>
-                ))}
+              <div className="flex space-x-4">
+                <a
+                  href="https://www.linkedin.com/in/saurabh-rajput-9a1071245"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-cyan-500/5 backdrop-blur-xl border border-cyan-400/20 rounded-lg flex items-center justify-center text-cyan-400 hover:text-white hover:bg-cyan-500/10 transition-colors"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="w-5 h-5" />
+                </a>
+                <a
+                  href="mailto:merajsaurabh0000@gmail.com"
+                  className="w-10 h-10 bg-cyan-500/5 backdrop-blur-xl border border-cyan-400/20 rounded-lg flex items-center justify-center text-cyan-400 hover:text-white hover:bg-cyan-500/10 transition-colors"
+                  aria-label="Email"
+                >
+                  <Mail className="w-5 h-5" />
+                </a>
+                <a
+                  href="tel:+919915174967"
+                  className="w-10 h-10 bg-cyan-500/5 backdrop-blur-xl border border-cyan-400/20 rounded-lg flex items-center justify-center text-cyan-400 hover:text-white hover:bg-cyan-500/10 transition-colors"
+                  aria-label="Phone"
+                >
+                  <Phone className="w-5 h-5" />
+                </a>
               </div>
-            </div>
-          </AnimatedText>
+            </motion.div>
+          </div>
 
-          {/* Footer Sections */}
+          {/* Footer Links */}
           {footerSections.map((section, index) => (
-            <AnimatedText key={index} delay={0.2 * (index + 1)}>
-              <div>
-                <h3 className="text-white font-semibold mb-6 text-lg">{section.title}</h3>
-                <ul className="space-y-3 text-gray-400">
-                  {section.links.map((link, linkIndex) => (
-                    <motion.li key={linkIndex} whileHover={{ x: 4 }} transition={{ duration: 0.2 }}>
-                      <Link
-                        href={link.href}
-                        className="hover:text-white transition-colors focus:outline-none focus:text-white"
-                      >
-                        {link.name}
-                      </Link>
-                    </motion.li>
-                  ))}
-                </ul>
-              </div>
-            </AnimatedText>
+            <motion.div
+              key={section.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1, duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-lg font-semibold text-white mb-6">{section.title}</h3>
+              <ul className="space-y-4">
+                {section.links.map((link, linkIndex) => (
+                  <li key={linkIndex}>
+                    <Link
+                      href={link.href}
+                      className="text-gray-400 hover:text-cyan-400 transition-colors duration-200 text-sm"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
           ))}
         </div>
 
         {/* Bottom Section */}
         <motion.div
-          className="border-t border-gray-800 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center text-gray-400"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          className="mt-16 pt-8 border-t border-white/5"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+          viewport={{ once: true }}
         >
-          <p>&copy; 2024 Codyn. All rights reserved.</p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link href="/sitemap.xml" className="hover:text-white transition-colors">
-              Sitemap
-            </Link>
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <p className="text-gray-400 text-sm">
+              © 2024 Codyn. All rights reserved. Crafted with ❤️ in India.
+            </p>
+            <div className="flex space-x-6 text-sm">
+              <Link href="/privacy" className="text-gray-400 hover:text-cyan-400 transition-colors">
+                Privacy Policy
+              </Link>
+              <Link href="/terms" className="text-gray-400 hover:text-cyan-400 transition-colors">
+                Terms of Service
+              </Link>
+            </div>
           </div>
         </motion.div>
       </div>

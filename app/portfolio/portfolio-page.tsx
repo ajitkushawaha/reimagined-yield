@@ -7,6 +7,8 @@ import Image from "next/image"
 import { AnimatedText } from "@/components/eternity/animated-text"
 import { AnimatedCard } from "@/components/eternity/animated-card"
 import { MagneticButton } from "@/components/eternity/magnetic-button"
+import { PortfolioCard3D } from "@/components/ui/3d-card"
+import PortfolioHeroParallax from "@/components/portfolio-hero-parallax"
 
 export default function PortfolioPage() {
   const [activeFilter, setActiveFilter] = useState("All")
@@ -80,67 +82,12 @@ export default function PortfolioPage() {
     activeFilter === "All" ? projects : projects.filter((project) => project.category === activeFilter)
 
   return (
-    <div className="bg-slate-900">
-      {/* Apple Glass Hero Section */}
-      <section className="py-32 px-6 lg:px-12 relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-        {/* Glass Background Elements */}
-        <motion.div className="absolute inset-0" aria-hidden="true">
-          <motion.div 
-            className="absolute top-20 left-20 w-96 h-96 bg-white/5 backdrop-blur-3xl rounded-full border border-white/10"
-            animate={{ 
-              x: [0, 100, 0],
-              y: [0, -50, 0],
-              scale: [1, 1.1, 1]
-            }}
-            transition={{ 
-              duration: 20,
-              repeat: Number.POSITIVE_INFINITY,
-              ease: "easeInOut"
-            }}
-          />
-          <motion.div 
-            className="absolute bottom-20 right-20 w-80 h-80 bg-purple-500/10 backdrop-blur-3xl rounded-full border border-purple-500/20"
-            animate={{ 
-              x: [0, -80, 0],
-              y: [0, 60, 0],
-              scale: [1, 0.9, 1]
-            }}
-            transition={{ 
-              duration: 25,
-              repeat: Number.POSITIVE_INFINITY,
-              ease: "easeInOut",
-              delay: 5
-            }}
-          />
-        </motion.div>
+    <div className="bg-black">
+      {/* Hero Parallax Section */}
+      <PortfolioHeroParallax />
 
-        <div className="max-w-6xl mx-auto text-center relative z-10 pt-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8">
-              Our{" "}
-              <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
-                Portfolio
-              </span>
-            </h1>
-          </motion.div>
-          <motion.p
-            className="text-white/80 text-xl md:text-2xl leading-relaxed max-w-4xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-          >
-            Explore our collection of successful projects that have helped businesses achieve their digital goals and
-            drive real results.
-          </motion.p>
-        </div>
-      </section>
-
-      {/* Apple Glass Filter Buttons */}
-      <section className="py-12 px-6 lg:px-12 relative bg-gradient-to-b from-slate-800 to-slate-900">
+      {/* Cyan Theme Filter Buttons */}
+      <section className="py-12 px-6 lg:px-12 relative bg-gradient-to-b from-slate-900 to-black">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-wrap justify-center gap-4">
             {filters.map((filter) => (
@@ -149,8 +96,8 @@ export default function PortfolioPage() {
                 onClick={() => setActiveFilter(filter)}
                 className={`px-6 py-3 rounded-2xl font-medium transition-all duration-300 backdrop-blur-xl ${
                   activeFilter === filter 
-                    ? "bg-white/20 border border-white/30 text-white shadow-2xl" 
-                    : "bg-white/5 border border-white/10 text-white/70 hover:bg-white/10 hover:text-white"
+                    ? "bg-cyan-500/20 border border-cyan-400/30 text-white shadow-2xl" 
+                    : "bg-cyan-500/5 border border-cyan-400/10 text-white/70 hover:bg-cyan-500/10 hover:text-white hover:border-cyan-400/20"
                 }`}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
@@ -162,12 +109,12 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      {/* Apple Glass Projects Grid */}
-      <section className="py-20 px-6 lg:px-12 relative bg-gradient-to-b from-slate-900 to-slate-800">
-        {/* Glass Background Elements */}
+      {/* Cyan Theme Projects Grid */}
+      <section className="py-20 px-6 lg:px-12 relative bg-gradient-to-b from-black to-slate-900">
+        {/* Cyan Background Elements */}
         <motion.div className="absolute inset-0" aria-hidden="true">
           <motion.div 
-            className="absolute top-20 right-20 w-80 h-80 bg-white/5 backdrop-blur-3xl rounded-full border border-white/10"
+            className="absolute top-20 right-20 w-80 h-80 bg-cyan-500/10 backdrop-blur-3xl rounded-full border border-cyan-500/20"
             animate={{ 
               x: [0, 80, 0],
               y: [0, -50, 0],
@@ -206,102 +153,44 @@ export default function PortfolioPage() {
                 exit={{ opacity: 0, y: 20 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <motion.div 
-                  className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl overflow-hidden group h-full flex flex-col shadow-2xl"
-                  whileHover={{ 
-                    scale: 1.02, 
-                    y: -8,
-                    rotateY: 3
-                  }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="relative h-64 overflow-hidden">
-                    <Image
-                      src={project.image || "/placeholder.svg"}
-                      alt={project.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent" />
-                    <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1 rounded-full text-xs font-medium bg-white/20 backdrop-blur-sm text-white border border-white/30">
-                        {project.category}
-                      </span>
-                    </div>
-                    <div className="absolute top-4 right-4 flex gap-2">
-                      <motion.a
-                        href={project.link}
-                        className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                      </motion.a>
-                      <motion.a
-                        href={project.github}
-                        className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <Github className="w-4 h-4" />
-                      </motion.a>
-                    </div>
-                  </div>
-
-                  <div className="p-6 flex flex-col flex-grow">
-                    <h3 className="text-xl font-semibold text-white mb-4 group-hover:text-white/90 transition-colors">
-                      {project.title}
-                    </h3>
-                    <p className="text-white/70 leading-relaxed mb-6 group-hover:text-white/80 transition-colors">{project.description}</p>
-
-                    <div className="mb-4">
-                      <h4 className="text-sm font-semibold text-white mb-3">Technologies:</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {project.technologies.map((tech, techIndex) => (
-                          <span key={techIndex} className="px-2 py-1 rounded text-xs bg-white/10 text-white/80 border border-white/20">
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="mb-6">
-                      <h4 className="text-sm font-semibold text-white mb-3">Results:</h4>
-                      <ul className="space-y-1">
-                        {project.results.map((result, resultIndex) => (
-                          <li key={resultIndex} className="text-sm text-white/70">
-                            • {result}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <MagneticButton className="w-full justify-center mt-auto backdrop-blur-xl bg-white/20 border border-white/30 rounded-2xl text-white font-semibold shadow-2xl">
-                      <span className="flex items-center">
-                        View Project <ArrowRight className="ml-2 w-4 h-4" />
-                      </span>
-                    </MagneticButton>
-                    
-                    {/* Glass shine effect */}
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                      initial={{ x: "-100%" }}
-                      whileHover={{ x: "100%" }}
-                      transition={{ duration: 0.8 }}
-                    />
-                  </div>
-                </motion.div>
+                <PortfolioCard3D
+                  title={project.title}
+                  category={project.category}
+                  description={project.description}
+                  image={project.image || "/placeholder.svg"}
+                  alt={project.title}
+                  className="h-full"
+                />
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-32 px-6 lg:px-12 bg-gradient-to-b from-gray-900 to-gray-950">
-        <div className="max-w-4xl mx-auto text-center">
+      {/* Cyan Theme CTA Section */}
+      <section className="py-32 px-6 lg:px-12 relative bg-gradient-to-b from-slate-900 to-black">
+        {/* Cyan Background Elements */}
+        <motion.div className="absolute inset-0" aria-hidden="true">
+          <motion.div 
+            className="absolute top-1/3 right-1/3 w-80 h-80 bg-cyan-500/10 backdrop-blur-3xl rounded-full border border-cyan-500/20"
+            animate={{ 
+              x: [0, -40, 0],
+              y: [0, 30, 0],
+              scale: [1, 0.9, 1]
+            }}
+            transition={{ 
+              duration: 18,
+              repeat: Number.POSITIVE_INFINITY,
+              ease: "easeInOut"
+            }}
+          />
+        </motion.div>
+        
+        <div className="max-w-4xl mx-auto text-center relative z-10">
           <AnimatedText>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">Ready to Create Your Success Story?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
+              Ready to Create Your <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent">Success Story?</span>
+            </h2>
           </AnimatedText>
           <AnimatedText delay={0.2}>
             <p className="text-gray-400 text-lg mb-12 leading-relaxed">
@@ -309,7 +198,7 @@ export default function PortfolioPage() {
             </p>
           </AnimatedText>
           <AnimatedText delay={0.4}>
-            <MagneticButton>
+            <MagneticButton className="backdrop-blur-xl bg-black/40 border border-white/30 rounded-2xl text-white font-semibold px-8 py-4 shadow-2xl hover:bg-black/50 hover:border-white/40 transition-all duration-300">
               <span className="flex items-center">
                 Start Your Project <ArrowRight className="ml-2 w-4 h-4" />
               </span>

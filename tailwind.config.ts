@@ -98,6 +98,11 @@ const config: Config = {
           "0%, 100%": { boxShadow: "0 0 20px rgba(139, 92, 246, 0.3)" },
           "50%": { boxShadow: "0 0 40px rgba(139, 92, 246, 0.6)" },
         },
+        "meteor-effect": {
+          "0%": { transform: "translateY(-100px)", opacity: "1" },
+          "70%": { opacity: "1" },
+          "100%": { transform: "translateY(400px)", opacity: "0" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -105,6 +110,7 @@ const config: Config = {
         "gradient-shift": "gradient-shift 4s ease-in-out infinite",
         float: "float 3s ease-in-out infinite",
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
+        "meteor-effect": "meteor-effect linear infinite",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

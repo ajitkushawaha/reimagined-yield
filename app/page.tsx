@@ -26,14 +26,16 @@ import {
   ArrowUpRight,
   ShoppingCart,
   Linkedin,
+  Sparkles,
 } from "lucide-react"
 import Link from "next/link"
-import { AnimatedCard } from "@/components/eternity/animated-card"
-import { FloatingElements } from "@/components/eternity/floating-elements"
-import { AnimatedText } from "@/components/eternity/animated-text"
-import { MagneticButton } from "@/components/eternity/magnetic-button"
-import { GlowingCard } from "@/components/eternity/glowing-card"
-import { ScrollReveal } from "@/components/eternity/scroll-reveal"
+import { ThreeDMarquee } from "@/components/ui/3d-marquee"
+import { Testimonial3DMarquee } from "@/components/ui/testimonial-3d-marquee"
+import { Highlight } from "@/components/ui/hero-highlight"
+import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect"
+import { CardSpotlight } from "@/components/ui/card-spotlight"
+import { Meteors } from "@/components/ui/meteors"
+import { CometCard } from "@/components/ui/comet-card"
 import { PageLayout } from "@/components/layout/page-layout"
 
 // Animated counter component
@@ -69,195 +71,103 @@ function HomePageContent() {
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"])
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
 
-  // Structured data for services
-  const servicesJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    serviceType: "Digital Agency Services",
-    provider: {
-      "@type": "Organization",
-      name: "Codyn",
-    },
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Digital Services",
-      itemListElement: [
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Web Development",
-            description: "Custom websites built with modern technologies for optimal performance and user experience",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Mobile App Development",
-            description: "Native and cross-platform mobile applications that engage users and drive business growth",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "SEO Optimization",
-            description: "Strategic SEO services to improve your search rankings and increase organic traffic",
-          },
-        },
-      ],
-    },
-  }
-
-  // Interactive cards data
-  const heroCards = [
-    {
-      icon: <Rocket className="w-8 h-8" />,
-      title: "Launch Faster",
-      description: "Get your digital presence up and running in record time",
-      color: "from-blue-500 to-cyan-500",
-    },
-    {
-      icon: <Target className="w-8 h-8" />,
-      title: "Hit Your Goals",
-      description: "Data-driven strategies that deliver measurable results",
-      color: "from-purple-500 to-pink-500",
-    },
-    {
-      icon: <Shield className="w-8 h-8" />,
-      title: "Secure & Reliable",
-      description: "Enterprise-grade security and 99.9% uptime guarantee",
-      color: "from-green-500 to-emerald-500",
-    },
+  // Images for 3D Marquee
+  const marqueeImages = [
+    "/logo.png",
+    "/placeholder.jpg",
+    "/placeholder.svg",
+    "/placeholder-logo.png",
+    "/placeholder-logo.svg",
+    "/placeholder-user.jpg",
+    "/saurabh.jpeg",
+    "/images/team-meeting.jpg",
+    "https://images.unsplash.com/photo-1551434678-e076c223a692?w=500&h=300&fit=crop",
+    "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=500&h=300&fit=crop",
+    "https://images.unsplash.com/photo-1551434678-e076c223a692?w=500&h=300&fit=crop",
+    "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=500&h=300&fit=crop",
+    "https://images.unsplash.com/photo-1551434678-e076c223a692?w=500&h=300&fit=crop",
+    "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=500&h=300&fit=crop",
+    "https://images.unsplash.com/photo-1551434678-e076c223a692?w=500&h=300&fit=crop",
+    "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=500&h=300&fit=crop",
+    "https://images.unsplash.com/photo-1551434678-e076c223a692?w=500&h=300&fit=crop",
+    "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=500&h=300&fit=crop",
+    "https://images.unsplash.com/photo-1551434678-e076c223a692?w=500&h=300&fit=crop",
+    "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=500&h=300&fit=crop",
+    "https://images.unsplash.com/photo-1551434678-e076c223a692?w=500&h=300&fit=crop",
+    "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=500&h=300&fit=crop",
+    "https://images.unsplash.com/photo-1551434678-e076c223a692?w=500&h=300&fit=crop",
+    "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=500&h=300&fit=crop",
+    "https://images.unsplash.com/photo-1551434678-e076c223a692?w=500&h=300&fit=crop",
+    "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=500&h=300&fit=crop",
+    "https://images.unsplash.com/photo-1551434678-e076c223a692?w=500&h=300&fit=crop",
+    "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=500&h=300&fit=crop",
   ]
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd) }} />
-
-      <div className="bg-gray-950">
-        {/* Floating Elements Background */}
-        <FloatingElements />
-
-        {/* APPLE FLUID GLASS HERO SECTION */}
+      <div className="bg-black">
+        {/* HERO SECTION WITH 3D MARQUEE */}
         <section
           id="home"
-          className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 pt-20"
+          className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black pt-20 pb-16"
           aria-labelledby="hero-heading"
         >
-          {/* Dynamic Glass Background */}
-          <motion.div className="absolute inset-0" style={{ y: backgroundY }} aria-hidden="true">
-            {/* Floating glass orbs */}
-            <motion.div 
-              className="absolute top-20 left-20 w-96 h-96 bg-white/5 backdrop-blur-3xl rounded-full border border-white/10"
-              animate={{ 
-                x: [0, 100, 0],
-                y: [0, -50, 0],
-                scale: [1, 1.1, 1]
-              }}
-              transition={{ 
-                duration: 20,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "easeInOut"
-              }}
+          {/* 3D Marquee Background */}
+          <div className="absolute inset-0 z-0">
+            <ThreeDMarquee
+              className="pointer-events-none absolute inset-0 h-full w-full"
+              images={marqueeImages}
             />
-            <motion.div 
-              className="absolute bottom-20 right-20 w-80 h-80 bg-blue-500/10 backdrop-blur-3xl rounded-full border border-blue-500/20"
-              animate={{ 
-                x: [0, -80, 0],
-                y: [0, 60, 0],
-                scale: [1, 0.9, 1]
-              }}
-              transition={{ 
-                duration: 25,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "easeInOut",
-                delay: 5
-              }}
-            />
-            <motion.div 
-              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-500/5 backdrop-blur-3xl rounded-full border border-purple-500/10"
-              animate={{ 
-                rotate: [0, 360],
-                scale: [1, 1.2, 1]
-              }}
-              transition={{ 
-                duration: 30,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "linear"
-              }}
-            />
-          </motion.div>
+            <div className="absolute inset-0 bg-gradient-to-br from-black/90 via-gray-900/90 to-black/90" />
+          </div>
 
-          {/* Main Content Container */}
-          <div className="relative z-10 max-w-6xl mx-auto px-6 text-center pt-16">
-            {/* Glass Badge */}
-            <motion.div
-              className="inline-flex items-center backdrop-blur-xl bg-white/10 border border-white/20 rounded-full px-6 py-3 mb-12 shadow-2xl"
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.5 }}
-              whileHover={{ scale: 1.05, y: -2 }}
-            >
-              <motion.span
-                className="text-white mr-3 text-lg"
-                animate={{ rotate: [0, 10, -10, 0] }}
-                transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-              >
-                ✨
-              </motion.span>
-              <span className="text-white/90 font-medium">Crafting Digital Excellence</span>
-            </motion.div>
-
-            {/* Main Headline */}
+          {/* Main Content */}
+          <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1, duration: 0.8 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
             >
-              <h1 id="hero-heading" className="text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-tight mb-8">
-                Reimagined{" "}
-                <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
-                  Digital
-                </span>{" "}
-                Future
+              <h1 id="hero-heading" className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight mb-6 sm:mb-8">
+                Crafting Digital{" "}
+                <Highlight className="text-black dark:text-white">
+                  Excellence
+                </Highlight>{" "}
+                for Your Business
               </h1>
               <div className="sr-only">
                 Founded by <strong>Saurabh Rajput</strong> (CEO) and <strong>Ajit Kushwaha</strong> (CTO)
               </div>
             </motion.div>
 
-            {/* Subtitle */}
             <motion.p
-              className="text-white/80 text-xl md:text-2xl leading-relaxed max-w-4xl mx-auto mb-16"
+              className="text-white/80 text-lg sm:text-xl md:text-2xl leading-relaxed max-w-4xl mx-auto mb-8 sm:mb-12 md:mb-16 px-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2, duration: 0.6 }}
+              transition={{ delay: 0.7, duration: 0.6 }}
             >
-              We create fluid, intuitive digital experiences that seamlessly blend technology with human creativity, 
-              delivering solutions that feel as natural as they are powerful.
+              We transform your digital presence with cutting-edge web development, 
+              mobile apps, and digital marketing solutions that drive real results.
             </motion.p>
 
-            {/* Glass CTA Buttons */}
             <motion.div
-              className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20"
+              className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-12 sm:mb-16 md:mb-20 px-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.4, duration: 0.6 }}
+              transition={{ delay: 0.9, duration: 0.6 }}
             >
               <Link href="/contact">
                 <motion.button
-                  className="group relative px-8 py-4 bg-white/20 backdrop-blur-xl border border-white/30 rounded-2xl text-white font-semibold text-lg shadow-2xl overflow-hidden"
+                  className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white font-semibold text-base sm:text-lg rounded-2xl shadow-2xl overflow-hidden w-full sm:w-auto"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <span className="relative z-10 flex items-center">
-                    Start Your Journey
+                    Get Started
                     <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </span>
               <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent"
+                    className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-cyan-700"
                     initial={{ x: "-100%" }}
                     whileHover={{ x: "100%" }}
                     transition={{ duration: 0.6 }}
@@ -266,24 +176,24 @@ function HomePageContent() {
               </Link>
               <Link href="/portfolio">
                 <motion.button
-                  className="group px-8 py-4 bg-transparent backdrop-blur-xl border border-white/20 rounded-2xl text-white/90 font-semibold text-lg hover:bg-white/10 transition-all duration-300"
+                  className="group px-6 sm:px-8 py-3 sm:py-4 bg-transparent border border-cyan-400/30 rounded-2xl text-white/90 font-semibold text-base sm:text-lg hover:bg-cyan-500/10 transition-all duration-300 w-full sm:w-auto"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <span className="flex items-center">
                     <Play className="mr-2 w-5 h-5" />
-                    Explore Our Work
+                    View Our Work
                   </span>
                 </motion.button>
               </Link>
             </motion.div>
 
-            {/* Glass Stats Cards */}
+            {/* Stats */}
             <motion.div
-              className="grid grid-cols-3 gap-8 max-w-4xl mx-auto"
+              className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8 max-w-4xl mx-auto px-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.6, duration: 0.6 }}
+              transition={{ delay: 1.1, duration: 0.6 }}
             >
               {[
                 { number: "50+", label: "Projects" },
@@ -292,7 +202,7 @@ function HomePageContent() {
               ].map((stat, index) => (
                 <motion.div
                   key={index}
-                  className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-6 shadow-2xl"
+                  className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-4 sm:p-6 shadow-2xl"
                   whileHover={{ scale: 1.05, y: -5 }}
                   transition={{ duration: 0.2 }}
                 >
@@ -303,39 +213,12 @@ function HomePageContent() {
             </motion.div>
           </div>
 
-          {/* Floating Glass Elements */}
-              <motion.div
-            className="absolute top-1/4 right-1/4 w-32 h-32 backdrop-blur-2xl bg-white/5 border border-white/10 rounded-3xl"
-            animate={{ 
-              y: [0, -20, 0],
-              rotate: [0, 5, 0]
-            }}
-            transition={{ 
-              duration: 6,
-              repeat: Number.POSITIVE_INFINITY,
-              ease: "easeInOut"
-            }}
-          />
-          <motion.div
-            className="absolute bottom-1/4 left-1/4 w-24 h-24 backdrop-blur-2xl bg-blue-500/10 border border-blue-500/20 rounded-2xl"
-            animate={{ 
-              y: [0, 15, 0],
-              rotate: [0, -3, 0]
-            }}
-            transition={{ 
-              duration: 8,
-              repeat: Number.POSITIVE_INFINITY,
-              ease: "easeInOut",
-              delay: 2
-            }}
-          />
-
           {/* Scroll Indicator */}
           <motion.div
             className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 2 }}
+            transition={{ delay: 1.5 }}
           >
               <motion.div
               className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-full p-3"
@@ -347,191 +230,164 @@ function HomePageContent() {
           </motion.div>
         </section>
 
-        {/* APPLE GLASS FEATURES SECTION */}
-        <section className="py-32 px-6 lg:px-12 relative overflow-hidden bg-gradient-to-b from-slate-900 to-slate-800">
-          {/* Glass Background Elements */}
-          <motion.div className="absolute inset-0" aria-hidden="true">
-                    <motion.div
-              className="absolute top-20 right-20 w-64 h-64 bg-white/5 backdrop-blur-3xl rounded-full border border-white/10"
-              animate={{ 
-                x: [0, 50, 0],
-                y: [0, -30, 0],
-                scale: [1, 1.1, 1]
-              }}
-              transition={{ 
-                duration: 15,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "easeInOut"
-              }}
-            />
-            <motion.div 
-              className="absolute bottom-20 left-20 w-48 h-48 bg-purple-500/10 backdrop-blur-3xl rounded-full border border-purple-500/20"
-              animate={{ 
-                x: [0, -40, 0],
-                y: [0, 40, 0],
-                scale: [1, 0.9, 1]
-              }}
-              transition={{ 
-                duration: 18,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "easeInOut",
-                delay: 3
-              }}
-            />
-          </motion.div>
-
+        {/* WHY CHOOSE CODYN SECTION */}
+        <section id="why-choose" className="py-32 px-6 lg:px-12 relative bg-gradient-to-b from-gray-900 to-black" aria-labelledby="why-choose-heading">
           <div className="max-w-7xl mx-auto relative z-10">
             <motion.div
-              className="text-center mb-20"
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
+              className="text-center mb-16"
             >
-              <h2 className="text-5xl md:text-6xl font-bold text-white mb-8">
+              <h2 id="why-choose-heading" className="text-5xl md:text-6xl font-bold text-white mb-8">
                 Why Choose{" "}
-                <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
-                  Codyn
-                </span>?
+                <span className="bg-gradient-to-r from-cyan-400 to-cyan-500 bg-clip-text text-transparent">
+                  Codyn?
+                </span>
               </h2>
               <p className="text-white/70 text-xl max-w-4xl mx-auto leading-relaxed">
                 We combine cutting-edge technology with creative excellence to deliver fluid, intuitive digital experiences
               </p>
                     </motion.div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  icon: <Zap className="w-8 h-8" />,
-                  title: "Lightning Fast",
-                  description: "Optimized performance and blazing-fast load times for seamless user experience",
-                  color: "from-yellow-400/20 to-orange-400/20",
-                  borderColor: "border-yellow-400/30",
-                },
-                {
-                  icon: <Lightbulb className="w-8 h-8" />,
-                  title: "Innovative Solutions",
-                  description: "Cutting-edge technology and creative approaches to solve complex problems",
-                  color: "from-blue-400/20 to-cyan-400/20",
-                  borderColor: "border-blue-400/30",
-                },
-                {
-                  icon: <TrendingUp className="w-8 h-8" />,
-                  title: "Proven Results",
-                  description: "Data-driven strategies that consistently deliver measurable business growth",
-                  color: "from-green-400/20 to-emerald-400/20",
-                  borderColor: "border-green-400/30",
-                },
-                {
-                  icon: <Shield className="w-8 h-8" />,
-                  title: "Secure & Reliable",
-                  description: "Enterprise-grade security and 99.9% uptime guarantee for peace of mind",
-                  color: "from-purple-400/20 to-pink-400/20",
-                  borderColor: "border-purple-400/30",
-                },
-                {
-                  icon: <Users className="w-8 h-8" />,
-                  title: "Expert Team",
-                  description: "Experienced professionals with deep expertise in modern technologies",
-                  color: "from-indigo-400/20 to-blue-400/20",
-                  borderColor: "border-indigo-400/30",
-                },
-                {
-                  icon: <CheckCircle className="w-8 h-8" />,
-                  title: "Quality Assured",
-                  description: "Rigorous testing and quality assurance processes ensure flawless delivery",
-                  color: "from-teal-400/20 to-green-400/20",
-                  borderColor: "border-teal-400/30",
-                },
-              ].map((feature, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {/* Lightning Fast */}
                 <motion.div
-                  key={index}
-                  className="group"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1, duration: 0.6 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <motion.div
-                    className={`h-full backdrop-blur-xl bg-white/5 border ${feature.borderColor} rounded-3xl p-8 shadow-2xl group-hover:bg-white/10 transition-all duration-500`}
-                    whileHover={{ 
-                      scale: 1.02, 
-                      y: -8,
-                      rotateY: 5
-                    }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <motion.div
-                      className={`w-16 h-16 bg-gradient-to-r ${feature.color} backdrop-blur-xl border border-white/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
-                      whileHover={{ rotate: 5 }}
-                    >
-                      <div className="text-white">{feature.icon}</div>
-                    </motion.div>
-                    <h3 className="text-xl font-semibold text-white mb-4 group-hover:text-white/90 transition-colors">
-                      {feature.title}
-                    </h3>
-                    <p className="text-white/70 leading-relaxed group-hover:text-white/80 transition-colors">
-                      {feature.description}
+                <CardSpotlight className="h-80 w-full">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="w-16 h-16 bg-gradient-to-r from-cyan-400 to-cyan-500 rounded-2xl flex items-center justify-center mb-6">
+                      <Zap className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-4">Lightning Fast</h3>
+                    <p className="text-white/70 leading-relaxed">
+                      Optimized performance and blazing-fast load times for seamless user experience
                     </p>
-                    
-                    {/* Glass shine effect */}
+                  </div>
+                </CardSpotlight>
+              </motion.div>
+
+              {/* Innovative Solutions */}
                   <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                      initial={{ x: "-100%" }}
-                      whileHover={{ x: "100%" }}
-                      transition={{ duration: 0.8 }}
-                    />
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                <CardSpotlight className="h-80 w-full">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="w-16 h-16 bg-gradient-to-r from-cyan-400 to-cyan-500 rounded-2xl flex items-center justify-center mb-6">
+                      <Lightbulb className="w-8 h-8 text-white" />
+            </div>
+                    <h3 className="text-2xl font-bold text-white mb-4">Innovative Solutions</h3>
+                    <p className="text-white/70 leading-relaxed">
+                      Cutting-edge technology and creative approaches to solve complex problems
+                    </p>
+          </div>
+                </CardSpotlight>
+          </motion.div>
+
+              {/* Proven Results */}
+                    <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                    viewport={{ once: true }}
+                  >
+                <CardSpotlight className="h-80 w-full">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="w-16 h-16 bg-gradient-to-r from-cyan-400 to-cyan-500 rounded-2xl flex items-center justify-center mb-6">
+                      <TrendingUp className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-4">Proven Results</h3>
+                    <p className="text-white/70 leading-relaxed">
+                      Data-driven strategies that consistently deliver measurable business growth
+                    </p>
+                  </div>
+                </CardSpotlight>
+                    </motion.div>
+
+              {/* Secure & Reliable */}
+                      <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                  viewport={{ once: true }}
+                >
+                <CardSpotlight className="h-80 w-full">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="w-16 h-16 bg-gradient-to-r from-cyan-400 to-cyan-500 rounded-2xl flex items-center justify-center mb-6">
+                      <Shield className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-4">Secure & Reliable</h3>
+                    <p className="text-white/70 leading-relaxed">
+                      Enterprise-grade security and 99.9% uptime guarantee for peace of mind
+                    </p>
+                  </div>
+                </CardSpotlight>
+                      </motion.div>
+
+              {/* Expert Team */}
+                  <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                viewport={{ once: true }}
+              >
+                <CardSpotlight className="h-80 w-full">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="w-16 h-16 bg-gradient-to-r from-cyan-400 to-cyan-500 rounded-2xl flex items-center justify-center mb-6">
+                      <Users className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-4">Expert Team</h3>
+                    <p className="text-white/70 leading-relaxed">
+                      Experienced professionals with deep expertise in modern technologies
+                    </p>
+                  </div>
+                </CardSpotlight>
                   </motion.div>
+
+              {/* Quality Assured */}
+                    <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                viewport={{ once: true }}
+              >
+                <CardSpotlight className="h-80 w-full">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="w-16 h-16 bg-gradient-to-r from-cyan-400 to-cyan-500 rounded-2xl flex items-center justify-center mb-6">
+                      <CheckCircle className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-4">Quality Assured</h3>
+                    <p className="text-white/70 leading-relaxed">
+                      Rigorous testing and quality assurance processes ensure flawless delivery
+                    </p>
+                  </div>
+                </CardSpotlight>
                 </motion.div>
-              ))}
             </div>
           </div>
         </section>
 
-        {/* APPLE GLASS PROCESS SECTION */}
-        <section className="py-32 px-6 lg:px-12 relative bg-gradient-to-b from-slate-800 to-slate-900">
-          {/* Glass Background Elements */}
-          <motion.div className="absolute inset-0" aria-hidden="true">
-            <motion.div 
-              className="absolute top-1/4 left-1/4 w-72 h-72 bg-white/5 backdrop-blur-3xl rounded-full border border-white/10"
-              animate={{ 
-                x: [0, 60, 0],
-                y: [0, -40, 0],
-                scale: [1, 1.1, 1]
-              }}
-              transition={{ 
-                duration: 20,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "easeInOut"
-              }}
-            />
-            <motion.div 
-              className="absolute bottom-1/4 right-1/4 w-56 h-56 bg-purple-500/10 backdrop-blur-3xl rounded-full border border-purple-500/20"
-              animate={{ 
-                x: [0, -50, 0],
-                y: [0, 30, 0],
-                scale: [1, 0.9, 1]
-              }}
-              transition={{ 
-                duration: 22,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "easeInOut",
-                delay: 5
-              }}
-            />
-          </motion.div>
-
+        {/* OUR PROCESS SECTION WITH METEORS */}
+        <section id="process" className="py-32 px-6 lg:px-12 relative bg-gradient-to-b from-black to-gray-900 overflow-hidden" aria-labelledby="process-heading">
           <div className="max-w-7xl mx-auto relative z-10">
                   <motion.div
-              className="text-center mb-20"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
+              className="text-center mb-16"
                   >
-              <h2 className="text-5xl md:text-6xl font-bold text-white mb-8">
+              <h2 id="process-heading" className="text-5xl md:text-6xl font-bold text-white mb-8">
                 Our{" "}
-                <span className="bg-gradient-to-r from-white via-purple-100 to-pink-100 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-cyan-400 to-cyan-500 bg-clip-text text-transparent">
                   Process
                 </span>
               </h2>
@@ -540,131 +396,112 @@ function HomePageContent() {
               </p>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                {
-                  step: "01",
-                  title: "Discovery",
-                  description: "We dive deep into your business goals, target audience, and requirements",
-                  icon: <Search className="w-6 h-6" />,
-                  color: "from-blue-400/20 to-cyan-400/20",
-                  borderColor: "border-blue-400/30",
-                },
-                {
-                  step: "02",
-                  title: "Strategy",
-                  description: "Crafting a comprehensive plan tailored to your specific needs and objectives",
-                  icon: <Target className="w-6 h-6" />,
-                  color: "from-purple-400/20 to-pink-400/20",
-                  borderColor: "border-purple-400/30",
-                },
-                {
-                  step: "03",
-                  title: "Development",
-                  description: "Building your solution with cutting-edge technology and best practices",
-                  icon: <Code className="w-6 h-6" />,
-                  color: "from-green-400/20 to-emerald-400/20",
-                  borderColor: "border-green-400/30",
-                },
-                {
-                  step: "04",
-                  title: "Launch",
-                  description: "Deploying your project and providing ongoing support for optimal performance",
-                  icon: <Rocket className="w-6 h-6" />,
-                  color: "from-orange-400/20 to-red-400/20",
-                  borderColor: "border-orange-400/30",
-                },
-              ].map((process, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {/* Discovery */}
                       <motion.div
-                        key={index}
-                  className="relative group"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.2, duration: 0.6 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
                   viewport={{ once: true }}
-                >
-                  <motion.div
-                    className="text-center backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 shadow-2xl group-hover:bg-white/10 transition-all duration-500"
-                    whileHover={{ 
-                      scale: 1.02, 
-                      y: -5,
-                      rotateY: 2
-                    }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <div className="relative mb-6">
-                      <motion.div 
-                        className={`w-20 h-20 bg-gradient-to-r ${process.color} backdrop-blur-xl border border-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}
-                        whileHover={{ rotate: 5 }}
-                      >
-                        <div className="text-white">{process.icon}</div>
-                      </motion.div>
-                      <motion.div 
-                        className="absolute -top-2 -right-2 w-8 h-8 backdrop-blur-xl bg-white/20 border border-white/30 rounded-full flex items-center justify-center"
-                        whileHover={{ scale: 1.1 }}
-                      >
-                        <span className="text-white font-bold text-sm">{process.step}</span>
-                  </motion.div>
+                className="relative"
+              >
+                <div className="relative w-full h-80">
+                  <div className="absolute inset-0 h-full w-full scale-[0.80] transform rounded-2xl bg-gradient-to-r from-blue-500 to-cyan-500 blur-3xl opacity-20" />
+                  <div className="relative flex h-full flex-col items-center justify-center rounded-2xl border border-white/10 bg-black/50 px-6 py-8 shadow-xl backdrop-blur-sm">
+                    <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-blue-400/30 bg-gradient-to-r from-blue-500/20 to-cyan-500/20">
+                      <span className="text-2xl font-bold text-blue-400">01</span>
                     </div>
-                    <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-white/90 transition-colors">
-                      {process.title}
+                    <h3 className="relative z-50 mb-4 text-2xl font-bold text-white text-center">
+                      Discovery
                     </h3>
-                    <p className="text-white/70 leading-relaxed group-hover:text-white/80 transition-colors">
-                      {process.description}
+                    <p className="relative z-50 text-center text-base font-normal text-white/70 leading-relaxed">
+                      We dive deep into your business goals, target audience, and requirements
                     </p>
-                    
-                    {/* Glass shine effect */}
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                      initial={{ x: "-100%" }}
-                      whileHover={{ x: "100%" }}
-                      transition={{ duration: 0.8 }}
-                    />
-                  </motion.div>
+                    <Meteors number={15} />
+                  </div>
+                </div>
+              </motion.div>
 
-                  {/* Glass connector line */}
-                  {index < 3 && (
-                    <div className="hidden lg:block absolute top-1/2 left-full w-full h-0.5 bg-gradient-to-r from-white/20 via-white/10 to-transparent transform translate-x-4"></div>
-                  )}
-                </motion.div>
-              ))}
+              {/* Strategy */}
+                  <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="relative"
+              >
+                <div className="relative w-full h-80">
+                  <div className="absolute inset-0 h-full w-full scale-[0.80] transform rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 blur-3xl opacity-20" />
+                  <div className="relative flex h-full flex-col items-center justify-center rounded-2xl border border-white/10 bg-black/50 px-6 py-8 shadow-xl backdrop-blur-sm">
+                    <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-purple-400/30 bg-gradient-to-r from-purple-500/20 to-pink-500/20">
+                      <span className="text-2xl font-bold text-purple-400">02</span>
+                    </div>
+                    <h3 className="relative z-50 mb-4 text-2xl font-bold text-white text-center">
+                      Strategy
+                    </h3>
+                    <p className="relative z-50 text-center text-base font-normal text-white/70 leading-relaxed">
+                      Crafting a comprehensive plan tailored to your specific needs and objectives
+                    </p>
+                    <Meteors number={15} />
+                  </div>
+                </div>
+                      </motion.div>
+
+              {/* Development */}
+                      <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                viewport={{ once: true }}
+                className="relative"
+              >
+                <div className="relative w-full h-80">
+                  <div className="absolute inset-0 h-full w-full scale-[0.80] transform rounded-2xl bg-gradient-to-r from-green-500 to-emerald-500 blur-3xl opacity-20" />
+                  <div className="relative flex h-full flex-col items-center justify-center rounded-2xl border border-white/10 bg-black/50 px-6 py-8 shadow-xl backdrop-blur-sm">
+                    <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-green-400/30 bg-gradient-to-r from-green-500/20 to-emerald-500/20">
+                      <span className="text-2xl font-bold text-green-400">03</span>
+                    </div>
+                    <h3 className="relative z-50 mb-4 text-2xl font-bold text-white text-center">
+                      Development
+                    </h3>
+                    <p className="relative z-50 text-center text-base font-normal text-white/70 leading-relaxed">
+                      Building your solution with cutting-edge technology and best practices
+                    </p>
+                    <Meteors number={15} />
+                  </div>
+                </div>
+              </motion.div>
+                    
+              {/* Launch */}
+                    <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                viewport={{ once: true }}
+                className="relative"
+              >
+                <div className="relative w-full h-80">
+                  <div className="absolute inset-0 h-full w-full scale-[0.80] transform rounded-2xl bg-gradient-to-r from-orange-500 to-red-500 blur-3xl opacity-20" />
+                  <div className="relative flex h-full flex-col items-center justify-center rounded-2xl border border-white/10 bg-black/50 px-6 py-8 shadow-xl backdrop-blur-sm">
+                    <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-orange-400/30 bg-gradient-to-r from-orange-500/20 to-red-500/20">
+                      <span className="text-2xl font-bold text-orange-400">04</span>
+                    </div>
+                    <h3 className="relative z-50 mb-4 text-2xl font-bold text-white text-center">
+                      Launch
+                    </h3>
+                    <p className="relative z-50 text-center text-base font-normal text-white/70 leading-relaxed">
+                      Deploying your project and providing ongoing support for optimal performance
+                    </p>
+                    <Meteors number={15} />
+                  </div>
+                </div>
+                  </motion.div>
                 </div>
           </div>
         </section>
 
-        {/* APPLE GLASS SERVICES SECTION */}
-        <section id="services" className="py-32 px-6 lg:px-12 relative bg-gradient-to-b from-slate-900 to-slate-800" aria-labelledby="services-heading">
-          {/* Glass Background Elements */}
-          <motion.div className="absolute inset-0" aria-hidden="true">
-            <motion.div 
-              className="absolute top-20 left-20 w-80 h-80 bg-white/5 backdrop-blur-3xl rounded-full border border-white/10"
-              animate={{ 
-                x: [0, 80, 0],
-                y: [0, -50, 0],
-                scale: [1, 1.2, 1]
-              }}
-              transition={{ 
-                duration: 25,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "easeInOut"
-              }}
-            />
-            <motion.div 
-              className="absolute bottom-20 right-20 w-64 h-64 bg-cyan-500/10 backdrop-blur-3xl rounded-full border border-cyan-500/20"
-              animate={{ 
-                x: [0, -60, 0],
-                y: [0, 40, 0],
-                scale: [1, 0.8, 1]
-              }}
-              transition={{ 
-                duration: 28,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "easeInOut",
-                delay: 7
-              }}
-            />
-          </motion.div>
-
+        {/* SERVICES SECTION WITH CARD SPOTLIGHT */}
+        <section id="services" className="py-32 px-6 lg:px-12 relative bg-gradient-to-b from-black to-gray-900" aria-labelledby="services-heading">
           <div className="max-w-7xl mx-auto relative z-10">
             <motion.div
               className="text-center mb-20"
@@ -675,7 +512,7 @@ function HomePageContent() {
             >
               <h2 id="services-heading" className="text-5xl md:text-6xl font-bold text-white mb-8">
                 Our{" "}
-                <span className="bg-gradient-to-r from-white via-cyan-100 to-blue-100 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-cyan-400 to-cyan-500 bg-clip-text text-transparent">
                   Services
                 </span>
                 </h2>
@@ -688,59 +525,45 @@ function HomePageContent() {
               {[
                 {
                   icon: <Code className="w-8 h-8" />,
-                  title: "Custom Development",
-                  description: "Tailored software solutions built to meet your specific business requirements and goals",
-                  features: ["Custom Solutions", "API Integration", "Scalable Architecture"],
-                  color: "from-indigo-400/20 to-purple-400/20",
-                  borderColor: "border-indigo-400/30",
-                  href: "/services#custom-development",
+                  title: "Web Development",
+                  description: "Custom websites built with modern technologies for optimal performance and user experience",
+                  features: ["React & Next.js", "Responsive Design", "SEO Optimized"],
+                  color: "from-blue-500 to-cyan-500",
                 },
                 {
                   icon: <Smartphone className="w-8 h-8" />,
-                  title: "App Development",
+                  title: "Mobile App Development",
                   description: "Native and cross-platform mobile applications that engage users and drive business growth",
                   features: ["iOS & Android", "Cross-Platform", "App Store Ready"],
-                  color: "from-purple-400/20 to-pink-400/20",
-                  borderColor: "border-purple-400/30",
-                  href: "/services#app-development",
+                  color: "from-purple-500 to-pink-500",
                 },
-                {
-                  icon: <Globe className="w-8 h-8" />,
-                  title: "Web Development",
-                  description: "Custom websites built with modern technologies for optimal performance and user experience",
-                  features: ["Responsive Design", "SEO Optimized", "Fast Loading"],
-                  color: "from-blue-400/20 to-cyan-400/20",
-                  borderColor: "border-blue-400/30",
-                  href: "/services#web-development",
-                },
-                
                 {
                   icon: <Search className="w-8 h-8" />,
                   title: "SEO Optimization",
                   description: "Strategic SEO services to improve your search rankings and increase organic traffic",
                   features: ["Keyword Research", "Technical SEO", "Content Strategy"],
-                  color: "from-green-400/20 to-emerald-400/20",
-                  borderColor: "border-green-400/30",
-                  href: "/services#seo-optimization",
+                  color: "from-green-500 to-emerald-500",
                 },
                 {
                   icon: <ShoppingCart className="w-8 h-8" />,
-                  title: "Ecommerce Development",
+                  title: "E-commerce Development",
                   description: "Complete ecommerce solutions that drive sales and provide exceptional shopping experiences",
                   features: ["Online Store Setup", "Payment Integration", "Inventory Management"],
-                  color: "from-orange-400/20 to-red-400/20",
-                  borderColor: "border-orange-400/30",
-                  href: "/services#ecommerce-development",
+                  color: "from-orange-500 to-red-500",
                 },
-                
                 {
                   icon: <BarChart className="w-8 h-8" />,
                   title: "Digital Marketing",
                   description: "Data-driven marketing strategies to reach your target audience and maximize ROI",
                   features: ["Social Media", "PPC Campaigns", "Analytics"],
-                  color: "from-teal-400/20 to-cyan-400/20",
-                  borderColor: "border-teal-400/30",
-                  href: "/services#digital-marketing",
+                  color: "from-teal-500 to-cyan-500",
+                },
+                {
+                  icon: <Palette className="w-8 h-8" />,
+                  title: "UI/UX Design",
+                  description: "Beautiful, intuitive designs that users love and that drive conversions",
+                  features: ["User Research", "Wireframing", "Prototyping"],
+                  color: "from-indigo-500 to-purple-500",
                 },
               ].map((service, index) => (
                 <motion.div
@@ -751,18 +574,10 @@ function HomePageContent() {
                   transition={{ delay: index * 0.1, duration: 0.6 }}
                   viewport={{ once: true }}
                 >
-                  <Link href={service.href}>
+                  <CardSpotlight className="h-full p-8">
+                    <div className="text-center">
                         <motion.div
-                      className={`h-full backdrop-blur-xl bg-white/5 border ${service.borderColor} rounded-3xl p-8 shadow-2xl group-hover:bg-white/10 transition-all duration-500 cursor-pointer`}
-                      whileHover={{ 
-                        scale: 1.02, 
-                        y: -8,
-                        rotateY: 3
-                      }}
-                      transition={{ duration: 0.3 }}
-                    >
-                        <motion.div
-                        className={`w-16 h-16 bg-gradient-to-r ${service.color} backdrop-blur-xl border border-white/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
+                        className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300`}
                         whileHover={{ rotate: 5 }}
                         >
                         <div className="text-white">{service.icon}</div>
@@ -775,7 +590,7 @@ function HomePageContent() {
                       </p>
                       
                       {/* Features list */}
-                      <div className="space-y-3 mb-6">
+                      <div className="space-y-3">
                         {service.features.map((feature, featureIndex) => (
                           <div key={featureIndex} className="flex items-center text-sm text-white/80">
                             <CheckCircle className="w-4 h-4 text-green-400 mr-3 flex-shrink-0" />
@@ -783,618 +598,516 @@ function HomePageContent() {
                       </div>
                         ))}
                       </div>
-                      
-                      {/* Arrow indicator */}
-                      <div className="flex items-center text-cyan-400 group-hover:text-cyan-300 transition-colors">
-                        <span className="text-sm font-medium">Learn More</span>
-                        <ArrowUpRight className="w-4 h-4 ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                       </div>
-                      
-                      {/* Glass shine effect */}
-                      <motion.div
-                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                        initial={{ x: "-100%" }}
-                        whileHover={{ x: "100%" }}
-                        transition={{ duration: 0.8 }}
-                      />
-                    </motion.div>
-                  </Link>
+                  </CardSpotlight>
                 </motion.div>
               ))}
             </div>
+          </div>
+        </section>
 
+        {/* COLLABORATION SECTION WITH COMET CARDS */}
+        <section id="collaboration" className="py-32 px-6 lg:px-12 relative bg-gradient-to-b from-gray-900 to-black" aria-labelledby="collaboration-heading">
+          <div className="max-w-7xl mx-auto relative z-10">
             <motion.div
-              className="text-center mt-16"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.6 }}
+              transition={{ duration: 0.6 }}
               viewport={{ once: true }}
+              className="text-center mb-16"
             >
-                <Link href="/services">
-                <motion.button
-                  className="group relative px-8 py-4 bg-white/20 backdrop-blur-xl border border-white/30 rounded-2xl text-white font-semibold text-lg shadow-2xl overflow-hidden"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <span className="relative z-10 flex items-center">
-                    View All Services
-                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <h2 id="collaboration-heading" className="text-5xl md:text-6xl font-bold text-white mb-8">
+                Built Through{" "}
+                <span className="bg-gradient-to-r from-cyan-400 to-cyan-500 bg-clip-text text-transparent">
+                  Collaboration
                   </span>
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent"
-                    initial={{ x: "-100%" }}
-                    whileHover={{ x: "100%" }}
-                    transition={{ duration: 0.6 }}
-                  />
-                </motion.button>
-                </Link>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* FOUNDERS SECTION */}
-        <section id="founders" className="py-32 px-6 lg:px-12 bg-gradient-to-b from-slate-900 to-slate-800" aria-labelledby="founders-heading">
-          <div className="max-w-7xl mx-auto">
-            <header className="text-center mb-20">
-              <AnimatedText>
-                <h2 id="founders-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-                  Meet Our <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Founders</span>
                 </h2>
-              </AnimatedText>
-              <AnimatedText delay={0.2}>
-                <p className="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">
-                  The visionary leaders behind Codyn's success, driving innovation and excellence in digital solutions.
-                </p>
-              </AnimatedText>
-            </header>
-
-            <div className="grid md:grid-cols-2 gap-12">
-              <motion.div
-                className="text-center p-8 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.02, y: -5 }}
-              >
-                <div className="w-24 h-24 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-white font-bold text-2xl">SR</span>
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-2">Saurabh Rajput</h3>
-                <p className="text-blue-400 font-semibold mb-4">Founder & CEO</p>
-                <p className="text-gray-300 leading-relaxed mb-6">
-                  Visionary leader with 7+ years in digital transformation and business strategy. 
-                  <strong className="text-white"> Saurabh founded Codyn</strong> with a mission to help businesses thrive in the digital age.
-                </p>
-                <div className="flex justify-center space-x-4">
-                  <a
-                    href="https://www.linkedin.com/in/saurabh-rajput-9a1071245"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors"
-                  >
-                    <Linkedin className="w-5 h-5" />
-                  </a>
-                </div>
-              </motion.div>
-
-              <motion.div
-                className="text-center p-8 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.6 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.02, y: -5 }}
-              >
-                <div className="w-24 h-24 bg-gradient-to-r from-green-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-white font-bold text-2xl">AK</span>
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-2">Ajit Kushwaha</h3>
-                <p className="text-green-400 font-semibold mb-4">Co-Founder & CTO</p>
-                <p className="text-gray-300 leading-relaxed mb-6">
-                  Full-stack architect specializing in scalable solutions and modern web technologies. 
-                  <strong className="text-white"> Ajit leads our technical vision</strong> and ensures we deliver cutting-edge solutions.
-                </p>
-                <div className="flex justify-center space-x-4">
-                  <a
-                    href="https://www.linkedin.com/in/ajitreact"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors"
-                  >
-                    <Linkedin className="w-5 h-5" />
-                  </a>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        {/* COLLABORATION SECTION */}
-        <section id="collaboration" className="py-32 px-6 lg:px-12 bg-gradient-to-b from-slate-800 to-slate-900" aria-labelledby="collaboration-heading">
-          <div className="max-w-7xl mx-auto">
-            <header className="text-center mb-20">
-              <AnimatedText>
-                <h2 id="collaboration-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-                  Built Through <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Collaboration</span>
-                </h2>
-              </AnimatedText>
-              <AnimatedText delay={0.2}>
-                <p className="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">
+              <p className="text-white/70 text-xl max-w-4xl mx-auto leading-relaxed">
                   We believe the best results come from working closely with our clients as partners, not just service providers.
                 </p>
-              </AnimatedText>
-            </header>
+            </motion.div>
 
-            {/* Collaboration Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-20">
-              {[
-                { icon: <Users className="w-8 h-8" />, value: "200+", label: "Happy Clients", color: "from-blue-400 to-cyan-400" },
-                { icon: <Globe className="w-8 h-8" />, value: "10+", label: "Countries", color: "from-green-400 to-emerald-400" },
-                { icon: <Star className="w-8 h-8" />, value: "5", label: "Client Rating", color: "from-orange-400 to-red-400" },
-              ].map((stat, index) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
+              {/* Happy Clients Card */}
                 <motion.div
-                  key={index}
-                  className="text-center p-6 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1, duration: 0.6 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <div className={`w-16 h-16 bg-gradient-to-r ${stat.color} rounded-2xl flex items-center justify-center mx-auto mb-4`}>
-                    <div className="text-white">{stat.icon}</div>
+                <CometCard rotateDepth={15} translateDepth={15}>
+                  <div className="bg-gradient-to-br from-gray-900 to-black p-6 sm:p-8 rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-300">
+                    <div className="text-center">
+                      <div className="text-4xl font-bold text-white mb-2">
+                        <AnimatedCounter end={200} duration={2} />+
                   </div>
-                  <div className="text-3xl font-bold text-white mb-2">
-                    <AnimatedCounter end={parseInt(stat.value.replace(/[^\d]/g, ''))} />
-                    {stat.value.includes('.') ? '.' : stat.value.includes('+') ? '+' : ''}
+                      <div className="text-cyan-400 font-semibold mb-2">Happy Clients</div>
+                      <div className="text-white/60 text-sm">
+                        Satisfied customers who trust our expertise
                   </div>
-                  <div className="text-gray-400 text-sm">{stat.label}</div>
-                </motion.div>
-              ))}
             </div>
+                  </div>
+                </CometCard>
+              </motion.div>
 
-            {/* Client Testimonials */}
-            <div className="mb-20">
-              <h3 className="text-2xl font-bold text-white text-center mb-12">What Our Partners Say</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {[
-                  {
-                    name: "Alexandra Johnson",
-                    role: "CEO, TechStart Inc.",
-                    content: "Working with Codyn was a game-changer. Their collaborative approach and technical expertise helped us scale from startup to enterprise in just 18 months.",
-                    avatar: "/placeholder-user.jpg",
-                    rating: 5
-                  },
-                  {
-                    name: "David Chen",
-                    role: "CTO, Digital Solutions",
-                    content: "The team's ability to understand our vision and translate it into reality is unmatched. They're not just developers, they're true partners in our success.",
-                    avatar: "/placeholder-user.jpg",
-                    rating: 5
-                  },
-                  {
-                    name: "Emily Rodriguez",
-                    role: "Founder, Creative Agency",
-                    content: "From concept to launch, every step was handled with professionalism and creativity. Our collaboration resulted in a product that exceeded all expectations.",
-                    avatar: "/placeholder-user.jpg",
-                    rating: 5
-                  }
-                ].map((testimonial, index) => (
+              {/* Countries Card */}
                   <motion.div
-                    key={index}
-                    className="p-8 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl hover:bg-white/10 transition-all duration-500"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1, duration: 0.6 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
                     viewport={{ once: true }}
-                    whileHover={{ scale: 1.02, y: -5 }}
-                  >
-                    <div className="flex items-center mb-4">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                      ))}
+              >
+                <CometCard rotateDepth={15} translateDepth={15}>
+                  <div className="bg-gradient-to-br from-gray-900 to-black p-6 sm:p-8 rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-300">
+                    <div className="text-center">
+                      <div className="text-4xl font-bold text-white mb-2">
+                        <AnimatedCounter end={10} duration={2} />+
                     </div>
-                    <p className="text-gray-300 leading-relaxed mb-6 italic">"{testimonial.content}"</p>
-                    <div className="flex items-center">
-                      <Image
-                        src={testimonial.avatar}
-                        alt={testimonial.name}
-                        width={48}
-                        height={48}
-                        className="rounded-full mr-4"
-                      />
-                      <div>
-                        <div className="text-white font-semibold">{testimonial.name}</div>
-                        <div className="text-gray-400 text-sm">{testimonial.role}</div>
+                      <div className="text-cyan-400 font-semibold mb-2">Countries</div>
+                      <div className="text-white/60 text-sm">
+                        Global reach with local expertise
                       </div>
                     </div>
-                  </motion.div>
-                ))}
               </div>
-            </div>
+                </CometCard>
+              </motion.div>
 
-            {/* Collaboration Process */}
-            <div className="mb-20">
-              <h3 className="text-2xl font-bold text-white text-center mb-12">Our Collaboration Process</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {[
-                  {
-                    step: "01",
-                    title: "Discovery",
-                    description: "We dive deep into your business goals, target audience, and technical requirements",
-                    icon: <Search className="w-8 h-8" />
-                  },
-                  {
-                    step: "02",
-                    title: "Strategy",
-                    description: "Together, we create a comprehensive roadmap that aligns with your vision and timeline",
-                    icon: <Target className="w-8 h-8" />
-                  },
-                  {
-                    step: "03",
-                    title: "Development",
-                    description: "Regular check-ins and transparent communication throughout the entire development process",
-                    icon: <Code className="w-8 h-8" />
-                  },
-                  {
-                    step: "04",
-                    title: "Launch & Support",
-                    description: "We ensure smooth deployment and provide ongoing support to help you succeed",
-                    icon: <Rocket className="w-8 h-8" />
-                  }
-                ].map((process, index) => (
+              {/* Client Rating Card */}
                   <motion.div
-                    key={index}
-                    className="text-center p-6 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1, duration: 0.6 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
                     viewport={{ once: true }}
-                    whileHover={{ scale: 1.05, y: -5 }}
-                  >
-                    <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                      <div className="text-white">{process.icon}</div>
+              >
+                <CometCard rotateDepth={15} translateDepth={15}>
+                  <div className="bg-gradient-to-br from-gray-900 to-black p-6 sm:p-8 rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-300">
+                    <div className="text-center">
+                      <div className="text-4xl font-bold text-white mb-2">
+                        <AnimatedCounter end={5} duration={2} />
                     </div>
-                    <div className="text-2xl font-bold text-blue-400 mb-2">{process.step}</div>
-                    <h4 className="text-xl font-semibold text-white mb-3">{process.title}</h4>
-                    <p className="text-gray-400 text-sm leading-relaxed">{process.description}</p>
+                      <div className="text-cyan-400 font-semibold mb-2">Client Rating</div>
+                      <div className="text-white/60 text-sm">
+                        Average rating from our clients
+                      </div>
+                    </div>
+                  </div>
+                </CometCard>
                   </motion.div>
-                ))}
               </div>
             </div>
+        </section>
 
-            {/* Partner Logos */}
-            <div className="mb-20">
-              <h3 className="text-2xl font-bold text-white text-center mb-12">Trusted by Industry Leaders</h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
+        {/* TRUSTED BY INDUSTRY LEADERS SECTION */}
+        <section id="trusted-by" className="py-32 px-6 lg:px-12 relative bg-gradient-to-b from-black to-gray-900" aria-labelledby="trusted-by-heading">
+          <div className="max-w-7xl mx-auto relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <h2 id="trusted-by-heading" className="text-5xl md:text-6xl font-bold text-white mb-8">
+                Trusted by{" "}
+                <span className="bg-gradient-to-r from-cyan-400 to-cyan-500 bg-clip-text text-transparent">
+                  Industry Leaders
+                </span>
+              </h2>
+              <p className="text-white/70 text-xl max-w-4xl mx-auto leading-relaxed">
+                We're proud to partner with leading companies across various industries
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6 lg:gap-8 max-w-6xl mx-auto">
                 {[
                   { 
                     name: "Growing Wing", 
-                    url: "https://www.growingwing.com/",
-                    logo: "https://www.growingwing.com/public/images/logo.png"
+                  logo: "https://www.growingwing.com/public/images/logo.png",
+                  url: "https://www.growingwing.com/"
                   },
                   { 
                     name: "Heighten Infotech", 
-                    url: "https://www.heighteninfotech.com/",
-                    logo: "https://www.heighteninfotech.com/img/logo.png"
+                  logo: "https://www.heighteninfotech.com/img/logo.png",
+                  url: "https://www.heighteninfotech.com/"
                   },
                   { 
                     name: "Patiyal Infotech", 
-                    url: "https://patiyalinfotech.com/",
-                    logo: "https://patiyalinfotech.com/wp-content/uploads/2024/08/logo.png"
+                  logo: "https://patiyalinfotech.com/wp-content/uploads/2024/08/logo.png",
+                  url: "https://patiyalinfotech.com/"
                   },
                   { 
                     name: "Klance", 
-                    url: "https://klance.net/",
-                    logo: "https://klance.net/wp-content/uploads/2025/06/WhatsApp-Image-2025-08-06-at-00.57.10_9d1529bc.jpg"
+                  logo: "https://klance.net/wp-content/uploads/2025/06/WhatsApp-Image-2025-08-06-at-00.57.10_9d1529bc.jpg",
+                  url: "https://klance.net/"
                   },
                   { 
                     name: "WebTech99", 
-                    url: "https://webtech99.com/",
-                    logo: "https://webtech99.com/wp-content/uploads/2023/10/webtech99-logo-final.png"
+                  logo: "https://webtech99.com/wp-content/uploads/2023/10/webtech99-logo-final.png",
+                  url: "https://webtech99.com/"
                   },
                   { 
                     name: "HDH Technologies", 
-                    url: "https://hdhtechnologies.com/",
-                    logo: "https://hdhtechnologies.com/wp-content/uploads/2024/01/logo-hdh.png"
+                  logo: "https://hdhtechnologies.com/wp-content/uploads/2024/01/logo-hdh.png",
+                  url: "https://hdhtechnologies.com/"
                   }
                 ].map((company, index) => (
-                  <motion.a
-                    key={index}
+                <motion.div
+                  key={company.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <CometCard 
+                    rotateDepth={12} 
+                    translateDepth={10}
+                    className="w-full"
+                  >
+                    <a
                     href={company.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-center p-6 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl hover:bg-white/20 hover:border-white/30 transition-all duration-300 flex flex-col items-center justify-center min-h-[120px]"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: index * 0.1, duration: 0.5 }}
-                    viewport={{ once: true }}
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <div className="w-32 h-32 flex items-center justify-center">
+                      className="w-full h-24 sm:h-28 lg:h-32 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl hover:bg-white/20 hover:border-white/30 transition-all duration-300 flex items-center justify-center p-3 sm:p-4 lg:p-6"
+                    >
+                      <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 flex items-center justify-center">
                       <img 
                         src={company.logo} 
                         alt={`${company.name} logo`}
-                        className="max-w-full max-h-full object-contain transition-opacity duration-300"
-                        onError={(e) => {
-                          // Fallback to text if logo fails to load
-                          e.currentTarget.style.display = 'none';
-                          const nextElement = e.currentTarget.nextElementSibling as HTMLElement;
-                          if (nextElement) {
-                            nextElement.style.display = 'block';
-                          }
-                        }}
-                      />
-                      <div className="text-white/70 font-semibold text-sm text-center leading-tight hidden">
-                        {company.name}
+                          className="max-w-full max-h-full object-contain transition-opacity duration-300 hover:opacity-80"
+                        />
                       </div>
-                    </div>
-                  </motion.a>
+                    </a>
+                  </CometCard>
+                </motion.div>
                 ))}
               </div>
             </div>
+        </section>
 
-            {/* CTA Section */}
-            <motion.div
-              className="text-center"
+        {/* TESTIMONIALS SECTION */}
+        <section id="testimonials" className="py-32 px-6 lg:px-12 bg-gradient-to-b from-gray-900 to-black" aria-labelledby="testimonials-heading">
+          <div className="max-w-7xl mx-auto">
+            <header className="text-center mb-20">
+              <motion.h2
+                id="testimonials-heading"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
+                transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <motion.a
-                href="https://meetings-na2.hubspot.com/merajsaurabh0000"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative inline-block px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold text-lg rounded-2xl shadow-2xl overflow-hidden"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
+                What Clients Say <span className="bg-gradient-to-r from-cyan-400 to-cyan-500 bg-clip-text text-transparent">About Us</span>
+              </motion.h2>
+              <motion.p
+                className="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+                    viewport={{ once: true }}
               >
-                <span className="relative z-10 flex items-center">
-                  Schedule a Meeting
-                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </span>
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600"
-                  initial={{ x: "-100%" }}
-                  whileHover={{ x: "100%" }}
-                  transition={{ duration: 0.6 }}
-                />
-              </motion.a>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Portfolio Preview */}
-        <section id="portfolio" className="py-32 px-6 lg:px-12 bg-gray-900" aria-labelledby="portfolio-heading">
-          <div className="max-w-7xl mx-auto">
-            <header className="text-center mb-20">
-              <AnimatedText>
-                <h2 id="portfolio-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-                  Check Our <span className="text-gray-300">Projects</span> With Real Results
-                </h2>
-              </AnimatedText>
-              <AnimatedText delay={0.2}>
-                <p className="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">
-                  Explore our portfolio of successful projects that have helped businesses achieve their digital goals.
-                </p>
-              </AnimatedText>
+                Don't just take our word for it. Here's what our satisfied clients have to say about our work.
+              </motion.p>
             </header>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  title: "E-commerce Platform",
-                  category: "Web Development",
-                  image: "/placeholder.svg?height=400&width=600&text=E-commerce+Platform",
-                  alt: "Modern e-commerce platform with responsive design and user-friendly interface",
-                },
-                {
-                  title: "Mobile Banking App",
-                  category: "App Development",
-                  image: "/placeholder.svg?height=400&width=600&text=Mobile+Banking+App",
-                  alt: "Secure mobile banking application with intuitive user experience",
-                },
-                {
-                  title: "Brand Identity Design",
-                  category: "UI/UX Design",
-                  image: "/placeholder.svg?height=400&width=600&text=Brand+Identity+Design",
-                  alt: "Complete brand identity design including logo, colors, and visual elements",
-                },
-              ].map((project, index) => (
-                <article key={index}>
-                  <AnimatedCard delay={index * 0.1} className="overflow-hidden group bg-gray-800/30 border-gray-700">
-                    <div className="relative h-64 overflow-hidden">
-                      <Image
-                        src={project.image || "/placeholder.svg"}
-                        alt={project.alt}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent"></div>
-                      <motion.div
-                        className="absolute bottom-4 left-4 right-4"
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 }}
-                      >
-                        <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-gray-800/80 backdrop-blur-sm text-white mb-2 border border-gray-600">
-                          {project.category}
-                        </span>
-                      </motion.div>
-                    </div>
-                    <div className="p-6">
-                      <h3 className="text-lg font-semibold text-white group-hover:text-gray-200 transition-colors">
-                        {project.title}
-                      </h3>
-                    </div>
-                  </AnimatedCard>
-                </article>
-              ))}
-            </div>
-
-            <div className="text-center mt-16">
-              <AnimatedText delay={0.6}>
-                <Link href="/portfolio">
-                  <MagneticButton>
-                    <span className="flex items-center">
-                    View Full Portfolio <ArrowRight className="ml-2 w-4 h-4" />
-                    </span>
-                  </MagneticButton>
-                </Link>
-              </AnimatedText>
-            </div>
-          </div>
-        </section>
-
-        {/* Testimonials Section */}
-        <section className="py-32 px-6 lg:px-12 bg-gray-950" aria-labelledby="testimonials-heading">
-          <div className="max-w-7xl mx-auto">
-            <header className="text-center mb-20">
-              <AnimatedText>
-                <h2 id="testimonials-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-                  What <span className="text-gray-300">Clients</span> Say About Us
-                </h2>
-              </AnimatedText>
-              <AnimatedText delay={0.2}>
-                <p className="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">
-                  Don't just take our word for it. Here's what our satisfied clients have to say about our work.
-                </p>
-              </AnimatedText>
-            </header>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
+            {/* 3D Marquee with Client Testimonials */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="mx-auto my-10 max-w-7xl rounded-3xl bg-gray-950/5 p-2 ring-1 ring-neutral-700/10 dark:bg-neutral-800"
+            >
+              <Testimonial3DMarquee testimonials={[
                 {
                   name: "Alex Thompson",
                   company: "TechStart Inc.",
-                  review:
-                    "Codyn transformed our digital presence completely. Their team's expertise and dedication are unmatched.",
+                  quote: "Codyn transformed our digital presence completely. Their team's expertise and dedication are unmatched.",
                   rating: 5,
+                  avatar: "A",
+                  color: "from-blue-500 to-purple-500"
                 },
                 {
                   name: "Maria Garcia",
                   company: "Creative Solutions",
-                  review:
-                    "Outstanding work on our mobile app. The user experience is incredible and our customers love it.",
+                  quote: "Outstanding work on our mobile app. The user experience is incredible and our customers love it.",
                   rating: 5,
+                  avatar: "M",
+                  color: "from-green-500 to-cyan-500"
                 },
                 {
                   name: "James Wilson",
                   company: "Global Enterprises",
-                  review:
-                    "Professional, reliable, and results-driven. They delivered exactly what we needed on time and within budget.",
+                  quote: "Professional, reliable, and results-driven. They delivered exactly what we needed on time and within budget.",
                   rating: 5,
+                  avatar: "J",
+                  color: "from-purple-500 to-pink-500"
                 },
                 {
                   name: "Lisa Chang",
                   company: "Innovation Labs",
-                  review:
-                    "The SEO results speak for themselves. Our organic traffic increased by 300% in just 6 months.",
+                  quote: "The SEO results speak for themselves. Our organic traffic increased by 300% in just 6 months.",
                   rating: 5,
+                  avatar: "L",
+                  color: "from-orange-500 to-red-500"
                 },
-              ].map((testimonial, index) => (
-                <article key={index}>
-                  <GlowingCard className="h-full">
-                    <div className="p-8 bg-gray-800/30 border border-gray-700 rounded-2xl hover:bg-gray-800/50 hover:border-gray-600 transition-all duration-300">
-                      <div className="flex mb-6" aria-label={`${testimonial.rating} star rating`}>
-                        {[...Array(testimonial.rating)].map((_, i) => (
-                          <motion.div
-                            key={i}
-                            initial={{ opacity: 0, scale: 0 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: i * 0.1 + index * 0.1 }}
-                          >
-                            <Star className="w-4 h-4 text-yellow-400 fill-current" aria-hidden="true" />
+                {
+                  name: "David Kim",
+                  company: "Digital Ventures",
+                  quote: "Exceptional attention to detail and innovative solutions. Codyn exceeded our expectations in every way.",
+                  rating: 5,
+                  avatar: "D",
+                  color: "from-cyan-500 to-blue-500"
+                },
+                {
+                  name: "Sarah Johnson",
+                  company: "TechCorp",
+                  quote: "Working with Codyn was a game-changer. They understood our vision and brought it to life perfectly.",
+                  rating: 5,
+                  avatar: "S",
+                  color: "from-pink-500 to-purple-500"
+                },
+                {
+                  name: "Michael Chen",
+                  company: "StartupHub",
+                  quote: "Fast, efficient, and incredibly talented. Our project was delivered ahead of schedule with outstanding quality.",
+                  rating: 5,
+                  avatar: "M",
+                  color: "from-yellow-500 to-orange-500"
+                },
+                {
+                  name: "Emily Rodriguez",
+                  company: "InnovateLab",
+                  quote: "The team's creativity and technical expertise are second to none. Highly recommend their services.",
+                  rating: 5,
+                  avatar: "E",
+                  color: "from-indigo-500 to-purple-500"
+                },
+                {
+                  name: "Alex Thompson",
+                  company: "TechStart Inc.",
+                  quote: "Codyn transformed our digital presence completely. Their team's expertise and dedication are unmatched.",
+                  rating: 5,
+                  avatar: "A",
+                  color: "from-blue-500 to-purple-500"
+                },
+                {
+                  name: "Maria Garcia",
+                  company: "Creative Solutions",
+                  quote: "Outstanding work on our mobile app. The user experience is incredible and our customers love it.",
+                  rating: 5,
+                  avatar: "M",
+                  color: "from-green-500 to-cyan-500"
+                },
+                {
+                  name: "James Wilson",
+                  company: "Global Enterprises",
+                  quote: "Professional, reliable, and results-driven. They delivered exactly what we needed on time and within budget.",
+                  rating: 5,
+                  avatar: "J",
+                  color: "from-purple-500 to-pink-500"
+                },
+                {
+                  name: "Lisa Chang",
+                  company: "Innovation Labs",
+                  quote: "The SEO results speak for themselves. Our organic traffic increased by 300% in just 6 months.",
+                  rating: 5,
+                  avatar: "L",
+                  color: "from-orange-500 to-red-500"
+                },
+                {
+                  name: "David Kim",
+                  company: "Digital Ventures",
+                  quote: "Exceptional attention to detail and innovative solutions. Codyn exceeded our expectations in every way.",
+                  rating: 5,
+                  avatar: "D",
+                  color: "from-cyan-500 to-blue-500"
+                },
+                {
+                  name: "Sarah Johnson",
+                  company: "TechCorp",
+                  quote: "Working with Codyn was a game-changer. They understood our vision and brought it to life perfectly.",
+                  rating: 5,
+                  avatar: "S",
+                  color: "from-pink-500 to-purple-500"
+                },
+                {
+                  name: "Michael Chen",
+                  company: "StartupHub",
+                  quote: "Fast, efficient, and incredibly talented. Our project was delivered ahead of schedule with outstanding quality.",
+                  rating: 5,
+                  avatar: "M",
+                  color: "from-yellow-500 to-orange-500"
+                },
+                {
+                  name: "Emily Rodriguez",
+                  company: "InnovateLab",
+                  quote: "The team's creativity and technical expertise are second to none. Highly recommend their services.",
+                  rating: 5,
+                  avatar: "E",
+                  color: "from-indigo-500 to-purple-500"
+                },
+                {
+                  name: "Alex Thompson",
+                  company: "TechStart Inc.",
+                  quote: "Codyn transformed our digital presence completely. Their team's expertise and dedication are unmatched.",
+                  rating: 5,
+                  avatar: "A",
+                  color: "from-blue-500 to-purple-500"
+                },
+                {
+                  name: "Maria Garcia",
+                  company: "Creative Solutions",
+                  quote: "Outstanding work on our mobile app. The user experience is incredible and our customers love it.",
+                  rating: 5,
+                  avatar: "M",
+                  color: "from-green-500 to-cyan-500"
+                },
+                {
+                  name: "James Wilson",
+                  company: "Global Enterprises",
+                  quote: "Professional, reliable, and results-driven. They delivered exactly what we needed on time and within budget.",
+                  rating: 5,
+                  avatar: "J",
+                  color: "from-purple-500 to-pink-500"
+                },
+                {
+                  name: "Lisa Chang",
+                  company: "Innovation Labs",
+                  quote: "The SEO results speak for themselves. Our organic traffic increased by 300% in just 6 months.",
+                  rating: 5,
+                  avatar: "L",
+                  color: "from-orange-500 to-red-500"
+                },
+                {
+                  name: "David Kim",
+                  company: "Digital Ventures",
+                  quote: "Exceptional attention to detail and innovative solutions. Codyn exceeded our expectations in every way.",
+                  rating: 5,
+                  avatar: "D",
+                  color: "from-cyan-500 to-blue-500"
+                },
+                {
+                  name: "Sarah Johnson",
+                  company: "TechCorp",
+                  quote: "Working with Codyn was a game-changer. They understood our vision and brought it to life perfectly.",
+                  rating: 5,
+                  avatar: "S",
+                  color: "from-pink-500 to-purple-500"
+                },
+                {
+                  name: "Michael Chen",
+                  company: "StartupHub",
+                  quote: "Fast, efficient, and incredibly talented. Our project was delivered ahead of schedule with outstanding quality.",
+                  rating: 5,
+                  avatar: "M",
+                  color: "from-yellow-500 to-orange-500"
+                },
+                {
+                  name: "Emily Rodriguez",
+                  company: "InnovateLab",
+                  quote: "The team's creativity and technical expertise are second to none. Highly recommend their services.",
+                  rating: 5,
+                  avatar: "E",
+                  color: "from-indigo-500 to-purple-500"
+                },
+                {
+                  name: "Alex Thompson",
+                  company: "TechStart Inc.",
+                  quote: "Codyn transformed our digital presence completely. Their team's expertise and dedication are unmatched.",
+                  rating: 5,
+                  avatar: "A",
+                  color: "from-blue-500 to-purple-500"
+                },
+                {
+                  name: "Maria Garcia",
+                  company: "Creative Solutions",
+                  quote: "Outstanding work on our mobile app. The user experience is incredible and our customers love it.",
+                  rating: 5,
+                  avatar: "M",
+                  color: "from-green-500 to-cyan-500"
+                },
+                {
+                  name: "James Wilson",
+                  company: "Global Enterprises",
+                  quote: "Professional, reliable, and results-driven. They delivered exactly what we needed on time and within budget.",
+                  rating: 5,
+                  avatar: "J",
+                  color: "from-purple-500 to-pink-500"
+                },
+                {
+                  name: "Lisa Chang",
+                  company: "Innovation Labs",
+                  quote: "The SEO results speak for themselves. Our organic traffic increased by 300% in just 6 months.",
+                  rating: 5,
+                  avatar: "L",
+                  color: "from-orange-500 to-red-500"
+                },
+                {
+                  name: "David Kim",
+                  company: "Digital Ventures",
+                  quote: "Exceptional attention to detail and innovative solutions. Codyn exceeded our expectations in every way.",
+                  rating: 5,
+                  avatar: "D",
+                  color: "from-cyan-500 to-blue-500"
+                },
+                {
+                  name: "Sarah Johnson",
+                  company: "TechCorp",
+                  quote: "Working with Codyn was a game-changer. They understood our vision and brought it to life perfectly.",
+                  rating: 5,
+                  avatar: "S",
+                  color: "from-pink-500 to-purple-500"
+                },
+                {
+                  name: "Michael Chen",
+                  company: "StartupHub",
+                  quote: "Fast, efficient, and incredibly talented. Our project was delivered ahead of schedule with outstanding quality.",
+                  rating: 5,
+                  avatar: "M",
+                  color: "from-yellow-500 to-orange-500"
+                },
+                {
+                  name: "Emily Rodriguez",
+                  company: "InnovateLab",
+                  quote: "The team's creativity and technical expertise are second to none. Highly recommend their services.",
+                  rating: 5,
+                  avatar: "E",
+                  color: "from-indigo-500 to-purple-500"
+                },
+              ]} />
                           </motion.div>
-                        ))}
-                      </div>
-                      <blockquote className="text-gray-300 mb-8 leading-relaxed">"{testimonial.review}"</blockquote>
-                      <div className="flex items-center">
-                        <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center mr-4 shadow-sm">
-                          <span className="text-black font-semibold text-sm" aria-hidden="true">
-                            {testimonial.name.charAt(0)}
-                          </span>
-                        </div>
-                        <div>
-                          <cite className="font-semibold text-white text-sm not-italic">{testimonial.name}</cite>
-                          <div className="text-xs text-gray-400">{testimonial.company}</div>
-                        </div>
-                      </div>
-                    </div>
-                  </GlowingCard>
-                </article>
-              ))}
-            </div>
+
           </div>
         </section>
 
-        {/* APPLE GLASS CTA SECTION */}
+        {/* CTA SECTION */}
         <section
-          className="py-32 px-6 lg:px-12 relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"
+          className="py-32 px-6 lg:px-12 relative overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black"
           aria-labelledby="cta-heading"
         >
-          {/* Dynamic Glass Background */}
-          <motion.div className="absolute inset-0" aria-hidden="true">
-            <motion.div 
-              className="absolute top-1/4 left-1/4 w-96 h-96 bg-white/5 backdrop-blur-3xl rounded-full border border-white/10"
-              animate={{ 
-                x: [0, 100, 0],
-                y: [0, -60, 0],
-                scale: [1, 1.2, 1]
-              }}
-              transition={{ 
-                duration: 30,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "easeInOut"
-              }}
-            />
-            <motion.div 
-              className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/10 backdrop-blur-3xl rounded-full border border-purple-500/20"
-              animate={{ 
-                x: [0, -80, 0],
-                y: [0, 50, 0],
-                scale: [1, 0.9, 1]
-              }}
-              transition={{ 
-                duration: 35,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "easeInOut",
-                delay: 10
-              }}
-            />
-            <motion.div 
-              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-cyan-500/5 via-transparent to-transparent rounded-full"
-              animate={{ 
-                rotate: [0, 360],
-                scale: [1, 1.1, 1]
-              }}
-              transition={{ 
-                duration: 40,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "linear"
-              }}
-            />
-          </motion.div>
-
           <div className="max-w-6xl mx-auto text-center relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
+              className="mb-8"
             >
-              <h2 id="cta-heading" className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight">
-                Ready to Build Something{" "}
-                <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
-                  Extraordinary
-                </span>?
-              </h2>
+              <TypewriterEffectSmooth 
+                words={[
+                  { text: "Ready" },
+                  { text: "to" },
+                  { text: "Build" },
+                  { text: "Something" },
+                  { text: "Extraordinary", className: "text-cyan-400 dark:text-cyan-400" },
+                  { text: "?" }
+                ]}
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white px-4"
+              />
             </motion.div>
 
             <motion.p
-              className="text-white/80 text-xl md:text-2xl mb-16 leading-relaxed max-w-5xl mx-auto"
+              className="text-white/80 text-xl md:text-2xl mb-16 leading-relaxed max-w-4xl mx-auto px-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.6 }}
@@ -1405,7 +1118,7 @@ function HomePageContent() {
             </motion.p>
 
             <motion.div
-              className="flex flex-col sm:flex-row gap-8 justify-center items-center mb-20"
+              className="flex flex-col sm:flex-row gap-6 sm:gap-8 justify-center items-center px-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
@@ -1413,7 +1126,7 @@ function HomePageContent() {
             >
               <Link href="/contact">
                 <motion.button
-                  className="group relative px-10 py-5 bg-white/20 backdrop-blur-xl border border-white/30 rounded-3xl text-white font-semibold text-xl shadow-2xl overflow-hidden"
+                  className="group relative px-8 sm:px-10 py-4 sm:py-5 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white font-semibold text-lg sm:text-xl rounded-3xl shadow-2xl overflow-hidden w-full sm:w-auto"
                   whileHover={{ scale: 1.05, y: -3 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -1422,7 +1135,7 @@ function HomePageContent() {
                     <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform" />
                   </span>
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent"
+                    className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-cyan-700"
                     initial={{ x: "-100%" }}
                     whileHover={{ x: "100%" }}
                     transition={{ duration: 0.6 }}
@@ -1431,7 +1144,7 @@ function HomePageContent() {
               </Link>
               <Link href="/portfolio">
                 <motion.button
-                  className="group px-10 py-5 bg-transparent backdrop-blur-xl border border-white/20 rounded-3xl text-white/90 font-semibold text-xl hover:bg-white/10 transition-all duration-300"
+                  className="group px-8 sm:px-10 py-4 sm:py-5 bg-transparent border border-cyan-400/30 rounded-3xl text-white/90 font-semibold text-lg sm:text-xl hover:bg-cyan-500/10 transition-all duration-300 w-full sm:w-auto"
                   whileHover={{ scale: 1.05, y: -3 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -1441,32 +1154,6 @@ function HomePageContent() {
                   </span>
                 </motion.button>
               </Link>
-            </motion.div>
-
-            {/* Glass Trust Indicators */}
-            <motion.div
-              className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              {[
-                { number: "50+", label: "Happy Clients" },
-                { number: "100+", label: "Projects Delivered" },
-                { number: "5+", label: "Years Experience" },
-                { number: "24/7", label: "Support Available" },
-              ].map((stat, index) => (
-                <motion.div
-                  key={index}
-                  className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-6 shadow-2xl"
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <div className="text-3xl font-bold text-white mb-2">{stat.number}</div>
-                  <div className="text-white/70 text-sm">{stat.label}</div>
-                </motion.div>
-              ))}
             </motion.div>
           </div>
         </section>
