@@ -110,7 +110,7 @@ export default function ServicesPage() {
         {/* Content */}
         <div className="relative z-10 mx-auto w-full max-w-7xl p-4 pt-0 flex items-center justify-center flex-col">
           <motion.h1
-            className="bg-opacity-50 bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text text-center text-4xl font-bold text-transparent md:text-7xl"
+            className="md:text-7xl text-3xl lg:text-9xl font-bold text-center text-white relative z-20"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -121,7 +121,7 @@ export default function ServicesPage() {
             </span>
           </motion.h1>
           <motion.p
-            className="mx-auto mt-4 max-w-lg text-center text-base font-normal text-neutral-300"
+            className="text-lg md:text-xl text-gray-300 text-center mt-4 relative z-20 max-w-2xl px-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}

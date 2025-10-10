@@ -9,6 +9,7 @@ import { AnimatedText } from "@/components/eternity/animated-text"
 import { AnimatedCard } from "@/components/eternity/animated-card"
 import { MagneticButton } from "@/components/eternity/magnetic-button"
 import { Spotlight } from "@/components/ui/spotlight-new"
+import ContactStars from "@/components/ui/contact-stars"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -87,39 +88,12 @@ export default function ContactPage() {
 
   return (
     <div className="bg-black">
-      {/* New Spotlight Hero Section */}
-      <section className="min-h-[60vh] lg:h-[40rem] w-full rounded-md flex md:items-center md:justify-center bg-black/[0.96] antialiased bg-grid-white/[0.02] relative overflow-hidden ">
-        <Spotlight 
-          gradientFirst="radial-gradient(68.54% 68.72% at 55.02% 31.46%, hsla(195, 100%, 85%, .15) 0, hsla(195, 100%, 55%, .08) 50%, hsla(195, 100%, 45%, 0) 80%)"
-          gradientSecond="radial-gradient(50% 50% at 50% 50%, hsla(195, 100%, 85%, .12) 0, hsla(195, 100%, 55%, .06) 80%, transparent 100%)"
-          gradientThird="radial-gradient(50% 50% at 50% 50%, hsla(195, 100%, 85%, .08) 0, hsla(195, 100%, 45%, .04) 80%, transparent 100%)"
-          width={800}
-          height={1800}
-          smallWidth={320}
-          xOffset={150}
+      {/* Stars Hero Section */}
+      <section className="min-h-[60vh] lg:h-[40rem] w-full rounded-md flex md:items-center md:justify-center bg-black antialiased relative overflow-hidden">
+        <ContactStars 
+          title="Get In Touch"
+          subtitle="Ready to transform your digital presence? Let's discuss your project and create something amazing together."
         />
-        <div className=" max-w-7xl mx-auto relative z-10 w-full pt-0 flex items-center justify-center flex-col">
-          <motion.h1
-            className="text-4xl md:text-7xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            Get In{" "}
-            <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent">
-              Touch
-            </span>
-          </motion.h1>
-          <motion.p
-            className="mt-4 font-normal text-base text-neutral-300 max-w-lg text-center mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-          >
-            Ready to transform your digital presence? Let's discuss your project and create something amazing
-            together.
-          </motion.p>
-        </div>
       </section>
 
       {/* Cyan Theme Contact Form & Info */}

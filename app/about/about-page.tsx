@@ -6,6 +6,7 @@ import { AnimatedCard } from "@/components/eternity/animated-card"
 import { MagneticButton } from "@/components/eternity/magnetic-button"
 import { ScrollReveal } from "@/components/eternity/scroll-reveal"
 import { LampContainer } from "@/components/ui/lamp"
+import TeamSparkles from "@/components/ui/team-sparkles"
 import { motion } from "framer-motion"
 
 export default function AboutPage() {
@@ -73,8 +74,8 @@ export default function AboutPage() {
   return (
     <div className="bg-black">
       {/* Lamp Hero Section */}
-      <LampContainer className="min-h-[60vh] sm:min-h-screen  ">
-        <div className="relative z-[100] flex-col items-center  justify-center ">
+      <LampContainer className="min-h-[60vh] sm:min-h-screen  pt-40 ">
+        <div className="relative pt-80 z-[100] flex-col items-center  justify-center ">
           <motion.div
             initial={{ opacity: 0.5, y: 100 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -85,7 +86,7 @@ export default function AboutPage() {
             }}
             className="mt-0 mb-8 text-center"
           >
-            <h1 className="bg-gradient-to-br from-white to-slate-300 py-4 bg-clip-text text-4xl font-bold tracking-tight text-transparent md:text-7xl drop-shadow-2xl relative z-10">
+            <h1 className="md:text-7xl text-3xl lg:text-9xl font-bold text-center text-white relative z-10">
               About
             </h1>
             <div className="w-44 h-24 rounded-xl flex items-center justify-center mx-auto mt-4 bg-black/20 backdrop-blur-sm border border-white/10 relative z-10">
@@ -180,7 +181,7 @@ export default function AboutPage() {
                   transition={{ delay: 0.8, duration: 0.6 }}
                   viewport={{ once: true }}
                 >
-                  <MagneticButton className="backdrop-blur-xl bg-cyan-500/20 border border-cyan-400/30 rounded-2xl text-white font-semibold px-8 py-4 shadow-2xl hover:bg-cyan-500/30 transition-colors">
+                  <MagneticButton className="!bg-cyan-500/20 !text-white backdrop-blur-xl border border-cyan-400/30 rounded-2xl font-semibold px-8 py-4 shadow-2xl hover:!bg-cyan-500/30 hover:border-cyan-400/50 transition-all duration-300">
                     <span className="flex items-center">
                       Our Portfolio <ArrowRight className="ml-2 w-4 h-4" />
                     </span>
@@ -345,18 +346,14 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section id="team" className="py-32 px-6 lg:px-12 bg-black">
+      <section id="team" className=" px-6 lg:px-12 bg-black">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <AnimatedText>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Meet Our Team</h2>
-            </AnimatedText>
-            <AnimatedText delay={0.2}>
-              <p className="text-gray-400 text-lg max-w-3xl mx-auto">
-                Our diverse team of experts brings together years of experience in technology, design, and strategy to
-                deliver exceptional results for our clients.
-              </p>
-            </AnimatedText>
+          {/* Team Sparkles Hero */}
+          <div className="mb-20">
+            <TeamSparkles 
+              title="Meet Our Team"
+              subtitle="Our diverse team of experts brings together years of experience in technology, design, and strategy to deliver exceptional results for our clients."
+            />
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
@@ -433,7 +430,7 @@ export default function AboutPage() {
             </p>
           </AnimatedText>
           <AnimatedText delay={0.4}>
-            <MagneticButton>
+            <MagneticButton className="!bg-cyan-500/20 !text-white backdrop-blur-xl border border-cyan-400/30 rounded-2xl font-semibold px-8 py-4 shadow-2xl hover:!bg-cyan-500/30 hover:border-cyan-400/50 transition-all duration-300">
               <span className="flex items-center">
                 Get Started Today <ArrowRight className="ml-2 w-4 h-4" />
               </span>
