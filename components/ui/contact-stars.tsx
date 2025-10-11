@@ -13,7 +13,13 @@ export default function ContactStars({ title, subtitle, className = "" }: Contac
   return (
     <div className={`h-[40rem] rounded-md bg-black flex flex-col items-center justify-center relative w-full ${className}`}>
       <h1 className="md:text-7xl text-3xl lg:text-9xl font-bold text-center text-white relative z-20">
-        {title}
+        {title === "Get In Touch" ? (
+          <>
+            Get In <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent">Touch</span>
+          </>
+        ) : (
+          title
+        )}
       </h1>
       {subtitle && (
         <p className="text-lg md:text-xl text-gray-300 text-center mt-4 relative z-20 max-w-2xl px-4">

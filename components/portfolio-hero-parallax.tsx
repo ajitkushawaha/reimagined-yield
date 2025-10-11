@@ -18,9 +18,9 @@ export const portfolioProjects = [
     thumbnail: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=600&fit=crop&crop=center",
   },
   {
-    title: "Creative Studio Rebrand",
+    title: "Visa Booking App",
     link: "#",
-    thumbnail: "https://images.unsplash.com/photo-1558655146-d09347e92766?w=600&h=600&fit=crop&crop=center",
+    thumbnail: "/images/euro.png"
   },
   {
     title: "SaaS Growth Campaign",
@@ -33,9 +33,9 @@ export const portfolioProjects = [
     thumbnail: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=600&h=600&fit=crop&crop=center",
   },
   {
-    title: "Fitness Tracking App",
+    title: "Sultan Fitness",
     link: "#",
-    thumbnail: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=600&fit=crop&crop=center",
+    thumbnail: "/images/sultan.png",
   },
   {
     title: "E-Learning Platform",
@@ -43,14 +43,14 @@ export const portfolioProjects = [
     thumbnail: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=600&fit=crop&crop=center",
   },
   {
-    title: "Real Estate Portal",
+    title: "Business Website",
     link: "#",
-    thumbnail: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&h=600&fit=crop&crop=center",
+    thumbnail: "images/klance.png",
   },
   {
-    title: "Food Delivery App",
+    title: "Whatsapp Chatbot",
     link: "#",
-    thumbnail: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=600&h=600&fit=crop&crop=center",
+    thumbnail: "https://www.luccabot.com/images/hero-1.jpg"
   },
   {
     title: "Social Media Dashboard",
