@@ -55,7 +55,7 @@ export const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className="h-[350vh] py-40 overflow-hidden  antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+      className="h-[300vh] sm:h-[350vh] py-20 sm:py-32 md:py-40 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
     >
       <Header />
       <motion.div
@@ -67,7 +67,7 @@ export const HeroParallax = ({
         }}
         className=""
       >
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-20">
+        <motion.div className="flex flex-row-reverse space-x-reverse space-x-10 sm:space-x-16 md:space-x-20 mb-12 sm:mb-16 md:mb-20">
           {firstRow.map((product) => (
             <ProductCard
               product={product}
@@ -76,7 +76,7 @@ export const HeroParallax = ({
             />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row  mb-20 space-x-20 ">
+        <motion.div className="flex flex-row mb-12 sm:mb-16 md:mb-20 space-x-10 sm:space-x-16 md:space-x-20">
           {secondRow.map((product) => (
             <ProductCard
               product={product}
@@ -85,7 +85,7 @@ export const HeroParallax = ({
             />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20">
+        <motion.div className="flex flex-row-reverse space-x-reverse space-x-10 sm:space-x-16 md:space-x-20">
           {thirdRow.map((product) => (
             <ProductCard
               product={product}
@@ -101,11 +101,11 @@ export const HeroParallax = ({
 
 export const Header = () => {
   return (
-    <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full  left-0 top-0">
-      <h1 className="md:text-7xl text-3xl lg:text-9xl font-bold text-center text-white relative z-10">
+    <div className="max-w-7xl relative mx-auto py-16 sm:py-20 md:py-40 px-4 w-full left-0 top-0">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-center text-white relative z-10">
         Portfolio
       </h1>
-      <p className="text-white text-xl md:text-2xl leading-relaxed max-w-4xl mx-auto mt-4 font-medium drop-shadow-2xl relative z-10">
+      <p className="text-white text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed max-w-4xl mx-auto mt-4 font-medium drop-shadow-2xl relative z-10 px-4">
         Discover our collection of innovative projects that showcase our expertise in creating exceptional digital experiences.
       </p>
     </div>
@@ -132,7 +132,7 @@ export const ProductCard = ({
         y: -20,
       }}
       key={product.title}
-      className="group/product h-96 w-[30rem] relative shrink-0"
+      className="group/product h-64 sm:h-80 md:h-96 w-[20rem] sm:w-[25rem] md:w-[30rem] relative shrink-0"
     >
       <a
         href={product.link}

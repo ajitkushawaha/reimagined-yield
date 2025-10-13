@@ -6,6 +6,7 @@ import { ArrowRight, Menu, X } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
+import { GlowButton } from "@/components/ui/glow-button"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -95,24 +96,15 @@ export function Header() {
 
         {/* CTA Button */}
         <div className="hidden lg:flex items-center space-x-4">
-          <Link href="/contact">
-            <motion.button
-              className="group relative px-6 py-2 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white font-semibold text-sm rounded-full shadow-lg overflow-hidden"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span className="relative z-10 flex items-center">
-                Get Started
-                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </span>
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-cyan-700"
-                initial={{ x: "-100%" }}
-                whileHover={{ x: "100%" }}
-                transition={{ duration: 0.6 }}
-              />
-            </motion.button>
-          </Link>
+        <Link href="/contact#contact-form">
+              <GlowButton 
+                variant="cyan" 
+                size="sm"
+                className="!bg-cyan-500/20 !text-white backdrop-blur-xl rounded-full font-semibold px-4 py-2 shadow-2xl hover:!bg-cyan-500/30 transition-all duration-300"
+              >
+                Let's Talk
+              </GlowButton>
+            </Link>
         </div>
       </motion.nav>
 
@@ -140,21 +132,14 @@ export function Header() {
               </Link>
             ))}
             
-            <Link href="/contact">
-              <motion.button
-                className="bg-slate-900 no-underline group cursor-pointer relative shadow-2xl shadow-zinc-900 rounded-full p-px text-xs font-semibold leading-6 text-white"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+            <Link href="/contact#contact-form" className="max-[500px]:hidden">
+              <GlowButton 
+                variant="cyan" 
+                size="sm"
+                className="!bg-cyan-500/20 !text-white backdrop-blur-xl rounded-full font-semibold px-3 py-1.5 shadow-2xl hover:!bg-cyan-500/30 transition-all duration-300"
               >
-                <span className="absolute inset-0 overflow-hidden rounded-full">
-                  <span className="absolute inset-0 rounded-full bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(56,189,248,0.6)_0%,rgba(56,189,248,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
-                </span>
-                <div className="relative flex space-x-1 items-center z-10 rounded-full bg-zinc-950 ring-1 ring-white/10 px-3 py-1 max-[475px]:hidden">
-                  <span className="text-xs">Let's Talk</span>
-                  <ArrowRight className="w-3 h-3" />
-                </div>
-                <span className="absolute -bottom-0 left-[0.75rem] h-px w-[calc(100%-1.5rem)] bg-gradient-to-r from-emerald-400/0 via-emerald-400/90 to-emerald-400/0 transition-opacity duration-500 group-hover:opacity-40"></span>
-              </motion.button>
+                Let's Talk
+              </GlowButton>
             </Link>
           </motion.div>
         )}
@@ -190,21 +175,13 @@ export function Header() {
               </Link>
             ))}
             
-            <Link href="/contact">
-              <motion.button
-                className="bg-cyan-500/10 no-underline group cursor-pointer relative shadow-2xl shadow-cyan-900/20 rounded-full p-px text-xs font-semibold leading-6 text-white"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+            <Link href="/contact#contact-form">
+              <GlowButton 
+                variant="cyan" 
+                size="md"
               >
-                <span className="absolute inset-0 overflow-hidden rounded-full">
-                  <span className="absolute inset-0 rounded-full bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(6,182,212,0.6)_0%,rgba(6,182,212,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
-                </span>
-                <div className="relative flex space-x-2 items-center z-10 rounded-full bg-cyan-500/5 ring-1 ring-cyan-400/20 px-4 py-2">
-                  <span className="text-sm">Let's Talk</span>
-                  <ArrowRight className="w-4 h-4" />
-                </div>
-                <span className="absolute -bottom-0 left-[0.75rem] h-px w-[calc(100%-1.5rem)] bg-gradient-to-r from-cyan-400/0 via-cyan-400/90 to-cyan-400/0 transition-opacity duration-500 group-hover:opacity-40"></span>
-              </motion.button>
+                Let's Talk
+              </GlowButton>
             </Link>
           </motion.div>
         )}
@@ -263,15 +240,15 @@ export function Header() {
             ))}
             
             <div className="pt-6 border-t border-cyan-500/20">
-              <Link href="/contact" onClick={closeMobileMenu}>
-                <motion.button
-                  className="w-full px-6 py-3 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white font-semibold rounded-lg shadow-lg"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Get Started
-                </motion.button>
-              </Link>
+            <Link href="/contact#contact-form">
+              <GlowButton 
+                variant="cyan" 
+                size="sm"
+                className="!bg-cyan-500/20 !text-white backdrop-blur-xl rounded-full font-semibold px-4 py-2 shadow-2xl hover:!bg-cyan-500/30 transition-all duration-300"
+              >
+                Let's Talk
+              </GlowButton>
+            </Link>
             </div>
           </nav>
         </motion.div>

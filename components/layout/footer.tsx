@@ -68,11 +68,11 @@ export function Footer() {
               </p>
               <div className="flex space-x-4">
                 <a
-                  href="https://www.linkedin.com/in/saurabh-rajput-9a1071245"
+                  href="https://www.linkedin.com/company/codyn-technologies/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-cyan-500/5 backdrop-blur-xl border border-cyan-400/20 rounded-lg flex items-center justify-center text-cyan-400 hover:text-white hover:bg-cyan-500/10 transition-colors"
-                  aria-label="LinkedIn"
+                  aria-label="LinkedIn Company Page"
                 >
                   <Linkedin className="w-5 h-5" />
                 </a>

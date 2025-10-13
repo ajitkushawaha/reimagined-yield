@@ -1,11 +1,13 @@
 "use client"
 import { ArrowRight, Award, Users, Target, Heart, Lightbulb, Shield, Mail, Linkedin, Twitter } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 import { AnimatedText } from "@/components/eternity/animated-text"
 import { AnimatedCard } from "@/components/eternity/animated-card"
 import { MagneticButton } from "@/components/eternity/magnetic-button"
 import { ScrollReveal } from "@/components/eternity/scroll-reveal"
 import { LampContainer } from "@/components/ui/lamp"
+import { GlowButton } from "@/components/ui/glow-button"
 import TeamSparkles from "@/components/ui/team-sparkles"
 import { motion } from "framer-motion"
 
@@ -75,7 +77,8 @@ export default function AboutPage() {
     <div className="bg-black">
       {/* Lamp Hero Section */}
       <LampContainer className="min-h-[60vh] sm:min-h-screen  pt-40 ">
-        <div className="relative pt-80 z-[100] flex-col items-center  justify-center ">
+        <div className="relative pt-80 z-[100] flex-col items-center justify-center ">
+
           <motion.div
             initial={{ opacity: 0.5, y: 100 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -112,7 +115,7 @@ export default function AboutPage() {
       </LampContainer>
 
       {/* Cyan Theme Story Section */}
-      <section className="py-32 px-6 lg:px-12 relative bg-gradient-to-b from-slate-900 to-black">
+      <section className="pb-16 md:py-24 lg:py-32 px-4 md:px-6 lg:px-12 relative bg-gradient-to-b from-slate-900 to-black">
         {/* Cyan Background Elements */}
         <motion.div className="absolute inset-0" aria-hidden="true">
           <motion.div 
@@ -135,7 +138,7 @@ export default function AboutPage() {
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
                 <motion.h2 
-                  className="text-4xl md:text-5xl font-bold text-white mb-8"
+                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 md:mb-8"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
@@ -144,7 +147,7 @@ export default function AboutPage() {
                   Our <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent">Story</span>
                 </motion.h2>
                 <motion.p 
-                  className="text-white/70 text-lg leading-relaxed mb-6"
+                  className="text-white/70 text-base sm:text-lg leading-relaxed mb-4 md:mb-6"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2, duration: 0.6 }}
@@ -154,7 +157,7 @@ export default function AboutPage() {
                   digital presence that truly represents their vision and drives real results.
                 </motion.p>
                 <motion.p 
-                  className="text-white/70 text-lg leading-relaxed mb-6"
+                  className="text-white/70 text-base sm:text-lg leading-relaxed mb-4 md:mb-6"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4, duration: 0.6 }}
@@ -165,7 +168,7 @@ export default function AboutPage() {
                   confidence and success.
                 </motion.p>
                 <motion.p 
-                  className="text-white/70 text-lg leading-relaxed mb-8"
+                  className="text-white/70 text-base sm:text-lg leading-relaxed mb-6 md:mb-8"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6, duration: 0.6 }}
@@ -181,11 +184,13 @@ export default function AboutPage() {
                   transition={{ delay: 0.8, duration: 0.6 }}
                   viewport={{ once: true }}
                 >
-                  <MagneticButton className="!bg-cyan-500/20 !text-white backdrop-blur-xl border border-cyan-400/30 rounded-2xl font-semibold px-8 py-4 shadow-2xl hover:!bg-cyan-500/30 hover:border-cyan-400/50 transition-all duration-300">
-                    <span className="flex items-center">
-                      Our Portfolio <ArrowRight className="ml-2 w-4 h-4" />
-                    </span>
-                  </MagneticButton>
+                  <GlowButton 
+                    variant="cyan" 
+                    size="lg"
+                    className="!bg-cyan-500/20 !text-white backdrop-blur-xl rounded-2xl font-semibold px-8 py-4 shadow-2xl hover:!bg-cyan-500/30 transition-all duration-300"
+                  >
+                    Our Portfolio
+                  </GlowButton>
                 </motion.div>
               </div>
 
@@ -201,7 +206,7 @@ export default function AboutPage() {
                     viewport={{ once: true }}
                     whileHover={{ scale: 1.05, y: -5 }}
                   >
-                    <div className="text-4xl md:text-5xl font-bold text-white mb-2">
+                    <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">
                       {stat.number}
                       {stat.suffix}
                     </div>
@@ -215,7 +220,7 @@ export default function AboutPage() {
       </section>
 
       {/* Cyan Theme Mission & Vision */}
-      <section className="py-32 px-6 lg:px-12 relative bg-gradient-to-b from-black to-slate-900">
+      <section className="py-16 md:py-24 lg:py-32 px-4 md:px-6 lg:px-12 relative bg-gradient-to-b from-black to-slate-900">
         {/* Cyan Background Elements */}
         <motion.div className="absolute inset-0" aria-hidden="true">
           <motion.div 
@@ -244,7 +249,7 @@ export default function AboutPage() {
               whileHover={{ scale: 1.02, y: -5 }}
             >
               <Target className="w-16 h-16 text-cyan-400 mx-auto mb-6" />
-              <h3 className="text-2xl font-bold text-white mb-6">Our Mission</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 md:mb-6">Our Mission</h3>
               <p className="text-white/70 leading-relaxed">
                 To empower businesses with innovative digital solutions that drive growth, enhance user experiences, and
                 create lasting impact in the digital world. We strive to be the catalyst that transforms your vision
@@ -260,7 +265,7 @@ export default function AboutPage() {
               whileHover={{ scale: 1.02, y: -5 }}
             >
               <Award className="w-16 h-16 text-cyan-400 mx-auto mb-6" />
-              <h3 className="text-2xl font-bold text-white mb-6">Our Vision</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 md:mb-6">Our Vision</h3>
               <p className="text-white/70 leading-relaxed">
                 To be the leading digital agency that transforms how businesses connect with their audiences through
                 creative technology and strategic innovation. We envision a future where every business can thrive in
@@ -272,7 +277,7 @@ export default function AboutPage() {
       </section>
 
       {/* Cyan Theme Values Section */}
-      <section className="py-32 px-6 lg:px-12 relative bg-gradient-to-b from-slate-900 to-black">
+      <section className="py-16 md:py-24 lg:py-32 px-4 md:px-6 lg:px-12 relative bg-gradient-to-b from-slate-900 to-black">
         {/* Cyan Background Elements */}
         <motion.div className="absolute inset-0" aria-hidden="true">
           <motion.div 
@@ -293,7 +298,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-20">
             <motion.h2 
-              className="text-4xl md:text-5xl font-bold text-white mb-8"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 md:mb-8"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -302,7 +307,7 @@ export default function AboutPage() {
               Our <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent">Values</span>
             </motion.h2>
             <motion.p 
-              className="text-white/70 text-xl max-w-4xl mx-auto leading-relaxed"
+              className="text-white/70 text-base sm:text-lg md:text-xl max-w-4xl mx-auto leading-relaxed px-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.6 }}
@@ -329,7 +334,7 @@ export default function AboutPage() {
                 >
                   <div className="text-cyan-400">{value.icon}</div>
                 </motion.div>
-                <h3 className="text-xl font-semibold text-white mb-4 group-hover:text-white/90 transition-colors">{value.title}</h3>
+                <h3 className="text-lg sm:text-xl font-semibold text-white mb-3 md:mb-4 group-hover:text-white/90 transition-colors">{value.title}</h3>
                 <p className="text-white/70 leading-relaxed group-hover:text-white/80 transition-colors">{value.description}</p>
                 
                 {/* Cyan shine effect */}
@@ -346,10 +351,10 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section id="team" className=" px-6 lg:px-12 bg-black">
+      <section id="team" className="py-16 md:py-24 lg:py-32 px-4 md:px-6 lg:px-12 bg-black">
         <div className="max-w-7xl mx-auto">
           {/* Team Sparkles Hero */}
-          <div className="mb-20">
+          <div className="mb-12 md:mb-16 lg:mb-20">
             <TeamSparkles 
               title="Meet Our Team"
               subtitle="Our diverse team of experts brings together years of experience in technology, design, and strategy to deliver exceptional results for our clients."
@@ -419,22 +424,26 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-32 px-6 lg:px-12 bg-gradient-to-b from-gray-900 to-gray-950">
+      <section className="py-16 md:py-24 lg:py-32 px-4 md:px-6 lg:px-12 bg-gradient-to-b from-gray-900 to-gray-950">
         <div className="max-w-4xl mx-auto text-center">
           <AnimatedText>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">Ready to Work With Us?</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 md:mb-8">Ready to Work With Us?</h2>
           </AnimatedText>
           <AnimatedText delay={0.2}>
-            <p className="text-gray-400 text-lg mb-12 leading-relaxed">
+            <p className="text-gray-400 text-base sm:text-lg mb-8 md:mb-12 leading-relaxed px-4">
               Let's discuss how we can help transform your digital presence and achieve your business goals together.
             </p>
           </AnimatedText>
           <AnimatedText delay={0.4}>
-            <MagneticButton className="!bg-cyan-500/20 !text-white backdrop-blur-xl border border-cyan-400/30 rounded-2xl font-semibold px-8 py-4 shadow-2xl hover:!bg-cyan-500/30 hover:border-cyan-400/50 transition-all duration-300">
-              <span className="flex items-center">
-                Get Started Today <ArrowRight className="ml-2 w-4 h-4" />
-              </span>
-            </MagneticButton>
+            <Link href="/contact#consultation">
+              <GlowButton 
+                variant="cyan" 
+                size="lg"
+                className="!bg-cyan-500/20 !text-white backdrop-blur-xl rounded-2xl px-8 py-2 shadow-2xl hover:!bg-cyan-500/30 transition-all duration-300"
+              >
+                Book Consultation
+              </GlowButton>
+            </Link>
           </AnimatedText>
         </div>
       </section>

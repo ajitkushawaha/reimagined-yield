@@ -30,14 +30,17 @@ export default function ContactStars({ title, subtitle, className = "" }: Contac
       <ShootingStars 
         starColor="#06B6D4"
         trailColor="#0891B2"
-        minSpeed={8}
-        maxSpeed={25}
-        minDelay={1500}
-        maxDelay={4000}
+        minSpeed={2}
+        maxSpeed={5}
+        minDelay={800}
+        maxDelay={3000}
+        starWidth={6}
+        starHeight={0.5}
+        maxStars={8}
       />
       {/* Stars background */}
       <StarsBackground 
-        starDensity={0.0002}
+        starDensity={0.0008}
         allStarsTwinkle={true}
         twinkleProbability={0.8}
         minTwinkleSpeed={0.3}

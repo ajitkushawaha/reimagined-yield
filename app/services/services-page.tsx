@@ -6,6 +6,7 @@ import { AnimatedCard } from "@/components/eternity/animated-card"
 import { MagneticButton } from "@/components/eternity/magnetic-button"
 import { GlowingCard } from "@/components/eternity/glowing-card"
 import { ServiceCard3D } from "@/components/ui/3d-card"
+import { GlowButton } from "@/components/ui/glow-button"
 import { Spotlight } from "@/components/ui/spotlight"
 import { motion } from "framer-motion"
 
@@ -95,7 +96,7 @@ export default function ServicesPage() {
   return (
     <div className="bg-black">
       {/* Spotlight Hero Section */}
-      <section className="relative flex min-h-[60vh] sm:h-[40rem] w-full overflow-hidden bg-black/[0.96] antialiased md:items-center md:justify-center  ">
+      <section className="relative flex min-h-[50vh] sm:min-h-[60vh] md:h-[40rem] w-full overflow-hidden bg-black/[0.96] antialiased md:items-center md:justify-center">
         {/* Grid Background */}
         <div
           className="pointer-events-none absolute inset-0 [background-size:40px_40px] select-none [background-image:linear-gradient(to_right,#171717_1px,transparent_1px),linear-gradient(to_bottom,#171717_1px,transparent_1px)]"
@@ -110,7 +111,7 @@ export default function ServicesPage() {
         {/* Content */}
         <div className="relative z-10 mx-auto w-full max-w-7xl p-4 pt-0 flex items-center justify-center flex-col">
           <motion.h1
-            className="md:text-7xl text-3xl lg:text-9xl font-bold text-center text-white relative z-20"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-center text-white relative z-20"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -121,7 +122,7 @@ export default function ServicesPage() {
             </span>
           </motion.h1>
           <motion.p
-            className="text-lg md:text-xl text-gray-300 text-center mt-4 relative z-20 max-w-2xl px-4"
+            className="text-base sm:text-lg md:text-xl text-gray-300 text-center mt-4 relative z-20 max-w-2xl px-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
@@ -132,7 +133,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Cyan Theme Services Grid */}
-      <section className="py-32 px-6 lg:px-12 relative bg-gradient-to-b from-slate-900 to-black">
+      <section className="py-16 md:py-24 lg:py-32 px-4 md:px-6 lg:px-12 relative bg-gradient-to-b from-slate-900 to-black">
         {/* Cyan Background Elements */}
         <motion.div className="absolute inset-0" aria-hidden="true">
           <motion.div 
@@ -165,7 +166,7 @@ export default function ServicesPage() {
         </motion.div>
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {services.map((service, index) => (
               <motion.div
                 key={index}
@@ -189,7 +190,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Cyan Theme Process Section */}
-      <section className="py-32 px-6 lg:px-12 relative bg-gradient-to-b from-black to-slate-900">
+      <section className="py-16 md:py-24 lg:py-32 px-4 md:px-6 lg:px-12 relative bg-gradient-to-b from-black to-slate-900">
         {/* Cyan Background Elements */}
         <motion.div className="absolute inset-0" aria-hidden="true">
           <motion.div 
@@ -208,26 +209,26 @@ export default function ServicesPage() {
         </motion.div>
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-20">
+          <div className="text-center mb-12 md:mb-16 lg:mb-20">
             <AnimatedText>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 md:mb-6">
                 Our <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent">Process</span>
               </h2>
             </AnimatedText>
             <AnimatedText delay={0.2}>
-              <p className="text-gray-400 text-lg max-w-3xl mx-auto">
+              <p className="text-gray-400 text-base sm:text-lg max-w-3xl mx-auto px-4">
                 We follow a proven methodology to ensure your project is delivered on time, within budget, and exceeds
                 expectations.
               </p>
             </AnimatedText>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {process.map((step, index) => (
-              <AnimatedCard key={index} delay={index * 0.1} className="p-8 text-center backdrop-blur-xl bg-cyan-500/5 border border-cyan-400/20 rounded-3xl shadow-2xl hover:bg-cyan-500/10 transition-colors">
-                <div className="text-4xl font-bold text-cyan-400 mb-4">{step.step}</div>
-                <h3 className="text-xl font-semibold text-white mb-4">{step.title}</h3>
-                <p className="text-gray-400 leading-relaxed">{step.description}</p>
+              <AnimatedCard key={index} delay={index * 0.1} className="p-6 md:p-8 text-center backdrop-blur-xl bg-cyan-500/5 border border-cyan-400/20 rounded-3xl shadow-2xl hover:bg-cyan-500/10 transition-colors">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-cyan-400 mb-3 md:mb-4">{step.step}</div>
+                <h3 className="text-lg sm:text-xl font-semibold text-white mb-3 md:mb-4">{step.title}</h3>
+                <p className="text-gray-400 text-sm sm:text-base leading-relaxed">{step.description}</p>
               </AnimatedCard>
             ))}
           </div>
@@ -235,7 +236,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Cyan Theme CTA Section */}
-      <section className="py-32 px-6 lg:px-12 relative bg-gradient-to-b from-slate-900 to-black">
+      <section className="py-16 md:py-24 lg:py-32 px-4 md:px-6 lg:px-12 relative bg-gradient-to-b from-slate-900 to-black">
         {/* Cyan Background Elements */}
         <motion.div className="absolute inset-0" aria-hidden="true">
           <motion.div 
@@ -255,21 +256,25 @@ export default function ServicesPage() {
 
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <AnimatedText>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
-              Ready to <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent">Get Started</span>?
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 md:mb-8">
+              Ready to <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent">Book Consultation</span>?
             </h2>
           </AnimatedText>
           <AnimatedText delay={0.2}>
-            <p className="text-gray-400 text-lg mb-12 leading-relaxed">
+            <p className="text-gray-400 text-base sm:text-lg mb-8 md:mb-12 leading-relaxed px-4">
               Let's discuss your project and create a custom solution that drives real results for your business.
             </p>
           </AnimatedText>
           <AnimatedText delay={0.4}>
-            <MagneticButton className="!bg-cyan-500/20 !text-white backdrop-blur-xl border border-cyan-400/30 rounded-2xl font-semibold px-8 py-4 shadow-2xl hover:!bg-cyan-500/30 transition-colors">
-              <span className="flex items-center">
-                Start Your Project <ArrowRight className="ml-2 w-4 h-4" />
-              </span>
-            </MagneticButton>
+            <Link href="/contact#consultation">
+              <GlowButton 
+                variant="cyan" 
+                size="lg"
+                className="!bg-cyan-500/20 !text-white backdrop-blur-xl border border-cyan-400/30 rounded-2xl font-semibold px-8 py-4 shadow-2xl hover:!bg-cyan-500/30 transition-colors"
+              >
+                Start Your Project
+              </GlowButton>
+            </Link>
           </AnimatedText>
         </div>
       </section>

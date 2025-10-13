@@ -180,13 +180,12 @@ export const PortfolioCard3D = ({
 }) => {
   return (
     <Card3D className={cn("h-full", className)}>
-      <div className="h-full backdrop-blur-xl bg-black/50 border border-white/10 rounded-2xl overflow-hidden shadow-2xl group-hover:shadow-2xl group-hover:shadow-purple-500/20 transition-all duration-500">
+      <div className="h-full backdrop-blur-xl bg-black/50 border border-white/10 rounded-2xl overflow-hidden shadow-2xl group-hover:shadow-2xl group-hover:shadow-purple-500/20 transition-all duration-500 relative">
         <div className="relative h-64 overflow-hidden">
           <motion.img
             src={image}
             alt={alt}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            whileHover={{ scale: 1.05 }}
+            className="w-full h-full object-cover"
             transition={{ duration: 0.3 }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />

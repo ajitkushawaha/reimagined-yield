@@ -10,6 +10,7 @@ import { AnimatedCard } from "@/components/eternity/animated-card"
 import { MagneticButton } from "@/components/eternity/magnetic-button"
 import { Spotlight } from "@/components/ui/spotlight-new"
 import ContactStars from "@/components/ui/contact-stars"
+import { GlowButton } from "@/components/ui/glow-button"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -89,7 +90,7 @@ export default function ContactPage() {
   return (
     <div className="bg-black">
       {/* Stars Hero Section */}
-      <section className="min-h-[60vh] lg:h-[40rem] w-full rounded-md flex md:items-center md:justify-center bg-black antialiased relative overflow-hidden">
+      <section className="min-h-[50vh] sm:min-h-[60vh] lg:h-[40rem] w-full rounded-md flex md:items-center md:justify-center bg-black antialiased relative overflow-hidden">
         <ContactStars 
           title="Get In Touch"
           subtitle="Ready to transform your digital presence? Let's discuss your project and create something amazing together."
@@ -97,7 +98,7 @@ export default function ContactPage() {
       </section>
 
       {/* Cyan Theme Contact Form & Info */}
-      <section className="py-16 px-6 lg:px-12 relative bg-gradient-to-b from-slate-900 to-black flex items-center">
+      <section id="contact-form" className="py-12 md:py-16 px-4 md:px-6 lg:px-12 relative bg-gradient-to-b from-slate-900 to-black flex items-center">
         {/* Cyan Background Elements */}
         <motion.div className="absolute inset-0" aria-hidden="true">
           <motion.div 
@@ -116,20 +117,20 @@ export default function ContactPage() {
         </motion.div>
 
         <div className="max-w-7xl mx-auto relative z-10 w-full">
-          <div className="grid lg:grid-cols-2 gap-16">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16">
             {/* Cyan Contact Form */}
             <motion.div 
-              className="backdrop-blur-xl bg-cyan-500/5 border border-cyan-400/20 rounded-3xl p-8 shadow-2xl hover:bg-cyan-500/10 transition-colors"
+              className="backdrop-blur-xl bg-cyan-500/5 border border-cyan-400/20 rounded-3xl p-6 md:p-8 shadow-2xl hover:bg-cyan-500/10 transition-colors"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-2xl font-bold text-white mb-8">
+              <h2 className="text-xl sm:text-2xl font-bold text-white mb-6 md:mb-8">
                 Send us a <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent">message</span>
               </h2>
-              <form onSubmit={handleSubmit} className="space-y-6 py-8">
-                <div className="grid md:grid-cols-2 gap-6">
+              <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6 py-6 md:py-8">
+                <div className="grid md:grid-cols-2 gap-4 md:gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-white/80 mb-2">
                       Full Name *
@@ -162,7 +163,7 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid md:grid-cols-2 gap-4 md:gap-6">
                   <div>
                     <label htmlFor="company" className="block text-sm font-medium text-white/80 mb-2">
                       Company
@@ -236,35 +237,31 @@ export default function ContactPage() {
                   </motion.div>
                 )}
 
-                <button 
-                  type="submit"
-                  disabled={isSubmitting}
-                  className={`w-full py-4 mt-8 justify-center backdrop-blur-xl border border-cyan-400/30 rounded-2xl text-white font-semibold shadow-2xl transition-all duration-300 flex items-center ${
-                    isSubmitting 
-                      ? 'bg-cyan-500/10 cursor-not-allowed' 
-                      : 'bg-cyan-500/20 hover:bg-cyan-500/30'
-                  }`}
-                >
-                  <span className="flex items-center">
-                    {isSubmitting ? (
-                      <>
-                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                        Sending...
-                      </>
-                    ) : (
-                      <>
-                        Send Message <Send className="ml-2 w-4 h-4" />
-                      </>
-                    )}
-                  </span>
-                </button>
+                <div className="w-full mt-8">
+                  {isSubmitting ? (
+                    <div className="w-full py-4 justify-center backdrop-blur-xl border border-cyan-400/30 rounded-2xl text-white font-semibold shadow-2xl transition-all duration-300 flex items-center bg-cyan-500/10 cursor-not-allowed">
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                      Sending...
+                    </div>
+                  ) : (
+                    <GlowButton 
+                      variant="cyan" 
+                      size="lg" 
+                      showArrow={false}
+                      className="w-full justify-center"
+                    >
+                      <Send className="mr-2 w-4 h-4" />
+                      Send Message
+                    </GlowButton>
+                  )}
+                </div>
               </form>
             </motion.div>
 
             {/* Glass Contact Information */}
-            <div className="space-y-8">
+            <div className="space-y-6 md:space-y-8">
               <motion.h2 
-                className="text-2xl font-bold text-white mb-8"
+                className="text-xl sm:text-2xl font-bold text-white mb-6 md:mb-8"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.6 }}
@@ -273,11 +270,11 @@ export default function ContactPage() {
                 Contact <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent">Information</span>
               </motion.h2>
 
-              <div className="space-y-6">
+              <div className="space-y-4 md:space-y-6">
                 {contactInfo.map((info, index) => (
                   <motion.div
                     key={index}
-                    className="backdrop-blur-xl bg-cyan-500/5 border border-cyan-400/20 rounded-3xl p-6 shadow-2xl hover:bg-cyan-500/10 transition-colors"
+                    className="backdrop-blur-xl bg-cyan-500/5 border border-cyan-400/20 rounded-3xl p-4 md:p-6 shadow-2xl hover:bg-cyan-500/10 transition-colors"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 * (index + 3), duration: 0.6 }}
@@ -337,7 +334,7 @@ export default function ContactPage() {
       </section>
 
       {/* Cyan Theme FAQ Section */}
-      <section className="py-32 px-6 lg:px-12 relative bg-gradient-to-b from-black to-slate-900">
+      <section className="py-16 md:py-24 lg:py-32 px-4 md:px-6 lg:px-12 relative bg-gradient-to-b from-black to-slate-900">
         {/* Cyan Background Elements */}
         <motion.div className="absolute inset-0" aria-hidden="true">
           <motion.div 
@@ -356,9 +353,9 @@ export default function ContactPage() {
         </motion.div>
 
         <div className="max-w-4xl mx-auto relative z-10">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 md:mb-16">
             <motion.h2 
-              className="text-4xl md:text-5xl font-bold text-white mb-8"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 md:mb-8"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -368,7 +365,7 @@ export default function ContactPage() {
             </motion.h2>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-4 md:space-y-6">
             {[
               {
                 question: "How long does a typical project take?",
@@ -393,7 +390,7 @@ export default function ContactPage() {
             ].map((faq, index) => (
               <motion.div
                 key={index}
-                className="backdrop-blur-xl bg-cyan-500/5 border border-cyan-400/20 rounded-3xl p-6 shadow-2xl hover:bg-cyan-500/10 transition-colors"
+                className="backdrop-blur-xl bg-cyan-500/5 border border-cyan-400/20 rounded-3xl p-4 md:p-6 shadow-2xl hover:bg-cyan-500/10 transition-colors"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
@@ -409,7 +406,7 @@ export default function ContactPage() {
       </section>
 
       {/* Cyan Theme CTA Section */}
-      <section className="py-32 px-6 lg:px-12 relative bg-gradient-to-b from-slate-900 to-black">
+      <section id="consultation" className="py-16 md:py-24 lg:py-32 px-4 md:px-6 lg:px-12 relative bg-gradient-to-b from-slate-900 to-black">
         {/* Cyan Background Elements */}
         <motion.div className="absolute inset-0" aria-hidden="true">
           <motion.div 
@@ -429,23 +426,25 @@ export default function ContactPage() {
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <AnimatedText>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 md:mb-8">
               Ready to Start Your <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent">Project?</span>
             </h2>
           </AnimatedText>
           <AnimatedText delay={0.2}>
-            <p className="text-gray-400 text-lg mb-12 leading-relaxed">
+            <p className="text-gray-400 text-base sm:text-lg mb-8 md:mb-12 leading-relaxed px-4">
               Don't wait! Get your free consultation today and take the first step towards transforming your digital
               presence.
             </p>
           </AnimatedText>
           <AnimatedText delay={0.4}>
             <Link href="https://meetings-na2.hubspot.com/merajsaurabh0000">
-            <MagneticButton className="!bg-cyan-500/20 !text-white backdrop-blur-xl border border-cyan-400/30 rounded-2xl font-semibold px-8 py-4 shadow-2xl hover:!bg-cyan-500/30 hover:border-cyan-400/50 transition-all duration-300">
-              <span className="flex items-center">
-                Schedule Free Consultation <ArrowRight className="ml-2 w-4 h-4" />
-              </span>
-            </MagneticButton>
+              <GlowButton 
+                variant="cyan" 
+                size="lg" 
+                className="!bg-cyan-500/20 !text-white backdrop-blur-xl border border-cyan-400/30 rounded-2xl font-semibold px-8 py-4 shadow-2xl hover:!bg-cyan-500/30 hover:border-cyan-400/50 transition-all duration-300"
+              >
+                Schedule Free Consultation
+              </GlowButton>
             </Link>
           </AnimatedText>
         </div>

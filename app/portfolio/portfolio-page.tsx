@@ -9,6 +9,7 @@ import { AnimatedCard } from "@/components/eternity/animated-card"
 import { MagneticButton } from "@/components/eternity/magnetic-button"
 import { PortfolioCard3D } from "@/components/ui/3d-card"
 import PortfolioHeroParallax from "@/components/portfolio-hero-parallax"
+import { GlowButton } from "@/components/ui/glow-button"
 
 export default function PortfolioPage() {
   const [activeFilter, setActiveFilter] = useState("All")
@@ -87,30 +88,31 @@ export default function PortfolioPage() {
       <PortfolioHeroParallax />
 
       {/* Cyan Theme Filter Buttons */}
-      <section className="py-12 px-6 lg:px-12 relative bg-gradient-to-b from-slate-900 to-black">
+      <section className="py-8 md:py-12 px-4 md:px-6 lg:px-12 relative bg-gradient-to-b from-slate-900 to-black">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-3 md:gap-4">
             {filters.map((filter) => (
-              <motion.button
+              <GlowButton
                 key={filter}
                 onClick={() => setActiveFilter(filter)}
+                variant="cyan"
+                size="md"
+                showArrow={false}
                 className={`px-6 py-3 rounded-2xl font-medium transition-all duration-300 backdrop-blur-xl ${
                   activeFilter === filter 
                     ? "bg-cyan-500/20 border border-cyan-400/30 text-white shadow-2xl" 
                     : "bg-cyan-500/5 border border-cyan-400/10 text-white/70 hover:bg-cyan-500/10 hover:text-white hover:border-cyan-400/20"
                 }`}
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
               >
                 {filter}
-              </motion.button>
+              </GlowButton>
             ))}
           </div>
         </div>
       </section>
 
       {/* Cyan Theme Projects Grid */}
-      <section className="py-20 px-6 lg:px-12 relative bg-gradient-to-b from-black to-slate-900">
+      <section className="py-16 md:py-20 px-4 md:px-6 lg:px-12 relative bg-gradient-to-b from-black to-slate-900">
         {/* Cyan Background Elements */}
         <motion.div className="absolute inset-0" aria-hidden="true">
           <motion.div 
@@ -143,7 +145,7 @@ export default function PortfolioPage() {
         </motion.div>
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <motion.div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" layout>
+          <motion.div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" layout>
             {filteredProjects.map((project, index) => (
               <motion.div
                 key={project.title}
@@ -168,7 +170,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* Cyan Theme CTA Section */}
-      <section className="py-32 px-6 lg:px-12 relative bg-gradient-to-b from-slate-900 to-black">
+      <section className="py-16 md:py-24 lg:py-32 px-4 md:px-6 lg:px-12 relative bg-gradient-to-b from-slate-900 to-black">
         {/* Cyan Background Elements */}
         <motion.div className="absolute inset-0" aria-hidden="true">
           <motion.div 
@@ -188,21 +190,23 @@ export default function PortfolioPage() {
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <AnimatedText>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 md:mb-8">
               Ready to Create Your <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent">Success Story?</span>
             </h2>
           </AnimatedText>
           <AnimatedText delay={0.2}>
-            <p className="text-gray-400 text-lg mb-12 leading-relaxed">
+            <p className="text-gray-400 text-base sm:text-lg mb-8 md:mb-12 leading-relaxed px-4">
               Let's work together to create a project that exceeds your expectations and delivers measurable results.
             </p>
           </AnimatedText>
           <AnimatedText delay={0.4}>
-            <MagneticButton className="!bg-cyan-500/20 !text-white backdrop-blur-xl border border-cyan-400/30 rounded-2xl font-semibold px-8 py-4 shadow-2xl hover:!bg-cyan-500/30 hover:border-cyan-400/50 transition-all duration-300">
-              <span className="flex items-center">
-                Start Your Project <ArrowRight className="ml-2 w-4 h-4" />
-              </span>
-            </MagneticButton>
+            <GlowButton 
+              variant="cyan" 
+              size="lg" 
+              className="!bg-cyan-500/20 !text-white backdrop-blur-xl border border-cyan-400/30 rounded-2xl font-semibold px-8 py-4 shadow-2xl hover:!bg-cyan-500/30 hover:border-cyan-400/50 transition-all duration-300"
+            >
+              Start Your Project
+            </GlowButton>
           </AnimatedText>
         </div>
       </section>

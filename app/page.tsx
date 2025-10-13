@@ -37,6 +37,7 @@ import { CardSpotlight } from "@/components/ui/card-spotlight"
 import { Meteors } from "@/components/ui/meteors"
 import { CometCard } from "@/components/ui/comet-card"
 import { PageLayout } from "@/components/layout/page-layout"
+import { GlowButton } from "@/components/ui/glow-button"
 
 // Animated counter component
 const AnimatedCounter = ({ end, duration = 2 }: { end: number; duration?: number }) => {
@@ -129,11 +130,11 @@ function HomePageContent() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.8 }}
             >
-              <h1 id="hero-heading" className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight mb-6 sm:mb-8">
-                Crafting Digital{" "}
-                <Highlight className="text-black dark:text-white">
+              <h1 id="hero-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-4 sm:mb-6 md:mb-8">
+                Crafting Digital
+                <Highlight className="text-black dark:text-white my-4">
                   Excellence
-                </Highlight>{" "}
+                </Highlight>
                 for Your Business
               </h1>
               <div className="sr-only">
@@ -142,7 +143,7 @@ function HomePageContent() {
             </motion.div>
 
             <motion.p
-              className="text-white/80 text-lg sm:text-xl md:text-2xl leading-relaxed max-w-4xl mx-auto mb-8 sm:mb-12 md:mb-16 px-4"
+              className="text-white/80 text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed max-w-4xl mx-auto mb-6 sm:mb-8 md:mb-12 px-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 0.6 }}
@@ -157,35 +158,25 @@ function HomePageContent() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9, duration: 0.6 }}
             >
-              <Link href="/contact">
-                <motion.button
-                  className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white font-semibold text-base sm:text-lg rounded-2xl shadow-2xl overflow-hidden w-full sm:w-auto"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
+              <Link href="/contact#consultation">
+                <GlowButton 
+                  variant="cyan" 
+                  size="lg" 
+                  className="w-full sm:w-auto"
                 >
-                  <span className="relative z-10 flex items-center">
-                    Get Started
-                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </span>
-              <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-cyan-700"
-                    initial={{ x: "-100%" }}
-                    whileHover={{ x: "100%" }}
-                    transition={{ duration: 0.6 }}
-                  />
-                </motion.button>
+                  Book Consultation
+                </GlowButton>
               </Link>
               <Link href="/portfolio">
-                <motion.button
-                  className="group px-6 sm:px-8 py-3 sm:py-4 bg-transparent border border-cyan-400/30 rounded-2xl text-white/90 font-semibold text-base sm:text-lg hover:bg-cyan-500/10 transition-all duration-300 w-full sm:w-auto"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
+                <GlowButton 
+                  variant="emerald" 
+                  size="lg" 
+                  className="w-full sm:w-auto bg-transparent border border-cyan-400/30 hover:bg-cyan-500/10"
+                  showArrow={false}
                 >
-                  <span className="flex items-center">
-                    <Play className="mr-2 w-5 h-5" />
-                    View Our Work
-                  </span>
-                </motion.button>
+                  <Play className="mr-2 w-5 h-5" />
+                  View Our Work
+                </GlowButton>
               </Link>
             </motion.div>
 
@@ -232,7 +223,7 @@ function HomePageContent() {
         </section>
 
         {/* WHY CHOOSE CODYN SECTION */}
-        <section id="why-choose" className="py-32 px-6 lg:px-12 relative bg-gradient-to-b from-gray-900 to-black" aria-labelledby="why-choose-heading">
+        <section id="why-choose" className="py-16 md:py-24 lg:py-32 px-4 md:px-6 lg:px-12 relative bg-gradient-to-b from-gray-900 to-black" aria-labelledby="why-choose-heading">
           <div className="max-w-7xl mx-auto relative z-10">
             <motion.div
                       initial={{ opacity: 0, y: 20 }}
@@ -241,7 +232,7 @@ function HomePageContent() {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 id="why-choose-heading" className="text-5xl md:text-6xl font-bold text-white mb-8">
+              <h2 id="why-choose-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 md:mb-8">
                 Why Choose{" "}
                 <span className="bg-gradient-to-r from-cyan-400 to-cyan-500 bg-clip-text text-transparent">
                   Codyn?
@@ -265,7 +256,7 @@ function HomePageContent() {
                     <div className="w-16 h-16 bg-gradient-to-r from-cyan-400 to-cyan-500 rounded-2xl flex items-center justify-center mb-6">
                       <Zap className="w-8 h-8 text-white" />
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-4">Lightning Fast</h3>
+                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 md:mb-4">Lightning Fast</h3>
                     <p className="text-white/70 leading-relaxed">
                       Optimized performance and blazing-fast load times for seamless user experience
                     </p>
@@ -285,7 +276,7 @@ function HomePageContent() {
                     <div className="w-16 h-16 bg-gradient-to-r from-cyan-400 to-cyan-500 rounded-2xl flex items-center justify-center mb-6">
                       <Lightbulb className="w-8 h-8 text-white" />
             </div>
-                    <h3 className="text-2xl font-bold text-white mb-4">Innovative Solutions</h3>
+                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 md:mb-4">Innovative Solutions</h3>
                     <p className="text-white/70 leading-relaxed">
                       Cutting-edge technology and creative approaches to solve complex problems
                     </p>
@@ -305,7 +296,7 @@ function HomePageContent() {
                     <div className="w-16 h-16 bg-gradient-to-r from-cyan-400 to-cyan-500 rounded-2xl flex items-center justify-center mb-6">
                       <TrendingUp className="w-8 h-8 text-white" />
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-4">Proven Results</h3>
+                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 md:mb-4">Proven Results</h3>
                     <p className="text-white/70 leading-relaxed">
                       Data-driven strategies that consistently deliver measurable business growth
                     </p>
@@ -325,7 +316,7 @@ function HomePageContent() {
                     <div className="w-16 h-16 bg-gradient-to-r from-cyan-400 to-cyan-500 rounded-2xl flex items-center justify-center mb-6">
                       <Shield className="w-8 h-8 text-white" />
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-4">Secure & Reliable</h3>
+                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 md:mb-4">Secure & Reliable</h3>
                     <p className="text-white/70 leading-relaxed">
                       Enterprise-grade security and 99.9% uptime guarantee for peace of mind
                     </p>
@@ -345,7 +336,7 @@ function HomePageContent() {
                     <div className="w-16 h-16 bg-gradient-to-r from-cyan-400 to-cyan-500 rounded-2xl flex items-center justify-center mb-6">
                       <Users className="w-8 h-8 text-white" />
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-4">Expert Team</h3>
+                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 md:mb-4">Expert Team</h3>
                     <p className="text-white/70 leading-relaxed">
                       Experienced professionals with deep expertise in modern technologies
                     </p>
@@ -365,7 +356,7 @@ function HomePageContent() {
                     <div className="w-16 h-16 bg-gradient-to-r from-cyan-400 to-cyan-500 rounded-2xl flex items-center justify-center mb-6">
                       <CheckCircle className="w-8 h-8 text-white" />
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-4">Quality Assured</h3>
+                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 md:mb-4">Quality Assured</h3>
                     <p className="text-white/70 leading-relaxed">
                       Rigorous testing and quality assurance processes ensure flawless delivery
                     </p>
@@ -377,7 +368,7 @@ function HomePageContent() {
         </section>
 
         {/* OUR PROCESS SECTION WITH METEORS */}
-        <section id="process" className="py-32 px-6 lg:px-12 relative bg-gradient-to-b from-black to-gray-900 overflow-hidden" aria-labelledby="process-heading">
+        <section id="process" className="py-16 md:py-24 lg:py-32 px-4 md:px-6 lg:px-12 relative bg-gradient-to-b from-black to-gray-900 overflow-hidden" aria-labelledby="process-heading">
           <div className="max-w-7xl mx-auto relative z-10">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -386,7 +377,7 @@ function HomePageContent() {
                     viewport={{ once: true }}
               className="text-center mb-16"
                   >
-              <h2 id="process-heading" className="text-5xl md:text-6xl font-bold text-white mb-8">
+              <h2 id="process-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 md:mb-8">
                 Our{" "}
                 <span className="bg-gradient-to-r from-cyan-400 to-cyan-500 bg-clip-text text-transparent">
                   Process
@@ -502,22 +493,22 @@ function HomePageContent() {
         </section>
 
         {/* SERVICES SECTION WITH CARD SPOTLIGHT */}
-        <section id="services" className="py-32 px-6 lg:px-12 relative bg-gradient-to-b from-black to-gray-900" aria-labelledby="services-heading">
+        <section id="services" className="py-16 md:py-24 lg:py-32 px-4 md:px-6 lg:px-12 relative bg-gradient-to-b from-black to-gray-900" aria-labelledby="services-heading">
           <div className="max-w-7xl mx-auto relative z-10">
             <motion.div
-              className="text-center mb-20"
+              className="text-center mb-12 md:mb-16 lg:mb-20"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <h2 id="services-heading" className="text-5xl md:text-6xl font-bold text-white mb-8">
+              <h2 id="services-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 md:mb-8 relative z-50">
                 Our{" "}
                 <span className="bg-gradient-to-r from-cyan-400 to-cyan-500 bg-clip-text text-transparent">
                   Services
                 </span>
                 </h2>
-              <p className="text-white/70 text-xl max-w-4xl mx-auto leading-relaxed">
+              <p className="text-white/70 text-xl max-w-4xl mx-auto leading-relaxed relative z-50">
                 Comprehensive digital solutions designed to elevate your business and drive meaningful growth
               </p>
             </motion.div>
@@ -575,25 +566,25 @@ function HomePageContent() {
                   transition={{ delay: index * 0.1, duration: 0.6 }}
                   viewport={{ once: true }}
                 >
-                  <CardSpotlight className="h-full p-8">
-                    <div className="text-center">
+                  <CardSpotlight className="h-full p-8 rounded-2xl">
+                    <div className="text-center relative z-50">
                         <motion.div
-                        className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300`}
+                        className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 relative z-50`}
                         whileHover={{ rotate: 5 }}
                         >
                         <div className="text-white">{service.icon}</div>
                         </motion.div>
-                      <h3 className="text-xl font-semibold text-white mb-4 group-hover:text-white/90 transition-colors">
+                      <h3 className="text-xl font-semibold text-white mb-4 group-hover:text-white/90 transition-colors relative z-50">
                           {service.title}
                         </h3>
-                      <p className="text-white/70 leading-relaxed mb-6 group-hover:text-white/80 transition-colors">
+                      <p className="text-white/70 leading-relaxed mb-6 group-hover:text-white/80 transition-colors relative z-50">
                         {service.description}
                       </p>
                       
                       {/* Features list */}
-                      <div className="space-y-3">
+                      <div className="space-y-3 relative z-50">
                         {service.features.map((feature, featureIndex) => (
-                          <div key={featureIndex} className="flex items-center text-sm text-white/80">
+                          <div key={featureIndex} className="flex items-center text-sm text-white/80 relative z-50">
                             <CheckCircle className="w-4 h-4 text-green-400 mr-3 flex-shrink-0" />
                             <span>{feature}</span>
                       </div>
@@ -608,7 +599,7 @@ function HomePageContent() {
         </section>
 
         {/* COLLABORATION SECTION WITH COMET CARDS */}
-        <section id="collaboration" className="py-32 px-6 lg:px-12 relative bg-gradient-to-b from-gray-900 to-black" aria-labelledby="collaboration-heading">
+        <section id="collaboration" className="py-16 md:py-24 lg:py-32 px-4 md:px-6 lg:px-12 relative bg-gradient-to-b from-gray-900 to-black" aria-labelledby="collaboration-heading">
           <div className="max-w-7xl mx-auto relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -699,7 +690,7 @@ function HomePageContent() {
         </section>
 
         {/* TRUSTED BY INDUSTRY LEADERS SECTION */}
-        <section id="trusted-by" className="py-32 px-6 lg:px-12 relative bg-gradient-to-b from-black to-gray-900" aria-labelledby="trusted-by-heading">
+        <section id="trusted-by" className="py-16 md:py-24 lg:py-32 px-4 md:px-6 lg:px-12 relative bg-gradient-to-b from-black to-gray-900" aria-labelledby="trusted-by-heading">
           <div className="max-w-7xl mx-auto relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -786,7 +777,7 @@ function HomePageContent() {
         </section>
 
         {/* TESTIMONIALS SECTION */}
-        <section id="testimonials" className="py-32 px-6 lg:px-12 bg-gradient-to-b from-gray-900 to-black" aria-labelledby="testimonials-heading">
+        <section id="testimonials" className="py-16 md:py-24 lg:py-32 px-4 md:px-6 lg:px-12 bg-gradient-to-b from-gray-900 to-black" aria-labelledby="testimonials-heading">
           <div className="max-w-7xl mx-auto">
             <header className="text-center mb-20">
               <motion.h2
@@ -1083,7 +1074,7 @@ function HomePageContent() {
 
         {/* CTA SECTION */}
         <section
-          className="py-32 px-6 lg:px-12 relative overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black"
+          className="py-16 md:py-24 lg:py-32 px-4 md:px-6 lg:px-12 relative overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black"
           aria-labelledby="cta-heading"
         >
           <div className="max-w-6xl mx-auto text-center relative z-10">
@@ -1125,35 +1116,25 @@ function HomePageContent() {
               transition={{ delay: 0.4, duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <Link href="/contact">
-                <motion.button
-                  className="group relative px-8 sm:px-10 py-4 sm:py-5 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white font-semibold text-lg sm:text-xl rounded-3xl shadow-2xl overflow-hidden w-full sm:w-auto"
-                  whileHover={{ scale: 1.05, y: -3 }}
-                  whileTap={{ scale: 0.95 }}
+              <Link href="/contact#consultation">
+                <GlowButton 
+                  variant="cyan" 
+                  size="lg" 
+                  className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 text-lg sm:text-xl rounded-3xl"
                 >
-                  <span className="relative z-10 flex items-center">
-                  Start Your Project
-                    <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-cyan-700"
-                    initial={{ x: "-100%" }}
-                    whileHover={{ x: "100%" }}
-                    transition={{ duration: 0.6 }}
-                  />
-                </motion.button>
+                  Book Consultation
+                </GlowButton>
               </Link>
               <Link href="/portfolio">
-                <motion.button
-                  className="group px-8 sm:px-10 py-4 sm:py-5 bg-transparent border border-cyan-400/30 rounded-3xl text-white/90 font-semibold text-lg sm:text-xl hover:bg-cyan-500/10 transition-all duration-300 w-full sm:w-auto"
-                  whileHover={{ scale: 1.05, y: -3 }}
-                  whileTap={{ scale: 0.95 }}
+                <GlowButton 
+                  variant="emerald" 
+                  size="lg" 
+                  className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 text-lg sm:text-xl rounded-3xl bg-transparent border border-cyan-400/30 hover:bg-cyan-500/10"
+                  showArrow={false}
                 >
-                  <span className="flex items-center">
-                    <Play className="mr-3 w-6 h-6" />
-                    View Our Work
-                  </span>
-                </motion.button>
+                  <Play className="mr-3 w-6 h-6" />
+                  View Our Work
+                </GlowButton>
               </Link>
             </motion.div>
           </div>
