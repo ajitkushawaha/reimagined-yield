@@ -57,9 +57,6 @@ export const metadata: Metadata = {
     telephone: false,
   },
   metadataBase: new URL("https://codyn.in"),
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     title: "Codyn - Transform Your Digital Presence",
     description:

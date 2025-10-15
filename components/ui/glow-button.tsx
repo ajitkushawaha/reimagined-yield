@@ -46,7 +46,7 @@ export function GlowButton({
   }
   
   const innerClasses = {
-    cyan: "bg-cyan-500/5",
+    cyan: "bg-transparent",
     emerald: "bg-transparent",
     slate: "bg-zinc-950"
   }
