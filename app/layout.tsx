@@ -108,12 +108,17 @@ const jsonLd = {
   url: "https://codyn.in",
   logo: "https://codyn.in/logo.png",
   image: "https://codyn.in/og-image.jpg",
+  description: "Transform your digital presence with Codyn. Expert web development, mobile apps, UI/UX design, SEO optimization, and digital marketing services.",
+  slogan: "Transform Your Digital Presence",
+  foundingDate: "2021",
+  numberOfEmployees: "10-50",
   contactPoint: {
     "@type": "ContactPoint",
     telephone: "+91-9915174967",
     contactType: "customer service",
     availableLanguage: "en",
     email: "merajsaurabh0000@gmail.com",
+    areaServed: "Worldwide"
   },
   address: {
     "@type": "PostalAddress",
@@ -127,7 +132,6 @@ const jsonLd = {
     "https://www.linkedin.com/in/saurabh-rajput-9a1071245",
     "https://www.linkedin.com/in/ajitreact",
   ],
-  foundingDate: "2021",
   founders: [
     {
       "@type": "Person",
@@ -143,7 +147,6 @@ const jsonLd = {
         url: "https://codyn.in"
       },
       knowsAbout: ["Strategic Planning", "Business Development", "Team Leadership", "Digital Transformation"],
-      alumniOf: "Digital Marketing & Business Strategy",
       hasOccupation: {
         "@type": "Occupation",
         name: "CEO",
@@ -164,7 +167,6 @@ const jsonLd = {
         url: "https://codyn.in"
       },
       knowsAbout: ["Full-Stack Development", "Cloud Architecture", "DevOps", "React", "Next.js", "Node.js"],
-      alumniOf: "Computer Science & Software Engineering",
       hasOccupation: {
         "@type": "Occupation",
         name: "CTO",
@@ -172,9 +174,6 @@ const jsonLd = {
       }
     },
   ],
-  numberOfEmployees: "10-50",
-  slogan: "Transform Your Digital Presence",
-  description: "Codyn is a premier digital agency specializing in web development, mobile app development, UI/UX design, SEO optimization, and digital marketing services.",
   serviceArea: {
     "@type": "GeoCircle",
     geoMidpoint: {
@@ -246,6 +245,24 @@ const jsonLd = {
       },
     ],
   },
+  potentialAction: [
+    {
+      "@type": "SearchAction",
+      target: "https://codyn.in/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    },
+    {
+      "@type": "ViewAction",
+      target: "https://codyn.in/portfolio"
+    },
+    {
+      "@type": "ContactAction",
+      target: "https://codyn.in/contact"
+    }
+  ],
+  mainEntityOfPage: "https://codyn.in",
+  additionalType: "Digital Agency",
+  keywords: "web development, mobile app development, digital marketing, SEO optimization, UI/UX design, custom software development, digital agency, website design, e-commerce development, brand identity, responsive web design, React development, Next.js development, digital transformation, business growth, web design agency, app development company, digital solutions, technology consulting, startup development, enterprise solutions, full-stack development, frontend development, backend development, cloud solutions, DevOps, API development, database design, performance optimization"
 }
 
 export default function RootLayout({
@@ -262,6 +279,28 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#000000" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Codyn",
+          url: "https://codyn.in",
+          description: "Transform your digital presence with Codyn. Expert web development, mobile apps, UI/UX design, SEO optimization, and digital marketing services.",
+          publisher: {
+            "@type": "Organization",
+            name: "Codyn",
+            url: "https://codyn.in"
+          },
+          potentialAction: {
+            "@type": "SearchAction",
+            target: "https://codyn.in/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          },
+          mainEntity: {
+            "@type": "Organization",
+            name: "Codyn",
+            url: "https://codyn.in"
+          }
+        }) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Person",
