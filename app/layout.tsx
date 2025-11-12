@@ -1,5 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
+import Script from "next/script"
 import { Inter } from "next/font/google"
 import "./globals.css"
 
@@ -270,6 +271,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const widgetApiUrl = process.env.NEXT_PUBLIC_SITE_URL
+  const businessId = process.env.BUSINESS_ID
   return (
     <html lang="en" className={`${inter.variable} dark`}>
       <head>
@@ -347,7 +350,16 @@ export default function RootLayout({
         }) }} />
         <meta name="google-site-verification" content="vlMywJNLjoSxyvrk4OW3Sr3LRpl18Zsv-OuTfadq2LY" />
       </head>
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body className={`${inter.className} antialiased`}>
+        {children}
+        {widgetApiUrl && businessId ? (
+          <Script
+            src={`${widgetApiUrl}/widget.js?businessId=${encodeURIComponent(businessId)}&apiUrl=${encodeURIComponent(widgetApiUrl)}`}
+            strategy="afterInteractive"
+            async
+          />
+        ) : null}
+      </body>
     </html>
   )
 }
